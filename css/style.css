@@ -549,7 +549,7 @@ label {
     color: #c9a131;
 }
 
-input, select {
+input {
     box-sizing: border-box;
     position: relative;
     height: 36px;
@@ -560,13 +560,11 @@ input, select {
     background-color: rgba(255, 255, 255, 0.4);
     font-size: 16px;
     color: inherit;
+    box-shadow: none;
 }
 
 input:focus {
-    border: transparent;
-    outline: 2px solid #c89f2d;
-    color: unset;
-    font-style: normal;
+    border: 2px solid #c89f2d;
 }
 
 input:focus::-webkit-input-placeholder {
