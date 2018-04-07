@@ -407,12 +407,11 @@ nav li a:hover {
     display: flex;
     flex-flow: column wrap;
     justify-content: space-between;
-    align-content: space-around;
     overflow: hidden;
 }
 
 .menu-category {
-    width: 570px;
+    width: 600px;
     margin-bottom: 0px;
 }
 
