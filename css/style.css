@@ -349,7 +349,7 @@ nav li a:hover {
 
 .about {
     height: 710px;
-    background: white url("../img/patterns/scales.png");
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0) 1%,rgba(0, 0, 0, 0) 99%, rgba(0, 0, 0, 0.05) 100%), url("../img/patterns/scales.png");
 }
 
 .about .inner {
@@ -400,7 +400,7 @@ nav li a:hover {
 .menu {
     height: 994px;
     padding-bottom: 90px;
-    background: white url("../img/patterns/hexagon.png");
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0) 1%,rgba(0, 0, 0, 0) 99%, rgba(0, 0, 0, 0.05) 100%), url("../img/patterns/hexagon.png");
 }
 
 .menu .inner {
@@ -514,7 +514,7 @@ nav li a:hover {
 
 .reservations {
     height: 708px;
-    background: white url("../img/patterns/scales.png");
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0) 1%,rgba(0, 0, 0, 0) 99%, rgba(0, 0, 0, 0.05) 100%), url("../img/patterns/scales.png");
 }
 
 .reservations .inner > img {
