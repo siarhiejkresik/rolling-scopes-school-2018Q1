@@ -1,11 +1,9 @@
-function make(...args) {
-    let cache = args;
+function make(...acc) {
     function inner(...args) {
         if (args.length === 1 && typeof args[0] === 'function') {
-            return cache.reduce(args[0]); // initial value?
+            return acc.reduce(args[0]);
         } else {
-            cache = cache.concat(args);
-            return inner;
+            return make(...acc.concat(args))
         }
     }
     return inner;
