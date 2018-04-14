@@ -1,0 +1,27 @@
+.card {
+    /* box-sizing: border; */
+    width: 100px;
+    height: 140px;
+    margin: 10px;
+    border: 3px transparent solid;
+    display: inline-block;
+    background: lightseagreen;
+    border-radius: 6%;
+}
+
+.card:hover {
+    border: 3px lightsalmon solid;
+}
+
+#grid {
+    border: 2px solid blue;
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr; */
+    /* width: 300px; */
+    /* grid-gap: 5px; */
+
+}
+
+.disabled {
+    visibility: hidden;
+}
