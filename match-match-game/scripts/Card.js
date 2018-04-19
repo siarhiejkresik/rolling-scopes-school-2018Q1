@@ -1,40 +1,38 @@
 export default class Card {
-    constructor(type) {
+    constructor(type, listener) {
         this.type = type;
-        this._state = State.CLOSED;
+        this._state = STATE.CLOSED;
+        this._listener = listener;
     }
 
-    isOfTheSameType(card) {
-        return this.type === card.type;
-    }
-
-    isOpened() {
-        return this._state === State.OPENED;
-    }
-
-    isClosed() {
-        return this._state === State.CLOSED;
-    }
-
-    isDisabled() {
-        return this._state === State.DISABLED;
+    get isClosed() {
+        return this._state === STATE.CLOSED;
     }
 
     open() {
-        this._state = State.OPENED;
+        this._state = STATE.OPENED;
+        // this._listener.notify(ACTION.OPEN, this);
     }
-    
+
     close() {
-        this._state = State.CLOSED;
+        this._state = STATE.CLOSED;
+        // this._listener.notify(ACTION.CLOSE, this);
     }
-    
+
     disable() {
-        this._state = State.DISABLED;
+        this._state = STATE.DISABLED;
+        // this._listener.notify(ACTION.DISABLE, this);
     }
 }
 
-const State = Object.freeze({
+const STATE = Object.freeze({
     OPENED: 'OPENED',
     CLOSED: 'CLOSED',
     DISABLED: 'DISABLED'
 })
+
+const ACTION = {
+    OPEN: 'OPEN',
+    CLOSE: 'CLOSE',
+    DISABLE: 'DISABLE'
+}
