@@ -1,6 +1,9 @@
+const ANIMATION_SPEED = 1000;
+
 export default class OpenedCardsQueue {
     constructor(size) {
-        this._size = size;
+        this.size = size;
+        this.blocked = false;
         this._cards = [];
     }
 
@@ -9,7 +12,7 @@ export default class OpenedCardsQueue {
     }
 
     get isFull() {
-        return this._size === this._cards.length;
+        return this.size === this._cards.length;
     }
 
     get isOfDifferentTypes() {
@@ -21,22 +24,34 @@ export default class OpenedCardsQueue {
     }
 
     process() {
+        this.block();
+
         if (this.isOfDifferentTypes) {
-            this.closeAll();
-            this.clear();
+            setTimeout(() => {
+                this.closeAll();
+                this.clear();
+            }, ANIMATION_SPEED);
+            this.unblock();
             return;
         }
 
         if (this.isFull) {
-            this.disableAll();
-            this.clear();
+            setTimeout(() => {
+                this.disableAll();
+                this.clear();
+            }, ANIMATION_SPEED);
+            this.unblock();
             return true;
         }
+
+        this.unblock();
     }
 
     add(card) {
+        this.block();
         card.open();
         this._cards.push(card);
+        this.unblock();
     }
 
     clear() {
@@ -44,10 +59,20 @@ export default class OpenedCardsQueue {
     }
 
     disableAll() {
-        this._cards.map(card => card.disable())
+        this._cards.map(card => card.disable());
     }
 
     closeAll() {
-        this._cards.map(card => card.close())
+        this._cards.map(card => card.close());
+    }
+
+    block() {
+        this.blocked = true;
+    }
+
+    unblock(timeout = ANIMATION_SPEED) {
+        setTimeout(() => {
+            this.blocked = false;
+        }, timeout);
     }
 }
