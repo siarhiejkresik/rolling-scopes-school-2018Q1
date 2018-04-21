@@ -6,50 +6,7 @@ const NUMBER_OF_CARD_TYPES = 2;
 const SEQUENCE_SIZE = 2;
 
 
-class Game {
-    constructor(cards) {
-        this.cards = cards;
-        this.cardsToPlay = cards.length;
-        // this.openedCards = null;
-        this.openedCards = new OpenedCardsQueue(SEQUENCE_SIZE);
-    }
-
-    isSelectableCard(card) {
-        return card.isClosed;
-    }
-
-    getCardByIndex(cardIndex) {
-        return this.cards[cardIndex];
-    }
-
-    selectCard(cardIndex) {
-        const card = this.getCardByIndex(cardIndex);
-
-        if (!this.isSelectableCard(card)) {
-            console.log('you can\'t select this card!', card);
-            return;
-        }
-
-        this.openedCards.add(card);
-        if (this.openedCards.process()) {
-            this.cardsToPlay -= SEQUENCE_SIZE;
-            this.isGameOver();
-        }
-
-    }
-
-    isGameOver() {
-        const result = this.cardsToPlay === 0 ? true : false;
-        if (result) {
-            console.log('You win!');
-        }
-        return result;
-    }
-}
-
-
-const grid = drawGrid(GRID_SIZE);
-grid.addEventListener('click', processEvent);
+grid.addCardListener('click', processEvent);
 const deck = initCards(GRID_SIZE, NUMBER_OF_CARD_TYPES, SEQUENCE_SIZE);
 shuffle(deck);
 const game = new Game(deck);
