@@ -1,8 +1,9 @@
 export default class Card {
-    constructor(type, listener) {
+    constructor(id, type, grid) {
+        this.id = id;
         this.type = type;
         this._state = STATE.CLOSED;
-        this._listener = listener;
+        this._listener = grid;
     }
 
     get isClosed() {
@@ -11,21 +12,25 @@ export default class Card {
 
     open() {
         this._state = STATE.OPENED;
-        // this._listener.notify(ACTION.OPEN, this);
+        this.notify();
     }
 
     close() {
         this._state = STATE.CLOSED;
-        // this._listener.notify(ACTION.CLOSE, this);
+        this.notify();
     }
 
     disable() {
         this._state = STATE.DISABLED;
-        // this._listener.notify(ACTION.DISABLE, this);
+        this.notify();
+    }
+
+    notify() {
+        this._listener.updateCardView(this.id, this._state, this.type)
     }
 }
 
-const STATE = Object.freeze({
+export const STATE = Object.freeze({
     OPENED: 'OPENED',
     CLOSED: 'CLOSED',
     DISABLED: 'DISABLED'
