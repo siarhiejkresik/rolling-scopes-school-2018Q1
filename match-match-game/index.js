@@ -77,11 +77,16 @@ function initCards(numberOfCards, numberOfTypes, sequenceSize) {
 
     const numberOfCardsOfEachType = (numberOfCards / numberOfTypes);
     let cards = [];
+    let id = 0;
     for (let type = 0; type < numberOfTypes; type++) {
         for (let n = 0; n < numberOfCardsOfEachType; n++) {
-            cards.push(new Card(type));
+            cards.push(new Card(id, type, grid));
+            id += id;
         }
     }
+
+    // shuffle(cards);
+    cards.map((card, i) => card.id = i);
     return cards;
 
 }
