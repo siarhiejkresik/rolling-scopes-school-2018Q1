@@ -16,14 +16,15 @@ export default class OpenedCardsQueue {
     }
 
     get isOfDifferentTypes() {
-        // TODO this._cards = [] ?
-        // TODO move type checking to card interface
-        // TODO compare only with the first card
-        const type = this._cards[0].type;
-        return !this._cards.every(card => card.type === type);
+        // TODO move type checking to card interface?
+        if (this._cards.length < 2) {
+            return false;
+        }
+        return this._cards[0].type !== this._cards.slice(-1)[0].type;
     }
 
-    process() {
+    process(card) {
+        this.add(card);
         this.block();
 
         if (this.isOfDifferentTypes) {
@@ -44,14 +45,12 @@ export default class OpenedCardsQueue {
             return true;
         }
 
-        this.unblock();
+        this.unblock(0);
     }
 
     add(card) {
-        this.block();
         card.open();
         this._cards.push(card);
-        this.unblock();
     }
 
     clear() {
