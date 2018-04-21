@@ -43,7 +43,6 @@ export default class GameView {
 
         } else {
             throw new('unknown card state!')
-
         }
     }
 
@@ -59,7 +58,7 @@ export default class GameView {
         card.classList.add('disabled');
     }
 
-    addCardListener(event, handler) {
+    addListener(event, handler) {
         this.grid.addEventListener(event, handler);
     }
 }
