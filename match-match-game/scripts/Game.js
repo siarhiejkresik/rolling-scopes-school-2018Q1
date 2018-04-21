@@ -27,8 +27,8 @@ export default class Game {
             return;
         }
 
-        this.openedCards.add(card);
-        if (this.openedCards.process()) {
+        // this.openedCards.process(card);
+        if (this.openedCards.process(card)) {
             this.cardsToPlay -= this.openedCards.size;
             this.isGameOver();
         }
