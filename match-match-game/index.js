@@ -98,17 +98,6 @@ function shuffle(array) {
     }
 }
 
-function drawGrid(size) {
-    const grid = document.createElement('section')
-    grid.id = 'grid'
-    grid.innerHTML = Array(size)
-        .fill()
-        .map((x, i) => `<div id="${i}" class="card">${i}</div>`)
-        .join('\n');
-    document.body.appendChild(grid);
-    return grid;
-}
-
 function processEvent(e) {
     const cardIndex = parseInt(e.target.id, 10);
     console.log('CLICKED', cardIndex)
