@@ -22,6 +22,10 @@ body {
     transform: rotateY(-180deg);
 }
 
+.card:not(.opened) .content:hover {
+    transform: rotateY(-25deg);
+}
+
 .card.disabled {
     transform: rotate3d();
     visibility: hidden;
