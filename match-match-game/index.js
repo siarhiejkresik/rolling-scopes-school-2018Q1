@@ -1,5 +1,6 @@
 import Card from "./scripts/Card.js";
-import OpenedCardsQueue from "./scripts/CardsQueue.js"
+import GameView from "./scripts/GameView.js";
+import Game from "./scripts/Game.js";
 
 const GRID_SIZE = 4;
 const NUMBER_OF_CARD_TYPES = 2;
