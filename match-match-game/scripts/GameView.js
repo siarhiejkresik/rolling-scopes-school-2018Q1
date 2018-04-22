@@ -59,8 +59,8 @@ export default class GameView {
         card.classList.add('disabled');
     }
 
-    addListener(event, handler) {
-        this.grid.addEventListener(event, handler);
+    addListener(event, handler, context) {
+        this.grid.addEventListener(event, handler.bind(context));
     }
 }
 
