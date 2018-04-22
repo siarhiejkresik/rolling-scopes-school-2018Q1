@@ -1,9 +1,9 @@
 export default class Card {
-    constructor(id, type, grid) {
+    constructor(id, type, view) {
         this.id = id;
         this.type = type;
         this._state = STATE.CLOSED;
-        this._listener = grid;
+        this._listener = view;
     }
 
     get isClosed() {
