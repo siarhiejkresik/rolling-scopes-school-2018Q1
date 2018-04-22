@@ -10,13 +10,14 @@ export default class GameController {
     }
 
     processEvent(e) {
-        const cardIndex = e.target.id;
         if (!e.target.closest('.card')) {
             return;
         }
+
         let cardId = e.target.closest('.card').id;
         cardId = cardId.split('-').slice(-1)[0];
         cardId = parseInt(cardId, 10);
+
         console.log('CLICKED id:', cardId, e.target);
         this.model.selectCard(cardId);
         console.log(this.model.cards.map(c => `${c._state} ${c.type}`));
