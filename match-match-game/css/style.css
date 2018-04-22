@@ -1,5 +1,7 @@
+@import url("card-back-patterns.css");
+
 body {
-    background: #F8F9F9;
+    background: #EAEDED;
 }
 
 .grid {
@@ -9,7 +11,6 @@ body {
     justify-content: center;
 }
 
-
 .card {
     position: relative;
     width: 110px;
@@ -18,7 +19,7 @@ body {
     perspective: 800px;
 }
 
-.opened .content{
+.opened .content {
     transform: rotateY(-180deg);
 }
 
@@ -32,11 +33,12 @@ body {
 }
 
 .card .content {
+    /* background: blueviolet; */
     position: absolute;
     width: 100%;
     height: 100%;
     border-radius: 5px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    box-shadow: 0 0 15px rgba(0, 0, 0, .3);
     transform-style: preserve-3d;
     transition: 1s;
 }
@@ -47,16 +49,15 @@ body {
     height: 100%;
     border-radius: 5px;
     font-family: Georgia;
-    font-size: 4em;
+    font-size: 64px;
     text-align: center;
     line-height: 150px;
     backface-visibility: hidden;
     cursor: pointer;
 }
 
-.card .back {
+.card .back.default {
     background: #212F3D;
-    color: white;
 }
 
 .card .front {
