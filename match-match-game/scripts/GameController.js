@@ -18,9 +18,11 @@ export default class GameController {
         cardId = cardId.split('-').slice(-1)[0];
         cardId = parseInt(cardId, 10);
 
-        console.log('CLICKED id:', cardId, e.target);
+        console.log('GameModel: CLICKED id:', cardId, e.target); // debug mode
+        
         this.model.selectCard(cardId);
-        console.log(this.model.cards.map(c => `${c._state} ${c.type}`));
-        console.log('-----------------')
+        
+        console.log(this.model.deck.cards.map(c => `${c._state} ${c.type}`)); // debug mode
+        console.log('-----------------') // debug mode
     }
 }
