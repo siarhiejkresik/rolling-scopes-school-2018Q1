@@ -37,9 +37,11 @@ export default class OpenedCardsQueue {
         }
 
         if (this.isFull) {
+            setTimeout(() => {
                 this.disableAll();
                 this.clear();
-            this.unblock(0);
+            }, ANIMATION_SPEED);        
+            this.unblock();
             return true;
         }
 
