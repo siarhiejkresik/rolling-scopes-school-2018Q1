@@ -1,6 +1,6 @@
 import OpenedCardsQueue from "./CardsQueue.js";
 
-export default class Game {
+export default class GameModel {
     constructor(cards, SEQUENCE_SIZE) {
         this.cards = cards;
         this.cardsToPlay = cards.length;
