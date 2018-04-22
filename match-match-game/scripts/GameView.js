@@ -3,9 +3,9 @@ import {
 } from "./Card.js";
 
 export default class GameView {
-    constructor(size, back) {
+    constructor(size, cardBack='circle') {
+        this.cardBack = cardBack;
         this.grid = this.renderGrid(size);
-        this.back = back;
     }
 
     renderGrid(size) {
@@ -15,7 +15,8 @@ export default class GameView {
 
         // add cards to grid
         for (let i = 0; i < size; i++) {
-            const card = document.createRange().createContextualFragment(cardTemplate);
+            let card = cardTemplate(this.cardBack);
+            card = document.createRange().createContextualFragment(card);
             grid.appendChild(card);
             grid.lastChild.id = `card-${i}`;
         };
@@ -63,13 +64,13 @@ export default class GameView {
     }
 }
 
-const cardTemplate = `
+const cardTemplate = (cardBack) => {return `
 <div class="card">
     <div class="content">
-        <div class="face back"></div>
+        <div class="face back ${cardBack}"></div>
         <div class="face front"></div>
     </div>
-</div>`
+</div>`;}
 
 const gridTemplate = `
 <section id="grid">`
