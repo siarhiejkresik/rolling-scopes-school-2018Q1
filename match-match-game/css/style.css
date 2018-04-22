@@ -1,5 +1,4 @@
 @import url("card-back-patterns.css");
-
 body {
     background: #EAEDED;
 }
@@ -28,8 +27,9 @@ body {
 }
 
 .card.disabled {
-    transform: rotate3d();
     visibility: hidden;
+    opacity: 0;
+    transition: opacity .5s linear;
 }
 
 .card .content {
