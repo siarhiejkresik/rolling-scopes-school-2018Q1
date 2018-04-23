@@ -7,6 +7,81 @@
 </head>
 
 <body>
+    <header>
+        <h1>Match-match game</h1>
+    </header>
+    <main>
+        <section class="menu">
+            <section class="about">
+                <h2>About the game</h2>
+                <artice class="game-rules">
+                    <blockquote> Concentration, also known as Match Match, Match Up, Memory, Pelmanism, Shinkei-suijaku, Pexeso or simply
+                        Pairs, is a card game in which all of the cards are laid face down on a surface and two cards are
+                        flipped face up over each turn. The object of the game is to turn over pairs of matching cards. 
+                        <cite>wikipedia.org</cite>
+                    </blockquote>
+                    <h3>How to play</h3>
+                    <ul>
+                        <li>Turn over any two cards</li>
+                        <li>If the two cards match, they disappear</li>
+                        <li>If they don't match, they flip back over</li>
+                        <li>The game is over when all the cards have been disappeared</li>
+                    </ul>
+                </artice>
+            </section>
+            <section class="player">
+                <h2>Welcome!</h2>
+                <form action="" name="login">
+                    <label for="firstname">First name
+                        <input type="text" id="firstname" name="firstname">
+                    </label>
+                    <label for="lastname">Last name
+                        <input type="text" id="lastname" name="lastname">
+                    </label>
+                    <label for="email">Email
+                        <input type="text" name="email">
+                    </label>
+                    <input type="submit" value="Log in">
+                </form>
+                <div class="logged-in hidden">
+                    <div class="player-name">
+                        <span>John</span>
+                        <span>Doe</span>
+                    </div>
+                    <div class="player-places">
+                        <div>
+                            <span>easy</span>
+                            <span>5th place</span>
+                            <span>03:19</span>
+                        </div>
+                        <div>
+                            <span>medium</span>
+                            <span>2nd place</span>
+                            <span>08:40</span>
+                        </div>
+                        <div>
+                            <span>hard</span>
+                            <span>10th place</span>
+                            <span>05:10</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="theme">
+                <h2>Theme</h2>
+                <div class="card circle"></div>
+            </section>
+            <section class="difficulty">
+                <h2>Difficulty</h2>
+                <div>10 cards</div>
+                <div>20 cards</div>
+                <div class="row-3">30 cards</div>
+            </section>
+            <button class="play">Start</button>
+        </section>
+        <section class="grid hidden"></section>
+    </main>
     <script type="module" src="./index.js"></script>
 </body>
 
