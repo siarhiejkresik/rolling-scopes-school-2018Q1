@@ -37,6 +37,8 @@ export default class GameView {
             this.openCard(card);
 
         } else if (state === STATE.CLOSED) {
+            let front = card.querySelector('.front');
+            front.innerHTML = null;
             this.closeCard(card);
 
         } else if (state === STATE.DISABLED) {
