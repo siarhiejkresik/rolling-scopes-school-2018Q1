@@ -4,23 +4,23 @@ export default class OpenedCardsQueue {
     constructor(size) {
         this.size = size;
         this.blocked = false;
-        this._cards = [];
+        this.cards = [];
     }
 
     get isEmpty() {
-        return !!this._cards.length;
+        return !!this.cards.length;
     }
 
     get isFull() {
-        return this.size === this._cards.length;
+        return this.size === this.cards.length;
     }
 
     get isOfDifferentTypes() {
         // TODO move type checking to card interface?
-        if (this._cards.length < 2) {
+        if (this.cards.length < 2) {
             return false;
         }
-        return this._cards[0].type !== this._cards.slice(-1)[0].type;
+        return this.cards[0].type !== this.cards.slice(-1)[0].type;
     }
 
     process(card) {
@@ -50,19 +50,19 @@ export default class OpenedCardsQueue {
 
     add(card) {
         card.open();
-        this._cards.push(card);
+        this.cards.push(card);
     }
 
     clear() {
-        this._cards = [];
+        this.cards = [];
     }
 
     disableAll() {
-        this._cards.map(card => card.disable());
+        this.cards.map(card => card.disable());
     }
 
     closeAll() {
-        this._cards.map(card => card.close());
+        this.cards.map(card => card.close());
     }
 
     block() {
