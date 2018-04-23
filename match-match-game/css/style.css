@@ -1,13 +1,139 @@
 @import url("card-back-patterns.css");
-body {
-    background: #EAEDED;
+* {
+    box-sizing: border-box;
+    /* padding: 0;
+    margin: 0; */
 }
 
+body {
+    font-size: 16px;
+    font-family: Lato, sans;
+    /* color: #fff; */
+    /* background: repeating-linear-gradient(45deg, #333333 0, #333333 5%, #4f4f4f 0, #4f4f4f 50%) 0 / 5px 5px; */
+}
+
+header {
+    vertical-align: center;
+    text-align: center;
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+    font-family: "Roboto Slab";
+}
+
+.hidden {
+    display: none;
+}
+
+/* menu section */
+
+.menu {
+    margin: 20px auto;
+    max-width: 1200px;
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-around;
+}
+
+.menu>section {
+    background: inherit !important;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+/* menu about */
+
+.about {
+    background: chocolate;
+}
+
+blockquote {
+    background: rgba(0, 0, 0, .05);
+    border-left: 8px solid #ccc;
+    border-radius: 4px;
+    padding: 0.5em .5em 0.5em 1em;
+    font-style: italic;
+    text-indent: 1.5em;
+}
+
+blockquote cite {
+    display: block;
+    text-align: right;
+    margin-top: .5em;
+}
+
+.about li {
+    -webkit-margin-start: 2em;
+}
+
+/* menu player */
+
+.player {
+    background: lightgreen;
+}
+
+input {
+    display: block;
+}
+
+label {}
+
+.player-name {
+    font-size: 20px;
+}
+
+/* menu theme */
+
+.theme {
+    background: cornflowerblue;
+}
+
+/* menu difficulty */
+
+.difficulty {
+    background: cadetblue;
+}
+
+/* play button */
+
+.play {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    color: white;
+    background-color: rgba(220, 20, 60, .8);
+    outline: none;
+    border: 0;
+    display: block;
+    width: 200px;
+    height: 60px;
+    margin: 0 auto;
+    font-size: 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.play:hover {
+    background-color: rgba(220, 20, 60, 1);
+    cursor: pointer;
+}
+
+/* game section */
+
 .grid {
-    border: 2px blue solid;
+    outline: 2px green solid;
+    background: white;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.hidden {
+    display: none !important;
 }
 
 .card {
