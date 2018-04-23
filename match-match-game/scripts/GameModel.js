@@ -19,10 +19,6 @@ export default class GameModel {
     selectCard(cardId) {
         const card = this.deck.getCardById(cardId);
 
-        if (card.id !== cardId) {
-            throw 'wrong cardId';
-        }
-
         if (!this.isSelectableCard(card)) {
             console.log('you can\'t select this card!', card); // debug mode
             return;
