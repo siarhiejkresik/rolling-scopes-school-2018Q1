@@ -9,8 +9,9 @@ export default class GameView {
 
     renderGrid(size, cardBack) {
         // create grid
-        const grid = document.createElement('section');
-        grid.classList.add('grid');
+        // const grid = document.createElement('section');
+        // grid.classList.add('grid');
+        const grid = document.querySelector('.grid');
 
         // add cards to grid
         for (let i = 0; i < size; i++) {
@@ -21,7 +22,7 @@ export default class GameView {
         };
 
         // insert grid in document
-        document.body.appendChild(grid);
+        // document.body.appendChild(grid);
         return grid;
     }
 
