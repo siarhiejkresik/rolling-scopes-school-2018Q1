@@ -4,8 +4,7 @@ export default class CardDeck {
     constructor(cards, types, sequence, view) {
         this.cards = [];
         this.initCards(cards, types, sequence, view);
-        this._shuffle();
-        this._refillCardIds();
+        this.shuffle();
     }
 
     initCards(numberOfCards, numberOfTypes, sequenceSize, view) {
@@ -37,14 +36,15 @@ export default class CardDeck {
                 return card;
             }
         }
-        throw `there is no card with id: ${cardId} in the deck`
+        throw `there is no card with id: ${cardId} in the deck`;
     }
 
-    _shuffle() {
+    shuffle() {
         shuffleArray(this.cards);
+        this.refillCardIds();
     }
 
-    _refillCardIds() {
+    refillCardIds() {
         this.cards.map((card, i) => card.id = i);
     }
 
