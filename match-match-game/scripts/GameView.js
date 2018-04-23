@@ -4,18 +4,17 @@ import {
 
 export default class GameView {
     constructor(size, cardBack='circle') {
-        this.cardBack = cardBack;
-        this.grid = this.renderGrid(size);
+        this.grid = this.renderGrid(size, cardBack);
     }
 
-    renderGrid(size) {
+    renderGrid(size, cardBack) {
         // create grid
         const grid = document.createElement('section');
         grid.classList.add('grid');
 
         // add cards to grid
         for (let i = 0; i < size; i++) {
-            let card = cardTemplate(this.cardBack);
+            let card = cardTemplate(cardBack);
             card = document.createRange().createContextualFragment(card);
             grid.appendChild(card);
             grid.lastChild.id = `card-${i}`;
