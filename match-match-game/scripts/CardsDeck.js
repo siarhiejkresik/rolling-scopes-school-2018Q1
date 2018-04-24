@@ -48,6 +48,9 @@ export default class CardDeck {
         this.cards.map((card, i) => card.id = i);
     }
 
+    addCardStateObserver(observer) {
+        this.cards.forEach(card => card.stateObservers.subscribe(observer));
+    }
 }
 
 /**
