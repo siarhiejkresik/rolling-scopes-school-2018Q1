@@ -8,11 +8,7 @@ export default class GameView {
     }
 
     renderGrid(size, cardBack) {
-        // create grid
-        // const grid = document.createElement('section');
-        // grid.classList.add('grid');
         const grid = document.querySelector('.grid');
-
         // add cards to grid
         for (let i = 0; i < size; i++) {
             let card = cardTemplate(cardBack);
@@ -20,25 +16,22 @@ export default class GameView {
             grid.appendChild(card);
             grid.lastChild.id = `card-${i}`;
         };
-
-        // insert grid in document
-        // document.body.appendChild(grid);
         return grid;
     }
 
     updateCardView(id, state, type) {
-        console.log('GameView:  notify from:', id, state); // debug mode
-        let selector = `#card-${id}`;
+        // debug mode
+        console.log('GameView:  notify from GameModel:', id, state);
+
+        const selector = `#card-${id}`;
         let card = this.grid.querySelector(selector);
         
         if (state === STATE.OPENED) {
-            let front = card.querySelector('.front');
-            front.innerHTML = type;
+            card.querySelector('.front').innerHTML = type;
             this.openCard(card);
 
         } else if (state === STATE.CLOSED) {
-            let front = card.querySelector('.front');
-            front.innerHTML = null;
+            card.querySelector('.front').innerHTML = null;
             this.closeCard(card);
 
         } else if (state === STATE.DISABLED) {
@@ -61,8 +54,12 @@ export default class GameView {
         card.classList.add('disabled');
     }
 
-    addListener(event, handler, context) {
-        this.grid.addEventListener(event, handler.bind(context));
+    addDomListener(event, handler) {
+        this.grid.addEventListener(event, handler);
+    }
+
+    destroy() {
+        this.grid.innerHTML = null;
     }
 }
 
@@ -73,6 +70,3 @@ const cardTemplate = (cardBack) => {return `
         <div class="face front"></div>
     </div>
 </div>`;}
-
-const gridTemplate = `
-<section id="grid">`
