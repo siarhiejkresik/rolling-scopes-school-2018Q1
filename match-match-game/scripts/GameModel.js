@@ -1,40 +1,52 @@
 import OpenedCardsQueue from "./CardsQueue.js";
 import CardsDeck from "./CardsDeck.js";
+import Observable from "./Obserevable.js"
+
+const ANIMATION_SPEED = 1000; // TODO
 
 export default class GameModel {
-    constructor(settings, view) {
+    constructor(settings) {
         this.cardsToPlay = settings.cards;
         this.openedCards = new OpenedCardsQueue(settings.sequence);
         this.deck = new CardsDeck(
             settings.cards,
             settings.types,
-            settings.sequence,
-            view);
+            settings.sequence);
+
+        this.endGameSubscibers = new Observable();
+    }
+
+    processSelectedCard(cardId) {
+        // debug mode
+        console.log('GameModel: process card with id', cardId);
+
+        const card = this.deck.getCardById(cardId);
+
+        if (!this.isSelectableCard(card)) {
+            // debug mode
+            console.log('you can\'t select this card!', card);
+
+            return;
+        }
+
+        if (this.openedCards.process(card)) {
+            this.cardsToPlay -= this.openedCards.size;
+            this.isGameEnd();
+        }
     }
 
     isSelectableCard(card) {
         return (card.isClosed && !this.openedCards.blocked);
     }
 
-    selectCard(cardId) {
-        const card = this.deck.getCardById(cardId);
+    isGameEnd() {
+        if (this.cardsToPlay === 0) {
+            // debug mode
+            console.log('GameModel: You win!');
 
-        if (!this.isSelectableCard(card)) {
-            console.log('you can\'t select this card!', card); // debug mode
-            return;
+            const gameResult = 'TIME xx:xx:xx';
+            setTimeout(() =>
+                this.endGameSubscibers.notify(gameResult), ANIMATION_SPEED * 2);
         }
-
-        if (this.openedCards.process(card)) {
-            this.cardsToPlay -= this.openedCards.size;
-            this.isGameOver();
-        }
-    }
-
-    isGameOver() {
-        const result = this.cardsToPlay === 0 ? true : false;
-        if (result) {
-            console.log('You win!');
-        }
-        return result;
     }
 }

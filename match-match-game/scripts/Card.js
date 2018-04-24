@@ -1,9 +1,12 @@
+import Obserevable from "./Obserevable.js";
+
 export default class Card {
-    constructor(id, type, view) {
+    constructor(id, type) {
         this.id = id;
         this.type = type;
         this._state = STATE.CLOSED;
-        this._listener = view;
+
+        this.stateObservers = new Obserevable();
     }
 
     get isClosed() {
@@ -12,21 +15,23 @@ export default class Card {
 
     open() {
         this._state = STATE.OPENED;
-        this.notify();
+        this._stateChangeNotify();
     }
 
     close() {
         this._state = STATE.CLOSED;
-        this.notify();
+        this._stateChangeNotify();
     }
 
     disable() {
         this._state = STATE.DISABLED;
-        this.notify();
+        this._stateChangeNotify();
     }
 
-    notify() {
-        this._listener.updateCardView(this.id, this._state, this.type)
+    _stateChangeNotify() {
+        // debug
+        console.log(`CardModel: id ${this.id} is ${this._state} now`)
+        this.stateObservers.notify(this.id, this._state, this.type)
     }
 }
 
