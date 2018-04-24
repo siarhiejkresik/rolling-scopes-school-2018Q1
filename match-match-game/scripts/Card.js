@@ -30,14 +30,8 @@ export default class Card {
     }
 }
 
-export const STATE = Object.freeze({
+export const STATE = {
     OPENED: 'OPENED',
     CLOSED: 'CLOSED',
     DISABLED: 'DISABLED'
-})
-
-const ACTION = {
-    OPEN: 'OPEN',
-    CLOSE: 'CLOSE',
-    DISABLE: 'DISABLE'
 }
