@@ -1,4 +1,4 @@
-import Obserevable from "./Obserevable.js";
+import Observable from "./Observable.js";
 
 export default class Card {
     constructor(id, type) {
@@ -6,7 +6,7 @@ export default class Card {
         this.type = type;
         this._state = STATE.CLOSED;
 
-        this.stateObservers = new Obserevable();
+        this.stateObservers = new Observable();
     }
 
     get isClosed() {

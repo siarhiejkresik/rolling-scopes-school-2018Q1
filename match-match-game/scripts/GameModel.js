@@ -1,6 +1,6 @@
 import OpenedCardsQueue from "./CardsQueue.js";
 import CardsDeck from "./CardsDeck.js";
-import Observable from "./Obserevable.js"
+import Observable from "./Observable.js"
 
 const ANIMATION_SPEED = 1000; // TODO
 
