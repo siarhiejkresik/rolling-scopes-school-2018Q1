@@ -16,7 +16,7 @@ export default class GameModel {
         this.endGameSubscibers = new Observable();
     }
 
-    processSelectedCard(cardId) {
+    onCardSelect(cardId) {
         // debug mode
         console.log('GameModel: process card with id', cardId);
 

@@ -14,13 +14,13 @@ export default class GameController {
     
     initSetUp() {
         this.timer.timeSubscribers.subscribe(this.view.updateTime.bind(this.view));
-        this.view.addDomListener('click', this.processDomEvent.bind(this));
+        this.view.addDomListener('click', this.onDomEvent.bind(this));
         this.model.deck.addCardStateObserver(this.view.updateCardView.bind(this.view));
         this.model.endGameSubscibers.subscribe(this.endGame.bind(this));
         this.timer.start();
     }
 
-    processDomEvent(e) {
+    onDomEvent(e) {
         if (!e.target.closest('.card')) {
             return;
         }
@@ -35,7 +35,7 @@ export default class GameController {
         console.log('=================');
         console.log('GameController: notify from browser, CLICKED id:', cardId, e.target);
 
-        this.model.processSelectedCard(cardId);
+        this.model.onCardSelect(cardId);
 
         // debug mode
         console.log('GameController: model status', this.model.deck.cards.map(c => `${c._state} ${c.type}`));
