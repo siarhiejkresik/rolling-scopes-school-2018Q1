@@ -42,6 +42,9 @@ export default class GameView {
         }
     }
 
+    updateTime(time) {
+        this.grid.querySelector('.time').innerHTML = time;
+    }
     openCard(card) {
         card.classList.add('opened');
     }
