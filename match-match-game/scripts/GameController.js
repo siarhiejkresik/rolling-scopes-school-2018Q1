@@ -6,16 +6,17 @@ export default class GameController {
     constructor(settings, exitGameCallback) {
         this.view = new GameView(settings.cards);
         this.model = new GameModel(settings);
-        
-        this.timer = new Timer(1000);
+        this.timer = new Timer();
+        this.exitGameCallback = exitGameCallback;
+   
+        this.initSetUp();
+    }
+    
+    initSetUp() {
         this.timer.timeSubscribers.subscribe(this.view.updateTime.bind(this.view));
-        
         this.view.addDomListener('click', this.processDomEvent.bind(this));
         this.model.deck.addCardStateObserver(this.view.updateCardView.bind(this.view));
         this.model.endGameSubscibers.subscribe(this.endGame.bind(this));
-       
-        this.exitGameCallback = exitGameCallback;
-
         this.timer.start();
     }
 
