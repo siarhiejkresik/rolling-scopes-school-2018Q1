@@ -4,19 +4,18 @@ import {
 
 export default class GameView {
     constructor(size, cardBack='circle') {
-        this.grid = this.renderGrid(size, cardBack);
+        this.grid = document.querySelector('.grid');
+        this.renderGrid(size, cardBack);
     }
 
     renderGrid(size, cardBack) {
-        const grid = document.querySelector('.grid');
         // add cards to grid
         for (let i = 0; i < size; i++) {
             let card = cardTemplate(cardBack);
             card = document.createRange().createContextualFragment(card);
-            grid.appendChild(card);
-            grid.lastChild.id = `card-${i}`;
-        };
-        return grid;
+            this.grid.appendChild(card);
+            this.grid.lastChild.id = `card-${i}`;
+        }
     }
 
     updateCardView(id, state, type) {
@@ -45,6 +44,7 @@ export default class GameView {
     updateTime(time) {
         this.grid.querySelector('.time').innerHTML = time;
     }
+    
     openCard(card) {
         card.classList.add('opened');
     }
