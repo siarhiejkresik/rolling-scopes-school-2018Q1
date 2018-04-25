@@ -1,16 +1,22 @@
 import GameView from "./GameView.js";
 import GameModel from "./GameModel.js";
+import Timer from "./Timer.js";
 
 export default class GameController {
     constructor(settings, exitGameCallback) {
         this.view = new GameView(settings.cards);
         this.model = new GameModel(settings);
         
+        this.timer = new Timer(1000);
+        this.timer.timeSubscribers.subscribe(this.view.updateTime.bind(this.view));
+        
         this.view.addDomListener('click', this.processDomEvent.bind(this));
         this.model.deck.addCardStateObserver(this.view.updateCardView.bind(this.view));
         this.model.endGameSubscibers.subscribe(this.endGame.bind(this));
-        
+       
         this.exitGameCallback = exitGameCallback;
+
+        this.timer.start();
     }
 
     processDomEvent(e) {
@@ -38,9 +44,10 @@ export default class GameController {
     endGame(gameResult) {
         // debug mode
         console.log('GameController: result =', gameResult);
+        this.timer.stop()
         this.destroy();
-        
-        this.exitGameCallback(gameResult);
+
+        this.exitGameCallback(this.timer.serializeToMMSS());
     }
     
     destroy() {
