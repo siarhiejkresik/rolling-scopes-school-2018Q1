@@ -36,8 +36,10 @@ export default class GameController {
     }
 
     endGame(gameResult) {
+        // debug mode
         console.log('GameController: result =', gameResult);
         this.destroy();
+        
         this.exitGameCallback(gameResult);
     }
     
