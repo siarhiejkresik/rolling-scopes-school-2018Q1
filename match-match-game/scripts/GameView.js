@@ -1,9 +1,10 @@
 import {
-    STATE
-} from "./Card.js";
+    CARD_STATE
+} from "./constants.js";
 
 export default class GameView {
     constructor(size, cardBack='circle') {
+        this.time = document.querySelector('.time');
         this.grid = document.querySelector('.grid');
         this.renderGrid(size, cardBack);
     }
@@ -25,15 +26,15 @@ export default class GameView {
         const selector = `#card-${id}`;
         let card = this.grid.querySelector(selector);
         
-        if (state === STATE.OPENED) {
+        if (state === CARD_STATE.OPENED) {
             card.querySelector('.front').innerHTML = type;
             this.openCard(card);
 
-        } else if (state === STATE.CLOSED) {
+        } else if (state === CARD_STATE.CLOSED) {
             card.querySelector('.front').innerHTML = null;
             this.closeCard(card);
 
-        } else if (state === STATE.DISABLED) {
+        } else if (state === CARD_STATE.DISABLED) {
             this.disableCard(card);
 
         } else {
@@ -42,9 +43,9 @@ export default class GameView {
     }
 
     updateTime(time) {
-        this.grid.querySelector('.time').innerHTML = time;
+        this.time.innerHTML = time;
     }
-    
+
     openCard(card) {
         card.classList.add('opened');
     }
