@@ -12,7 +12,7 @@
 export default function EnumFromString(str, prefix = '') {
     const obj = {};
     const seen_keys = [];
-    for (let key of str.split(' ')) {
+    for (let key of str.trim().split(/ +/)) {
 
         // validation
         // check obj properties
