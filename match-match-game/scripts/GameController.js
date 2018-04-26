@@ -13,10 +13,10 @@ export default class GameController {
     }
     
     initSetUp() {
-        this.timer.timeSubscribers.subscribe(this.view.updateTime.bind(this.view));
         this.view.addDomListener('click', this.onDomEvent.bind(this));
         this.model.deck.addCardStateObserver(this.view.updateCardView.bind(this.view));
         this.model.endGameSubscibers.subscribe(this.endGame.bind(this));
+        this.timer.timeSubscribers.subscribe(this.view.updateTime.bind(this.view));
         this.timer.start();
     }
 
@@ -53,6 +53,5 @@ export default class GameController {
     
     destroy() {
         this.view.destroy();
-        // this.model.destroy();
     }
 }
