@@ -1,4 +1,5 @@
 import Card from "./Card.js";
+import {shuffleArray} from "./utils.js";
 
 export default class CardDeck {
     constructor(cards, types, sequence, view) {
@@ -50,16 +51,5 @@ export default class CardDeck {
 
     addCardStateObserver(observer) {
         this.cards.forEach(card => card.stateObservers.subscribe(observer));
-    }
-}
-
-/**
- * Randomize array element order in-place.
- * Using Durstenfeld shuffle algorithm.
- */
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
     }
 }
