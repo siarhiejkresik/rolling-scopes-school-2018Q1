@@ -15,10 +15,10 @@ export default function EnumFromString(str, prefix = '') {
     for (let key of str.trim().split(/ +/)) {
 
         // validation
-        // check obj properties
+        // obj properties
         if (key in obj) {
             throw `'${key}' is a not valid value`;
-        // check duplicated words in inpur string
+        // duplicated words in an input string
         } else if (seen_keys.includes(key)) {
             throw `'${key}' is not unique word in input string`;
         } else {
