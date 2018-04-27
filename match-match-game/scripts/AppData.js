@@ -1,26 +1,49 @@
+import {DB_KEY, DEFAULT_DB} from "./constants.js"
+
 export default class AppData {
     constructor() {
         this._storage = new LocalStorage();
         this.data = this._storage.load();
     }
 
-    updatePlayer(player) {
+    addNewPlayer(firstname='', lastname='', email='') {
+        const id = this.data.players.length + 1;
+        const player = {
+            id: id,
+            firstname: firstname,
+            lastname: lastname,
+            email: email
+        }
+        this.data.players.push(player);
+        this.saveToStorage();
+        return player;
     }
 
-    addNewPlayer(firstName, lastName, email = '') {
+    getPlayerByName(firstname, lastname) {
+        console.log(this)
+        let player = this.data.players.find(player =>
+            player.firstname === firstname &&
+            player.lastname === lastname);
+        return player;
+    }
+
+    getPlayerById(id) {
+        return this.data.players.find(player => player.id === id);
     }
 
     getLastPlayer() {
         const id = this.data.lastPlayerId;
-        return this.getPlayer(id);
+        return this.getPlayerById(id);
+    }
+
+    setLastPlayer(player) {
+        this.data.lastPlayerId = player.id;
+        this.saveToStorage();
     }
 
     clearLastPlayer() {
         this.data.lastPlayerId = null;
         this.saveToStorage();
-    }
-    getPlayer(id) {
-        return this.data.players.find(player => player.id === id);
     }
 
     saveToStorage() {
@@ -30,35 +53,24 @@ export default class AppData {
 
 
 class LocalStorage {
-    constructor(key = 'matchmatch') {
-        this.key = key;
+    constructor(key = DB_KEY) {
+        this._key = key;
     }
+
     load() {
-        const db = localStorage.getItem(this.key);
+        let db = localStorage.getItem(this._key);
         if (!db) {
-            this.save(test_db);
-            return test_db;
+            db = DEFAULT_DB;
+            this.save(db);
+            return db;
         }
         return JSON.parse(db);
     }
+
     save(data) {
-        localStorage.setItem(this.key, JSON.stringify(data));
+        localStorage.setItem(this._key, JSON.stringify(data));
     }
 }
 
-const test_db = {
-    lastPlayerId: 0,
-    players: [{
-        id: 0,
-        firstName: 'John',
-        lastName: 'Doe'
-    }, {
-        id: 1,
-        firstName: 'Сяргей',
-        lastName: 'Крэсік'
-    }, {
-        id: 2,
-        firstName: 'Павел',
-        lastName: 'Булычев'
-    }]
-}
+
+
