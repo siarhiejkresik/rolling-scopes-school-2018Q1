@@ -1,13 +1,26 @@
-import {EnumFromString} from "./utils.js";
+import {
+    EnumFromString
+} from "./utils.js";
 
 const _VIEWS = 'welcome login menu game result';
-const _CONTROLLS = 'play next login logout return';
+const _CONTROLS = 'play next login logout return';
 const _CARD_STATE = 'opened closed disabled';
+const _DIFFICULTIES = 'easy normal hard';
 
 const VIEWS = EnumFromString(_VIEWS, '.');
-const CONTROLLS = EnumFromString(_CONTROLLS, '.');
+const CONTROLS = EnumFromString(_CONTROLS, '.');
 const CARD_STATE = EnumFromString(_CARD_STATE);
 
+const DIFFICULTIES = EnumFromString(_DIFFICULTIES);
+const DIFFICULTIES_BUTTONS = EnumFromString(_DIFFICULTIES, '.')
+
+
+
+
 export {
-    VIEWS, CONTROLLS, CARD_STATE
+    VIEWS,
+    CONTROLS,
+    CARD_STATE,
+    DIFFICULTIES,
+    DIFFICULTIES_BUTTONS
 };
