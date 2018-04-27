@@ -21,27 +21,27 @@ export default class Menu {
     }
 
     showWelcome() {
-        this._hideAll();
+        this._hideAllViews();
         this._showView(VIEWS.WELCOME);
     }
 
     showLogIn() {
-        this._hideAll();
+        this._hideAllViews();
         this._showView(VIEWS.LOGIN);
     }
 
     showMenu() {
-        this._hideAll();
+        this._hideAllViews();
         this._showView(VIEWS.MENU);
     }
     
     showGame() {
-        this._hideAll();
+        this._hideAllViews();
         this._showView(VIEWS.GAME);
     }
     
     showGameEnd(gameResult) {
-        this._hideAll();
+        this._hideAllViews();
         this._showView(VIEWS.RESULT);
         const view = document.querySelector(VIEWS.RESULT);
         view.querySelector('.time').innerHTML = gameResult;
@@ -69,7 +69,7 @@ export default class Menu {
         this.setPlayerNames({firstName: '', lastName: ''});
     }
 
-    _hideAll() {
+    _hideAllViews() {
         for (let view of Object.values(VIEWS)) {
             document.querySelector(view).classList.add('hidden');
         }
