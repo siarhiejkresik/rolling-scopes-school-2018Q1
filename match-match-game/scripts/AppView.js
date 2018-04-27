@@ -1,4 +1,8 @@
-import {VIEWS} from "./constants.js";
+import {
+    VIEWS,
+    DIFFICULTIES_BUTTONS
+} from "./constants.js";
+
 
 export default class Menu {
     constructor() {
@@ -7,6 +11,9 @@ export default class Menu {
         this.loginButton = document.querySelector('.submit-login')
         this.logoutButton = document.querySelector('.logout')
         this.toMenuButton = document.querySelector('.return')
+        this.difficultyButtons = document.querySelectorAll(Object.values(DIFFICULTIES_BUTTONS));
+
+
 
         this.nextButton.addEventListener('click', this.showLogIn.bind(this))
         this.loginButton.addEventListener('click', this.showMenu.bind(this))
@@ -39,6 +46,16 @@ export default class Menu {
         const view = document.querySelector(VIEWS.RESULT);
         view.querySelector('.time').innerHTML = gameResult;
 
+    }
+
+    toggleDifficulty(difficulty) {
+        [...this.difficultyButtons].forEach(button => {
+            if (button.classList.contains(difficulty)) {
+                button.classList.add('selected');
+            } else {
+                button.classList.remove('selected');
+            }
+        })
     }
 
     setPlayerNames(player) {
