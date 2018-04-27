@@ -13,7 +13,7 @@ export default class GameController {
     }
     
     initSetUp() {
-        this.view.addDomListener('click', this.onDomEvent.bind(this));
+        this.view.grid.addEventListener('click', this.onDomEvent.bind(this));
         this.model.deck.addCardStateObserver(this.view.updateCardView.bind(this.view));
         this.model.endGameSubscibers.subscribe(this.endGame.bind(this));
         this.timer.timeSubscribers.subscribe(this.view.updateTime.bind(this.view));
