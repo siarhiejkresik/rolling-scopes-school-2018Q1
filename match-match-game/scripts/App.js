@@ -7,7 +7,7 @@ export default class App {
     constructor(gameSettings) {
         this.gameSettings = gameSettings;
         this.gameData = new AppData();
-        this.view = new AppView(gameSettings);
+        this.view = new AppView();
         this.player = null;
         this.initSetUp();
     }
