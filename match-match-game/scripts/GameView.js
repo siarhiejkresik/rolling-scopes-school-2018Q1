@@ -59,8 +59,9 @@ export default class GameView {
     }
 
 
-    destroy() {
-        this.grid.innerHTML = null;
+    cleanUp() {
+        this.grid.innerHTML = null; // removes all cards
+        this.grid.outerHTML = this.grid.outerHTML; // removes all listeners
     }
 }
 

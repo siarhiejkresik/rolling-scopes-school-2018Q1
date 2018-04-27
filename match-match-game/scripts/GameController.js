@@ -9,18 +9,22 @@ export default class GameController {
         this.timer = new Timer();
         this.exitGameCallback = exitGameCallback;
    
-        this.initSetUp();
+        this.setUp();
     }
     
-    initSetUp() {
-        this.view.grid.addEventListener('click', this.onDomEvent.bind(this));
+    setUp() {
+        this.view.grid.addEventListener('click', this.onViewEvent.bind(this));
         this.model.deck.addCardStateObserver(this.view.updateCardView.bind(this.view));
-        this.model.endGameSubscibers.subscribe(this.endGame.bind(this));
+        this.model.endGameSubscibers.subscribe(this.onEndGame.bind(this));
         this.timer.timeSubscribers.subscribe(this.view.updateTime.bind(this.view));
         this.timer.start();
     }
 
-    onDomEvent(e) {
+    cleanUp() {
+        this.view.cleanUp();
+    }
+
+    onViewEvent(e) {
         if (!e.target.closest('.card')) {
             return;
         }
@@ -42,16 +46,12 @@ export default class GameController {
         console.log('-----------------');
     }
 
-    endGame(gameResult) {
+    onEndGame(gameResult) {
         // debug mode
         console.log('GameController: result =', gameResult);
         this.timer.stop()
-        this.destroy();
+        this.cleanUp();
 
         this.exitGameCallback(this.timer.serializeToMMSS());
-    }
-    
-    destroy() {
-        this.view.destroy();
     }
 }
