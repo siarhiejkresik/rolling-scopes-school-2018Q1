@@ -4,7 +4,7 @@ import {
 } from "./constants.js";
 
 
-export default class Menu {
+export default class AppView {
     constructor() {
         this.startButtons = document.querySelectorAll('.play');
         this.nextButton = document.querySelector('.next')
