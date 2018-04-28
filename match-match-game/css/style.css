@@ -1,18 +1,16 @@
 @import url("card-back-patterns.css");
 * {
     box-sizing: border-box;
-    /* padding: 0;
-    margin: 0; */
 }
 
-body {
+body,
+input {
     font-size: 16px;
     font-family: Lato, sans;
-    /* color: #fff; */
-    /* background: repeating-linear-gradient(45deg, #333333 0, #333333 5%, #4f4f4f 0, #4f4f4f 50%) 0 / 5px 5px; */
 }
 
 header {
+    background: yellowgreen;
     vertical-align: center;
     text-align: center;
 }
@@ -24,38 +22,80 @@ h3 {
     font-family: "Roboto Slab";
 }
 
-.hidden {
-    display: none;
+button {
+    outline: none;
+    border: 0;
+    display: block;
+    text-transform: uppercase;
+    margin: 30px auto;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    width: 10em;
+    height: 3em;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px 2px rgba(19, 35, 47, 0.3);
+    user-select: none;
 }
 
-/* menu section */
-
-.menu {
-    margin: 20px auto;
-    max-width: 1200px;
-    display: grid;
-    grid-gap: 15px;
-    grid-template-columns: 1fr 1fr;
-    justify-content: space-around;
+.flex-row {
+    display: flex;
+    flex-direction: row;
 }
 
-.menu>section {
-    background: inherit !important;
-    border-radius: 10px;
-    padding: 10px;
+.time {
+    background: violet;
+    font-size: 26px;
+}
+
+.row-3 {
+    position: relative;
+}
+
+button.selected {
+    background: yellowgreen;
+}
+
+.row-3:after {
+    content: 'three in a row!';
+    position: absolute;
+    left: 2em;
+    top: -2em;
+    font-size: .8em;
+    color: crimson;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #ff00de, 0 0 70px #ff00de;
+}
+
+main {
+    /* max-width: 800px; */
+    /* min-width: 480px; */
+    width: 800px;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
-/* menu about */
+main>section {
+    /* background: inherit !important; */
+    border-radius: 10px;
+    padding: 30px;
+    margin: 0 auto;
+    box-shadow: 0 2px 2px 2px rgba(19, 35, 47, 0.3);
+}
 
-.about {
+.hidden {
+    display: none !important;
+}
+
+/* about */
+
+.welcome {
     background: chocolate;
 }
 
 blockquote {
-    background: rgba(0, 0, 0, .05);
-    border-left: 8px solid #ccc;
-    border-radius: 4px;
     padding: 0.5em .5em 0.5em 1em;
     font-style: italic;
     text-indent: 1.5em;
@@ -71,29 +111,69 @@ blockquote cite {
     -webkit-margin-start: 2em;
 }
 
-/* menu player */
+/* login */
 
-.player {
+.login {
+    width: 100%;
     background: lightgreen;
+}
+
+form {
+    background: rgba(19, 35, 47, 0.9);
+    padding: 40px;
+    max-width: 500px;
+    margin: 40px auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+    color: white;
 }
 
 input {
     display: block;
+    outline: 0;
+    height: 2em;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    padding: 0 1em;
+    border: 0;
+    border-radius: 4px;
+    background: rgba(48, 84, 110, 0.9);
+    font-family: inherit;
+    color: white;
 }
 
-label {}
+label {
+    display: block;
+}
 
 .player-name {
     font-size: 20px;
 }
 
-/* menu theme */
-
-.theme {
-    background: cornflowerblue;
+.flatten {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    width: auto;
+    height: 2em;
+    box-shadow: none;
+    background: inherit;
 }
 
-/* menu difficulty */
+.menu {
+    width: 100%;
+    background: turquoise;
+}
+
+/* theme */
+
+.preferences {
+    background: cornflowerblue;
+    border-radius: 3px;
+    /* box-shadow: inset 0px 0px 8px 1px rgba(0, 0, 0, .3); */
+}
+
+/* difficulty */
 
 .difficulty {
     background: cadetblue;
@@ -102,19 +182,9 @@ label {}
 /* play button */
 
 .play {
-    grid-column-start: 1;
-    grid-column-end: 3;
     color: white;
     background-color: rgba(220, 20, 60, .8);
-    outline: none;
-    border: 0;
-    display: block;
-    width: 200px;
-    height: 60px;
-    margin: 0 auto;
-    font-size: 32px;
-    font-weight: 700;
-    text-transform: uppercase;
+    font-size: 28px;
 }
 
 .play:hover {
@@ -125,22 +195,21 @@ label {}
 /* game section */
 
 .grid {
-    outline: 2px green solid;
-    background: white;
+    width: 100%;
+    /* outline: 2px green solid; */
+    background: linear-gradient(160deg, #cdfffb 0%, #aa7ecd 100%);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-.hidden {
-    display: none !important;
+    border-radius: 4px;
 }
 
 .card {
     position: relative;
     width: 110px;
     height: 150px;
-    margin: 5px;
+    border-radius: 5px;
+    margin: 6px;
     perspective: 800px;
 }
 
@@ -148,9 +217,10 @@ label {}
     transform: rotateY(-180deg);
 }
 
-.card:not(.opened) .content:hover {
+/* .card:not(.opened) .content:hover,
+    {
     transform: rotateY(-25deg);
-}
+} */
 
 .card.disabled {
     visibility: hidden;
@@ -159,12 +229,12 @@ label {}
 }
 
 .card .content {
-    /* background: blueviolet; */
+    /* background: red; */
     position: absolute;
     width: 100%;
     height: 100%;
     border-radius: 5px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, .3);
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, .3);
     transform-style: preserve-3d;
     transition: 1s;
 }
@@ -180,6 +250,8 @@ label {}
     line-height: 150px;
     backface-visibility: hidden;
     cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
 }
 
 .card .back.default {
@@ -190,4 +262,26 @@ label {}
     transform: rotateY(180deg);
     background: white;
     color: black;
+}
+
+.carousel {
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.carousel .card {
+    cursor: pointer;
+    transition: transform 0.25s;
+    box-shadow: 1px 1px 4px 4px #4e4e4e61;
+}
+
+.carousel .card:hover {
+    transform: scale(1.03);
+}
+
+.carousel .selected {
+    box-shadow: 0px 0px 9px 3px rgba(220, 20, 60, 1);
 }
