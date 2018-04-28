@@ -13,7 +13,7 @@ const CONTROLS = EnumFromString(_CONTROLS, '.');
 const CARD_STATE = EnumFromString(_CARD_STATE);
 
 const DIFFICULTIES = EnumFromString(_DIFFICULTIES);
-const DIFFICULTIES_BUTTONS = EnumFromString(_DIFFICULTIES, '.')
+const DIFFICULTY_BUTTONS = EnumFromString(_DIFFICULTIES, '.')
 const PLAYER = EnumFromString(_PLAYER);
 
 const DB_KEY = 'matchmatch';
@@ -27,7 +27,7 @@ export {
     CONTROLS,
     CARD_STATE,
     DIFFICULTIES,
-    DIFFICULTIES_BUTTONS,
+    DIFFICULTY_BUTTONS,
     PLAYER,
     DB_KEY,
     DEFAULT_DB,
