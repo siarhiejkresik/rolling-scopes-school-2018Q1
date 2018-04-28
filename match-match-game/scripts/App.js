@@ -3,23 +3,23 @@ import AppModel from "./AppModel.js";
 import GameController from "./GameController.js";
 import {
     DIFFICULTIES,
+    LEVELS
 } from "./constants.js";
 
 
 export default class App {
-    constructor(gameSettings) {
+    constructor() {
         this.view = new AppView();
-        this.model = new AppModel(gameSettings);
+        this.model = new AppModel();
         this.setUp();
     }
 
     setUp() {
-        [...this.view.startButtons].forEach(
+        this.view.startButtons.forEach(
             btn => btn.addEventListener('click', this.onPlay.bind(this)));
-
-        [...this.view.difficultyButtons].forEach(
+        this.view.difficultyButtons.forEach(
             btn => btn.addEventListener('click', this.onDifficultySet.bind(this)));
-        
+        this.view.carousel.addEventListener('click', this.onBackSet.bind(this));
         this.view.loginForm.addEventListener('submit', this.onLogIn.bind(this));
         this.view.logoutButton.addEventListener('click', this.onLogOut.bind(this));
     }
@@ -30,6 +30,7 @@ export default class App {
         } else {
             this.view.setPlayerNames(this.model.player);
             this.view.toggleDifficulty(this.model.difficulty);
+            this.view.toggleCardBack(this.model.back);
             this.view.showMenu();
         }
     }
@@ -44,6 +45,7 @@ export default class App {
         this.model.setPlayer(player_info);
         this.view.setPlayerNames(this.model.player);
         this.view.toggleDifficulty(this.model.difficulty);
+        this.view.toggleCardBack(this.model.back);
         this.view.showMenu();
     }
 
@@ -51,6 +53,7 @@ export default class App {
         this.model.unSetPlayer();
         this.view.unSetPlayerNames();
         this.view.toggleDifficulty(this.model.difficulty);
+        this.view.toggleCardBack(this.model.back);
         this.view.showWelcome();
     }
 
@@ -60,7 +63,11 @@ export default class App {
 
     onPlay() {
         this.view.showGame();
-        new GameController(this.model.gameSettings[this.model.difficulty], this.onGameEnd.bind(this));
+        const settings = {
+            level: LEVELS[this.model.difficulty],
+            theme: this.model.back
+        }
+        new GameController(settings, this.onGameEnd.bind(this));
     }
 
     onDifficultySet(e) {
@@ -74,5 +81,16 @@ export default class App {
         }
         this.model.setDifficulty(difficulty);
         this.view.toggleDifficulty(difficulty);
+    }
+
+    onBackSet(e) {
+        const card = e.target.closest('.card');
+        if (!card) {
+            return;
+        }
+        const cards = e.currentTarget.querySelectorAll('.card');
+        const cardBackIndex = [...cards].indexOf(card);
+        this.model.setBack(cardBackIndex);
+        this.view.toggleCardBack(cardBackIndex);
     }
 }

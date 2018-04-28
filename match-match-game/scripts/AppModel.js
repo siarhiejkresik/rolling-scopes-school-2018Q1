@@ -27,7 +27,7 @@ export default class AppModel {
     resetToDefault() {
         this.player = null;
         this.difficulty = DIFFICULTIES.EASY;
-        this.back = '.circle';
+        this.back = 0;
     }
 
     setPlayer(player_info) {
@@ -65,12 +65,12 @@ export default class AppModel {
         this.difficulty = difficulty;
     }
 
-    setBack(back) {
+    setBack(cardBackIndex) {
         if (!this.isAnonimousPlayer(this.player)) {
-            this.player.back = back;
+            this.player.back = cardBackIndex;
             this.db.saveToStorage();
         }
-        this.back = back;
+        this.back = cardBackIndex;
     }
 
     isAnonimousPlayer(player) {

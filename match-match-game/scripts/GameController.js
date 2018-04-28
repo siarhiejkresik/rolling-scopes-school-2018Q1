@@ -4,8 +4,8 @@ import Timer from "./Timer.js";
 
 export default class GameController {
     constructor(settings, exitGameCallback) {
-        this.view = new GameView(settings.cards);
-        this.model = new GameModel(settings);
+        this.view = new GameView(settings.level.cards, settings.theme);
+        this.model = new GameModel(settings.level);
         this.timer = new Timer();
         this.exitGameCallback = exitGameCallback;
    

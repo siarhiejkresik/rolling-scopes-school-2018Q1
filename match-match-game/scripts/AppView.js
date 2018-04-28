@@ -1,20 +1,37 @@
 import {
     VIEWS,
-    DIFFICULTY_BUTTONS
+    DIFFICULTY_BUTTONS,
+    THEMES
 } from "./constants.js";
 
 
 export default class AppView {
     constructor() {
-        this.startButtons = document.querySelectorAll('.play');
-        this.nextButton = document.querySelector('.next')
-        this.logoutButton = document.querySelector('.logout')
-        this.toMenuButton = document.querySelector('.return')
+        // buttons
         this.difficultyButtons = document.querySelectorAll(Object.values(DIFFICULTY_BUTTONS));
+        this.logoutButton = document.querySelector('.logout')
+        this.nextButton = document.querySelector('.next')
+        this.startButtons = document.querySelectorAll('.play');
+        this.toMenuButton = document.querySelector('.return')
+        // area for theme selection
+        this.carousel = document.querySelector('.carousel');
+        // login form
         this.loginForm = document.querySelector('#login')
 
+        // TODO move to App
+        // listeners
         this.nextButton.addEventListener('click', this.showLogIn.bind(this))
         this.toMenuButton.addEventListener('click', this.showMenu.bind(this))
+        
+        this.setUp();
+    }
+
+    setUp() {
+        // set card back themes
+        this.carousel.querySelectorAll('.card')
+            .forEach((card, i) => {
+                card.classList.add(THEMES[i]);
+            });
     }
 
     showWelcome() {
@@ -31,12 +48,12 @@ export default class AppView {
         this._hideAllViews();
         this._showView(VIEWS.MENU);
     }
-    
+
     showGame() {
         this._hideAllViews();
         this._showView(VIEWS.GAME);
     }
-    
+
     showGameEnd(gameResult) {
         this._hideAllViews();
         this._showView(VIEWS.RESULT);
@@ -46,7 +63,7 @@ export default class AppView {
     }
 
     toggleDifficulty(difficulty) {
-        [...this.difficultyButtons].forEach(button => {
+        this.difficultyButtons.forEach(button => {
             if (button.classList.contains(difficulty)) {
                 button.classList.add('selected');
             } else {
@@ -65,15 +82,19 @@ export default class AppView {
             }
         });
     }
+
     setPlayerNames(player) {
         const firstnames = document.querySelectorAll('.first-name');
         const lastnames = document.querySelectorAll('.last-name');
-        [...firstnames].map(node => node.innerHTML = player.firstname);
-        [...lastnames].map(node => node.innerHTML = player.lastname);
+        firstnames.forEach(node => node.innerHTML = player.firstname);
+        lastnames.forEach(node => node.innerHTML = player.lastname);
     }
 
     unSetPlayerNames() {
-        this.setPlayerNames({firstname: '', lastname: ''});
+        this.setPlayerNames({
+            firstname: '',
+            lastname: ''
+        });
     }
 
     _hideAllViews() {
