@@ -71,6 +71,3 @@ class LocalStorage {
         localStorage.setItem(this._key, JSON.stringify(data));
     }
 }
-
-
-
