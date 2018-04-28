@@ -1,6 +1,6 @@
 import {
     VIEWS,
-    DIFFICULTIES_BUTTONS
+    DIFFICULTY_BUTTONS
 } from "./constants.js";
 
 
@@ -8,15 +8,12 @@ export default class Menu {
     constructor() {
         this.startButtons = document.querySelectorAll('.play');
         this.nextButton = document.querySelector('.next')
-        this.loginButton = document.querySelector('.submit-login')
         this.logoutButton = document.querySelector('.logout')
         this.toMenuButton = document.querySelector('.return')
-        this.difficultyButtons = document.querySelectorAll(Object.values(DIFFICULTIES_BUTTONS));
-
-
+        this.difficultyButtons = document.querySelectorAll(Object.values(DIFFICULTY_BUTTONS));
+        this.loginForm = document.querySelector('#login')
 
         this.nextButton.addEventListener('click', this.showLogIn.bind(this))
-        this.loginButton.addEventListener('click', this.showMenu.bind(this))
         this.toMenuButton.addEventListener('click', this.showMenu.bind(this))
     }
 
@@ -55,18 +52,18 @@ export default class Menu {
             } else {
                 button.classList.remove('selected');
             }
-        })
+        });
     }
 
     setPlayerNames(player) {
-        const firstNames = document.querySelectorAll('.first-name');
-        const lastNames = document.querySelectorAll('.last-name');
-        [...firstNames].map(node => node.innerHTML = player.firstName);
-        [...lastNames].map(node => node.innerHTML = player.lastName);
+        const firstnames = document.querySelectorAll('.first-name');
+        const lastnames = document.querySelectorAll('.last-name');
+        [...firstnames].map(node => node.innerHTML = player.firstname);
+        [...lastnames].map(node => node.innerHTML = player.lastname);
     }
 
     unSetPlayerNames() {
-        this.setPlayerNames({firstName: '', lastName: ''});
+        this.setPlayerNames({firstname: '', lastname: ''});
     }
 
     _hideAllViews() {
@@ -77,6 +74,5 @@ export default class Menu {
 
     _showView(view) {
         document.querySelector(view).classList.remove('hidden');
-
     }
 }
