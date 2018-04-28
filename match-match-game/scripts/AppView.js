@@ -55,6 +55,16 @@ export default class Menu {
         });
     }
 
+    toggleCardBack(cardBackindex) {
+        const cards = this.carousel.querySelectorAll('.card');
+        cards.forEach((card, i) => {
+            if (i === cardBackindex) {
+                card.classList.add('selected');
+            } else {
+                card.classList.remove('selected');
+            }
+        });
+    }
     setPlayerNames(player) {
         const firstnames = document.querySelectorAll('.first-name');
         const lastnames = document.querySelectorAll('.last-name');
