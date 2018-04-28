@@ -1,45 +1,56 @@
 import AppView from "./AppView.js";
-import AppData from "./AppData.js";
+import AppModel from "./AppModel.js";
 import GameController from "./GameController.js";
 import {
-    DIFFICULTIES
+    DIFFICULTIES,
 } from "./constants.js";
 
 
 export default class App {
     constructor(gameSettings) {
-        this.gameSettings = gameSettings;
-        this.gameData = new AppData();
         this.view = new AppView();
-        this.player = null;
-        this.difficulty = DIFFICULTIES.EASY;
-     
-        this.initSetUp();
+        this.model = new AppModel(gameSettings);
+        this.setUp();
     }
 
-    initSetUp() {
+    setUp() {
         [...this.view.startButtons].forEach(
             btn => btn.addEventListener('click', this.onPlay.bind(this)));
+
         [...this.view.difficultyButtons].forEach(
             btn => btn.addEventListener('click', this.onDifficultySet.bind(this)));
+        
+        this.view.loginForm.addEventListener('submit', this.onLogIn.bind(this));
         this.view.logoutButton.addEventListener('click', this.onLogOut.bind(this));
     }
 
     run() {
-        this.player = this.gameData.getLastPlayer();
-        if (!this.player) {
-            throw 'not implemented';
+        if (!this.model.player) {
+            this.view.showWelcome();
+        } else {
+            this.view.setPlayerNames(this.model.player);
+            this.view.toggleDifficulty(this.model.difficulty);
+            this.view.showMenu();
         }
-        this.view.setPlayerNames(this.player);
-        this.view.showMenu(this.player);
     }
 
-    onLogIn() {}
+    onLogIn(e) {
+        e.preventDefault(); //prevent form action
+        const player_info = [
+            document.getElementById('firstname').value,
+            document.getElementById('lastname').value,
+            document.getElementById('email').value
+        ]
+        this.model.setPlayer(player_info);
+        this.view.setPlayerNames(this.model.player);
+        this.view.toggleDifficulty(this.model.difficulty);
+        this.view.showMenu();
+    }
 
     onLogOut() {
-        this.player = null;
-        this.gameData.clearLastPlayer();
+        this.model.unSetPlayer();
         this.view.unSetPlayerNames();
+        this.view.toggleDifficulty(this.model.difficulty);
         this.view.showWelcome();
     }
 
@@ -49,20 +60,19 @@ export default class App {
 
     onPlay() {
         this.view.showGame();
-        new GameController(this.gameSettings[this.difficulty], this.onGameEnd.bind(this));
+        new GameController(this.model.gameSettings[this.model.difficulty], this.onGameEnd.bind(this));
     }
 
     onDifficultySet(e) {
-        if (e.target.classList.contains(this.difficulty)) return;
-        for (let difficulty of Object.values(DIFFICULTIES)) {
-            if (e.target.classList.contains(difficulty)) {
-                this.difficulty = difficulty;
+        if (e.target.classList.contains(this.model.difficulty)) return;
+        let difficulty;
+        for (let difficulty_ of Object.values(DIFFICULTIES)) {
+            if (e.target.classList.contains(difficulty_)) {
+                difficulty = difficulty_;
                 break;
             }
         }
-        this.player.difficulty = this.difficulty;
-        this.gameData.saveToStorage();
-        this.view.toggleDifficulty(this.difficulty);
-
+        this.model.setDifficulty(difficulty);
+        this.view.toggleDifficulty(difficulty);
     }
 }
