@@ -5,13 +5,13 @@ import Observable from "./Observable.js"
 const ANIMATION_SPEED = 1000; // TODO
 
 export default class GameModel {
-    constructor(settings) {
-        this.cardsToPlay = settings.cards;
-        this.openedCards = new OpenedCardsQueue(settings.sequence);
+    constructor(level) {
+        this.cardsToPlay = level.cards;
+        this.openedCards = new OpenedCardsQueue(level.sequence);
         this.deck = new CardsDeck(
-            settings.cards,
-            settings.types,
-            settings.sequence);
+            level.cards,
+            level.types,
+            level.sequence);
 
         this.endGameSubscibers = new Observable();
     }
