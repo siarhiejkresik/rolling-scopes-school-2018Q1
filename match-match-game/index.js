@@ -1,9 +1,4 @@
-import GameController from "./scripts/GameController.js";
+import App from "./scripts/App.js";
 
-const gameSettings = {
-    cards: 36,
-    types: 6,
-    sequence: 2,
-}
-
-const game = new GameController(gameSettings);
+const app = new App();
+app.run();
