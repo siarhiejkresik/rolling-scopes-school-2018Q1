@@ -20,7 +20,6 @@ export default class AppData {
     }
 
     getPlayerByName(firstname, lastname) {
-        console.log(this)
         let player = this.data.players.find(player =>
             player.firstname === firstname &&
             player.lastname === lastname);

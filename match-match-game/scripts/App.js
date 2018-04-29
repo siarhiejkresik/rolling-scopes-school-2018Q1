@@ -30,7 +30,7 @@ export default class App {
         } else {
             this.view.setPlayerNames(this.model.player);
             this.view.toggleDifficulty(this.model.difficulty);
-            this.view.toggleCardBack(this.model.back);
+            this.view.toggleCardBack(this.model.back); // TODO rename
             this.view.showMenu();
         }
     }
@@ -43,7 +43,7 @@ export default class App {
             document.getElementById('email').value
         ]
         this.model.setPlayer(player_info);
-        this.view.setPlayerNames(this.model.player);
+        this.view.setPlayerNames(this.model.player); // TODO observer
         this.view.toggleDifficulty(this.model.difficulty);
         this.view.toggleCardBack(this.model.back);
         this.view.showMenu();
@@ -71,7 +71,11 @@ export default class App {
     }
 
     onDifficultySet(e) {
-        if (e.target.classList.contains(this.model.difficulty)) return;
+        if (e.target.classList.contains(this.model.difficulty)) {
+            return;
+        }
+        
+        // TODO rewrite
         let difficulty;
         for (let difficulty_ of Object.values(DIFFICULTIES)) {
             if (e.target.classList.contains(difficulty_)) {
