@@ -15,7 +15,7 @@ export default class CardDeck {
 
     if (numberOfCards < numberOfTypes * sequenceSize) {
       throw new Error(
-        "The number of cards can't be less than (number of card types * sequence size)"
+        'The number of cards can\'t be less than (number of card types * sequence size)'
       );
     }
 
