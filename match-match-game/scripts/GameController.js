@@ -54,6 +54,6 @@ export default class GameController {
         this.timer.stop()
         this.cleanUp();
 
-        this.exitGameCallback(this.timer.serializeToMMSS());
+        this.exitGameCallback(this.timer.delta);
     }
 }
