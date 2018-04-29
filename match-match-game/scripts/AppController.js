@@ -17,7 +17,10 @@ export default class AppController {
     this.view.difficultyButtons.forEach(btn =>
       btn.addEventListener('click', this.onDifficultySet.bind(this))
     );
-    this.view.carousel.addEventListener('click', this.onCardThemeSet.bind(this));
+    this.view.carousel.addEventListener(
+      'click',
+      this.onCardThemeSet.bind(this)
+    );
     this.view.loginForm.addEventListener('submit', this.onLogIn.bind(this));
     this.view.logoutButton.addEventListener('click', this.onLogOut.bind(this));
   }
@@ -34,7 +37,7 @@ export default class AppController {
   }
 
   onLogIn(e) {
-    e.preventDefault(); //prevent form action
+    e.preventDefault(); // prevent form action
     const player_info = [
       document.getElementById('firstname').value,
       document.getElementById('lastname').value,

@@ -17,7 +17,7 @@ export default class AppView {
     // login form
     this.loginForm = document.querySelector('#login');
 
-    // TODO move to App
+    // TODO move to AppController?
     // listeners
     this.nextButton.addEventListener('click', this.showLogIn.bind(this));
     this.toMenuButton.addEventListener('click', this.showMenu.bind(this));
