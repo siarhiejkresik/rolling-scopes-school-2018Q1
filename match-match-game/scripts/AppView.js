@@ -12,7 +12,7 @@ export default class AppView {
     this.nextButton = document.querySelector('.next');
     this.startButtons = document.querySelectorAll('.play');
     this.toMenuButton = document.querySelector('.return');
-    // area for theme selection
+    // area for card theme selection
     this.carousel = document.querySelector('.carousel');
     // login form
     this.loginForm = document.querySelector('#login');
@@ -26,7 +26,7 @@ export default class AppView {
   }
 
   setUp() {
-    // set card back themes
+    // set card themes
     this.carousel.querySelectorAll('.card').forEach((card, i) => {
       card.classList.add(CARD_THEMES[i]);
     });
