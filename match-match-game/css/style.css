@@ -5,8 +5,12 @@
 
 body,
 input {
-    font-size: 16px;
+    font-size: 18px;
     font-family: Lato, sans;
+}
+
+body {
+    background: repeating-linear-gradient(45deg, #dedede 2px, #dadada 3px, #dadada 4px, #dedede 7px);
 }
 
 header {
