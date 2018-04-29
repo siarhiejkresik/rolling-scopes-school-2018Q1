@@ -1,4 +1,7 @@
-import {DB_KEY, DEFAULT_DB} from "./constants.js"
+import {
+    DB_KEY,
+    DEFAULT_DB
+} from "./constants.js"
 
 export default class AppData {
     constructor() {
@@ -6,7 +9,7 @@ export default class AppData {
         this.data = this._storage.load();
     }
 
-    addNewPlayer(firstname='', lastname='', email='') {
+    addNewPlayer(firstname = '', lastname = '', email = '') {
         const id = this.data.players.length + 1;
         const player = {
             id: id,
@@ -42,6 +45,29 @@ export default class AppData {
 
     clearLastPlayer() {
         this.data.lastPlayerId = null;
+        this.saveToStorage();
+    }
+
+    getRecords(difficulty) {
+        // create fields if not exist
+        if (!this.data.records) {
+            this.data.records = {};
+        }
+        if (!this.data.records[difficulty]) {
+            this.data.records[difficulty] = [];
+            this.saveToStorage();
+        }
+
+        return this.data.records[difficulty];
+    }
+    
+    // for testing only
+    clearRecords(difficulty) {
+        if (!difficulty) {
+            delete this.data.records;
+        } else {
+            delete this.data.records.difficulty;
+        }
         this.saveToStorage();
     }
 

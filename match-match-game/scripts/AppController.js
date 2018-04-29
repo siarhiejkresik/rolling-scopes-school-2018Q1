@@ -58,7 +58,8 @@ export default class AppController {
     }
 
     onGameEnd(gameResult) {
-        this.view.showGameEnd(gameResult, this.player);
+        const place = this.model.checkForRecord(gameResult);
+        this.view.showGameEnd(gameResult, place);
     }
 
     onPlay() {

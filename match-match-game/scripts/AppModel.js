@@ -1,6 +1,7 @@
 import AppData from "./AppData.js";
 import {
-    DIFFICULTIES
+    DIFFICULTIES,
+    RECORDS_TABLE_SIZE
 } from "./constants.js";
 
 // TODO refactor
@@ -71,6 +72,47 @@ export default class AppModel {
             this.db.saveToStorage();
         }
         this.back = cardBackIndex;
+    }
+
+    checkForRecord(gameResult) {
+        const result = {
+            id: this.player.id,
+            time: gameResult
+        };
+        const records = this.db.getRecords(this.difficulty);
+
+        // if there are no records yet
+        if (!records.length) {
+            records.push(result);
+            this.db.saveToStorage();
+            return 1;
+        }
+
+        const i = records.findIndex((record) => result.time < record.time);
+        if (i === -1) {
+            // result time is bigger than all the times in records
+
+            if (records.length < RECORDS_TABLE_SIZE) {
+                // record table is not full
+                records.push(result);
+                this.db.saveToStorage();
+                return records.length;
+
+            } else {
+                // record table is full
+                return;
+            }
+
+        } else {
+            // there are records with time more than result time
+
+            records.splice(i, 0, result);
+            if (records.length > RECORDS_TABLE_SIZE) {
+                records.pop();
+            }
+            this.db.saveToStorage();
+            return i + 1;
+        }
     }
 
     isAnonimousPlayer(player) {

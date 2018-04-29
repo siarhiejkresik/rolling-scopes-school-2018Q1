@@ -54,12 +54,17 @@ export default class AppView {
         this._showView(VIEWS.GAME);
     }
 
-    showGameEnd(gameResult) {
+    showGameEnd(gameResult, place) {
         this._hideAllViews();
         this._showView(VIEWS.RESULT);
         const view = document.querySelector(VIEWS.RESULT);
         view.querySelector('.time').innerHTML = gameResult;
-
+        if (place) {
+            view.querySelector('.place').innerHTML = place;
+            view.querySelector('.record').classList.remove('hidden');
+        } else {
+            view.querySelector('.record').classList.add('hidden');
+        }
     }
 
     toggleDifficulty(difficulty) {
