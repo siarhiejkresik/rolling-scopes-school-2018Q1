@@ -14,15 +14,9 @@ export default class GameModel {
   }
 
   onCardSelect(cardId) {
-    // debug mode
-    console.log('GameModel: process card with id', cardId);
-
     const card = this.deck.getCardById(cardId);
 
     if (!this.isSelectableCard(card)) {
-      // debug mode
-      console.log("you can't select this card!", card);
-
       return;
     }
 
@@ -38,14 +32,7 @@ export default class GameModel {
 
   isGameEnd() {
     if (this.cardsToPlay === 0) {
-      // debug mode
-      console.log('GameModel: You win!');
-
-      const gameResult = 'TIME xx:xx:xx';
-      setTimeout(
-        () => this.endGameSubscibers.notify(gameResult),
-        ANIMATION_SPEED * 2
-      );
+      setTimeout(() => this.endGameSubscibers.notify(), ANIMATION_SPEED * 2);
     }
   }
 }

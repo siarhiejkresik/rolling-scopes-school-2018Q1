@@ -19,9 +19,6 @@ export default class GameView {
   }
 
   updateCardView(id, state, type) {
-    // debug mode
-    console.log('GameView:  notify from GameModel:', id, state);
-
     const selector = `#card-${id}`;
     let card = this.grid.querySelector(selector);
 

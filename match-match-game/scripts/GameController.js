@@ -38,28 +38,10 @@ export default class GameController {
     let cardId = e.target.closest('.card').id;
     cardId = cardId.split('-').slice(-1)[0];
     cardId = parseInt(cardId, 10);
-
-    // debug mode
-    console.log('=================');
-    console.log(
-      'GameController: notify from browser, CLICKED id:',
-      cardId,
-      e.target
-    );
-
     this.model.onCardSelect(cardId);
-
-    // debug mode
-    console.log(
-      'GameController: model status',
-      this.model.deck.cards.map(c => `${c._state} ${c.type}`)
-    );
-    console.log('-----------------');
   }
 
-  onEndGame(gameResult) {
-    // debug mode
-    console.log('GameController: result =', gameResult);
+  onEndGame(gameResult) { // TODO
     this.timer.stop();
     this.cleanUp();
 

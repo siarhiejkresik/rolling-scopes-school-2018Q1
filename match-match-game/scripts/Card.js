@@ -29,9 +29,6 @@ export default class Card {
   }
 
   _stateChangeNotify() {
-    // debug
-    console.log(`CardModel: id ${this.id} is ${this._state} now`);
-
     this.stateObservers.notify(this.id, this._state, this.type);
   }
 }

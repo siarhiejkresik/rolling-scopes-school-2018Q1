@@ -4,7 +4,7 @@ const _VIEWS = 'welcome login menu game result';
 const _CONTROLS = 'play next login logout return';
 const _CARD_STATE = 'opened closed disabled';
 const _DIFFICULTIES = 'easy normal hard';
-const _PLAYER = 'firstname lastname email back difficulty';
+const _PLAYER = 'firstname lastname email cardtheme difficulty';
 const _CARD_THEMES = 'circle microbial-mat corners fancy underwater';
 
 const VIEWS = EnumFromString(_VIEWS, '.');
