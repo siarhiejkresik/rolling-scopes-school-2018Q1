@@ -28,11 +28,14 @@ export default class GameView {
     if (state === CARD_STATE.OPENED) {
       card.querySelector('.front').innerHTML = type;
       this.openCard(card);
+      //
     } else if (state === CARD_STATE.CLOSED) {
       card.querySelector('.front').innerHTML = null;
       this.closeCard(card);
+      //
     } else if (state === CARD_STATE.DISABLED) {
       this.disableCard(card);
+      //
     } else {
       throw new Error('unknown card state!');
     }
