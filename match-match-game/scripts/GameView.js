@@ -43,7 +43,7 @@ export default class GameView {
     }
 
     updateTime(time) {
-        this.time.innerHTML = time;
+        this.time.innerHTML = timeMSToMMSS(time);
     }
 
     openCard(card) {
