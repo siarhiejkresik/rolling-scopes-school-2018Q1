@@ -46,15 +46,15 @@ export default class GameView {
   }
 
   openCard(card) {
-    card.classList.add('opened');
+    card.classList.add(CARD_STATE.OPENED);
   }
 
   closeCard(card) {
-    card.classList.remove('opened');
+    card.classList.remove(CARD_STATE.OPENED);
   }
 
   disableCard(card) {
-    card.classList.add('disabled');
+    card.classList.add(CARD_STATE.DISABLED);
   }
 
   cleanUp() {
