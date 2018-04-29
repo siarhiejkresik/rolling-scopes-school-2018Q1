@@ -41,9 +41,27 @@ function shuffleArray(array) {
     }
 }
 
-export {
-    EnumFromString,
-    shuffleArray
-};
+/**
+ * Convert time in milliseconds to MM:SS format
+ * @example
+ * // returns 00:01
+ * timeMSToMMSS(1000)
+ * @example
+ * // returns 01:00
+ * timeMSToMMSS(60000)
+ * @param {*} milliseconds 
+ */
+export function timeMSToMMSS(milliseconds) {
+    let seconds;
+    let minutes;
+    const formatting = int_ => int_ < 10 ? '0' + int_ : int_;
 
-// why do i need export default??
+    if (milliseconds >= (60 * 60) * 1000) {
+        minutes = 59;
+        seconds = 59;
+    } else {
+        seconds = formatting(parseInt((milliseconds / 1000) % 60));
+        minutes = formatting(parseInt((milliseconds / (1000 * 60) % 60)));
+    }
+    return `${minutes}:${seconds}`;
+}
