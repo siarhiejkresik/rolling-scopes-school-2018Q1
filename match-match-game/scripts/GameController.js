@@ -41,10 +41,9 @@ export default class GameController {
     this.model.onCardSelect(cardId);
   }
 
-  onEndGame(gameResult) { // TODO
+  onEndGame() {
     this.timer.stop();
     this.cleanUp();
-
     this.exitGameCallback(this.timer.delta);
   }
 }
