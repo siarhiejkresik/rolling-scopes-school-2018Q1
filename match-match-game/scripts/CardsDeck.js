@@ -1,55 +1,59 @@
-import Card from "./Card.js";
-import {shuffleArray} from "./utils.js";
+import Card from './Card.js';
+import { shuffleArray } from './utils.js';
 
 export default class CardDeck {
-    constructor(cards, types, sequence, view) {
-        this.cards = [];
-        this.initCards(cards, types, sequence, view);
-        this.shuffle();
+  constructor(cards, types, sequence, view) {
+    this.cards = [];
+    this.initCards(cards, types, sequence, view);
+    this.shuffle();
+  }
+
+  initCards(numberOfCards, numberOfTypes, sequenceSize, view) {
+    if (numberOfCards % 2) {
+      throw 'The number of cards must be even';
     }
 
-    initCards(numberOfCards, numberOfTypes, sequenceSize, view) {
-        if (numberOfCards % 2) {
-            throw 'The number of cards must be even';
-        }
-
-        if (numberOfCards < numberOfTypes * sequenceSize) {
-            throw 'The number of cards can\'t be less than (number of card types * sequence size)';
-        }
-
-        if (numberOfCards % (numberOfTypes * sequenceSize)) {
-            throw 'The number of cards must be multiple of (number of card types * sequence size)';
-        }
-
-        const numberOfCardsOfEachType = (numberOfCards / numberOfTypes);
-        let id = 0;
-        for (let type = 0; type < numberOfTypes; type++) {
-            for (let n = 0; n < numberOfCardsOfEachType; n++) {
-                this.cards.push(new Card(id, type, view));
-                id += 1;
-            }
-        }
+    if (numberOfCards < numberOfTypes * sequenceSize) {
+      throw new Error(
+        "The number of cards can't be less than (number of card types * sequence size)"
+      );
     }
 
-    getCardById(cardId) {
-        for (let card of this.cards) {
-            if (card.id === cardId) {
-                return card;
-            }
-        }
-        throw `there is no card with id: ${cardId} in the deck`;
+    if (numberOfCards % (numberOfTypes * sequenceSize)) {
+      throw new Error(
+        'The number of cards must be multiple of (number of card types * sequence size)'
+      );
     }
 
-    shuffle() {
-        shuffleArray(this.cards);
-        this.refillCardIds();
+    const numberOfCardsOfEachType = numberOfCards / numberOfTypes;
+    let id = 0;
+    for (let type = 0; type < numberOfTypes; type++) {
+      for (let n = 0; n < numberOfCardsOfEachType; n++) {
+        this.cards.push(new Card(id, type, view));
+        id += 1;
+      }
     }
+  }
 
-    refillCardIds() {
-        this.cards.map((card, i) => card.id = i);
+  getCardById(cardId) {
+    for (let card of this.cards) {
+      if (card.id === cardId) {
+        return card;
+      }
     }
+    throw `there is no card with id: ${cardId} in the deck`;
+  }
 
-    addCardStateObserver(observer) {
-        this.cards.forEach(card => card.stateObservers.subscribe(observer));
-    }
+  shuffle() {
+    shuffleArray(this.cards);
+    this.refillCardIds();
+  }
+
+  refillCardIds() {
+    this.cards.map((card, i) => (card.id = i));
+  }
+
+  addCardStateObserver(observer) {
+    this.cards.forEach(card => card.stateObservers.subscribe(observer));
+  }
 }

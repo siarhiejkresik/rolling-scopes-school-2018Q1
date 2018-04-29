@@ -1,77 +1,77 @@
 const ANIMATION_SPEED = 1000;
 
 export default class OpenedCardsQueue {
-    constructor(size) {
-        this.size = size;
-        this.blocked = false;
-        this.cards = [];
+  constructor(size) {
+    this.size = size;
+    this.blocked = false;
+    this.cards = [];
+  }
+
+  get isEmpty() {
+    return !!this.cards.length;
+  }
+
+  get isFull() {
+    return this.size === this.cards.length;
+  }
+
+  get isOfDifferentTypes() {
+    // TODO move type checking to card interface?
+    if (this.cards.length < 2) {
+      return false;
+    }
+    return this.cards[0].type !== this.cards.slice(-1)[0].type;
+  }
+
+  process(card) {
+    this.add(card);
+    this.block();
+
+    if (this.isOfDifferentTypes) {
+      setTimeout(() => {
+        this.closeAll();
+        this.clear();
+      }, ANIMATION_SPEED);
+      this.unblock();
+      return;
     }
 
-    get isEmpty() {
-        return !!this.cards.length;
+    if (this.isFull) {
+      setTimeout(() => {
+        this.disableAll();
+        this.clear();
+      }, ANIMATION_SPEED);
+      this.unblock();
+      return true;
     }
 
-    get isFull() {
-        return this.size === this.cards.length;
-    }
+    this.unblock(0);
+  }
 
-    get isOfDifferentTypes() {
-        // TODO move type checking to card interface?
-        if (this.cards.length < 2) {
-            return false;
-        }
-        return this.cards[0].type !== this.cards.slice(-1)[0].type;
-    }
+  add(card) {
+    card.open();
+    this.cards.push(card);
+  }
 
-    process(card) {
-        this.add(card);
-        this.block();
+  clear() {
+    this.cards = [];
+  }
 
-        if (this.isOfDifferentTypes) {
-            setTimeout(() => {
-                this.closeAll();
-                this.clear();
-            }, ANIMATION_SPEED);
-            this.unblock();
-            return;
-        }
+  disableAll() {
+    this.cards.map(card => card.disable());
+  }
 
-        if (this.isFull) {
-            setTimeout(() => {
-                this.disableAll();
-                this.clear();
-            }, ANIMATION_SPEED);        
-            this.unblock();
-            return true;
-        }
+  closeAll() {
+    this.cards.map(card => card.close());
+  }
 
-        this.unblock(0);
-    }
+  block() {
+    this.blocked = true;
+  }
 
-    add(card) {
-        card.open();
-        this.cards.push(card);
-    }
-
-    clear() {
-        this.cards = [];
-    }
-
-    disableAll() {
-        this.cards.map(card => card.disable());
-    }
-
-    closeAll() {
-        this.cards.map(card => card.close());
-    }
-
-    block() {
-        this.blocked = true;
-    }
-
-    unblock(timeout = ANIMATION_SPEED) {
-        setTimeout(() => {
-            this.blocked = false;
-        }, timeout);
-    }
+  unblock(timeout = ANIMATION_SPEED) {
+    setTimeout(() => {
+      this.blocked = false;
+    }, timeout);
+  }
 }
