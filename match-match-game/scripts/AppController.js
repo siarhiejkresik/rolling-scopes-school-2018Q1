@@ -7,7 +7,7 @@ import {
 } from "./constants.js";
 
 
-export default class App {
+export default class AppController {
     constructor() {
         this.view = new AppView();
         this.model = new AppModel();

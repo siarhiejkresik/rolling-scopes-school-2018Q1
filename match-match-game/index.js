@@ -1,4 +1,4 @@
-import App from "./scripts/App.js";
+import AppController from "./scripts/AppController.js";
 
-const app = new App();
+const app = new AppController();
 app.run();
