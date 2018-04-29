@@ -81,7 +81,7 @@ export default class AppModel {
     if (!records.length) {
       records.push(result);
       this.db.saveToStorage();
-      return 1;
+      return 1; // first place
     }
 
     const i = records.findIndex(record => result.time < record.time);
@@ -107,7 +107,7 @@ export default class AppModel {
         records.pop();
       }
       this.db.saveToStorage();
-      return i + 1;
+      return i + 1; // place = index + 1
     }
   }
 
