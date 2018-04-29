@@ -5,16 +5,17 @@ const _CONTROLS = 'play next login logout return';
 const _CARD_STATE = 'opened closed disabled';
 const _DIFFICULTIES = 'easy normal hard';
 const _PLAYER = 'firstname lastname email back difficulty';
-const _THEMES = 'circle microbial-mat corners fancy underwater';
+const _CARD_THEMES = 'circle microbial-mat corners fancy underwater';
 
 const VIEWS = EnumFromString(_VIEWS, '.');
 const CONTROLS = EnumFromString(_CONTROLS, '.');
+const DIFFICULTY_BUTTONS = EnumFromString(_DIFFICULTIES, '.');
+
 const CARD_STATE = EnumFromString(_CARD_STATE);
 
 const DIFFICULTIES = EnumFromString(_DIFFICULTIES);
-const DIFFICULTY_BUTTONS = EnumFromString(_DIFFICULTIES, '.');
 const PLAYER = EnumFromString(_PLAYER);
-const THEMES = _THEMES.trim().split(/ +/);
+const CARD_THEMES = _CARD_THEMES.trim().split(/ +/);
 
 const RECORDS_TABLE_SIZE = 10;
 const DB_KEY = 'matchmatch';
@@ -51,6 +52,6 @@ export {
   LEVELS,
   PLAYER,
   RECORDS_TABLE_SIZE,
-  THEMES,
+  CARD_THEMES,
   VIEWS
 };

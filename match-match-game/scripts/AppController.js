@@ -28,7 +28,7 @@ export default class AppController {
     } else {
       this.view.setPlayerNames(this.model.player);
       this.view.toggleDifficulty(this.model.difficulty);
-      this.view.toggleCardBack(this.model.back); // TODO rename
+      this.view.toggleCardTheme(this.model.cardTheme);
       this.view.showMenu();
     }
   }
@@ -43,7 +43,7 @@ export default class AppController {
     this.model.setPlayer(player_info);
     this.view.setPlayerNames(this.model.player); // TODO observer
     this.view.toggleDifficulty(this.model.difficulty);
-    this.view.toggleCardBack(this.model.back);
+    this.view.toggleCardTheme(this.model.cardTheme);
     this.view.showMenu();
   }
 
@@ -51,7 +51,7 @@ export default class AppController {
     this.model.unSetPlayer();
     this.view.unSetPlayerNames();
     this.view.toggleDifficulty(this.model.difficulty);
-    this.view.toggleCardBack(this.model.back);
+    this.view.toggleCardTheme(this.model.cardTheme);
     this.view.showWelcome();
   }
 
@@ -64,7 +64,7 @@ export default class AppController {
     this.view.showGame();
     const settings = {
       level: LEVELS[this.model.difficulty],
-      theme: this.model.back
+      theme: this.model.cardTheme
     };
     new GameController(settings, this.onGameEnd.bind(this));
   }
@@ -94,6 +94,6 @@ export default class AppController {
     const cards = e.currentTarget.querySelectorAll('.card');
     const cardBackIndex = [...cards].indexOf(card);
     this.model.setBack(cardBackIndex);
-    this.view.toggleCardBack(cardBackIndex);
+    this.view.toggleCardTheme(cardBackIndex);
   }
 }

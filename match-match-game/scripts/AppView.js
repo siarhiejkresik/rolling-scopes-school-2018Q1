@@ -1,4 +1,4 @@
-import { VIEWS, DIFFICULTY_BUTTONS, THEMES } from './constants.js';
+import { VIEWS, DIFFICULTY_BUTTONS, CARD_THEMES } from './constants.js';
 
 import { timeMSToMMSS } from './utils.js';
 
@@ -28,7 +28,7 @@ export default class AppView {
   setUp() {
     // set card back themes
     this.carousel.querySelectorAll('.card').forEach((card, i) => {
-      card.classList.add(THEMES[i]);
+      card.classList.add(CARD_THEMES[i]);
     });
   }
 
@@ -75,7 +75,7 @@ export default class AppView {
     });
   }
 
-  toggleCardBack(cardBackindex) {
+  toggleCardTheme(cardBackindex) {
     const cards = this.carousel.querySelectorAll('.card');
     cards.forEach((card, i) => {
       if (i === cardBackindex) {

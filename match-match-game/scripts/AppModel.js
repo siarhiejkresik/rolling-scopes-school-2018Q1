@@ -1,14 +1,13 @@
 import AppData from './AppData.js';
 import { DIFFICULTIES, RECORDS_TABLE_SIZE } from './constants.js';
 
-// TODO refactor
 export default class AppModel {
   constructor(gameSettings) {
     this.gameSettings = gameSettings;
     this.db = new AppData();
     this.player = null;
     this.difficulty = null;
-    this.back = null;
+    this.cardTheme = null;
     this.setUp();
   }
 
@@ -24,7 +23,7 @@ export default class AppModel {
   resetToDefault() {
     this.player = null;
     this.difficulty = DIFFICULTIES.EASY;
-    this.back = 0;
+    this.cardTheme = 0;
   }
 
   setPlayer(player_info) {
@@ -45,7 +44,7 @@ export default class AppModel {
       this.difficulty = this.player.difficulty;
     }
     if (this.player.back) {
-      this.back = this.player.back;
+      this.cardTheme = this.player.back;
     }
   }
 
@@ -67,7 +66,7 @@ export default class AppModel {
       this.player.back = cardBackIndex;
       this.db.saveToStorage();
     }
-    this.back = cardBackIndex;
+    this.cardTheme = cardBackIndex;
   }
 
   checkForRecord(gameResult) {

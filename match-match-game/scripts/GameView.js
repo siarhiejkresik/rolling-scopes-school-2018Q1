@@ -1,4 +1,4 @@
-import { CARD_STATE, THEMES } from './constants.js';
+import { CARD_STATE, CARD_THEMES } from './constants.js';
 import { timeMSToMMSS } from './utils.js';
 
 export default class GameView {
@@ -11,7 +11,7 @@ export default class GameView {
   renderGrid(size, cardBack) {
     // add cards to grid
     for (let i = 0; i < size; i++) {
-      let card = cardTemplate(THEMES[cardBack]);
+      let card = cardTemplate(CARD_THEMES[cardBack]);
       card = document.createRange().createContextualFragment(card);
       this.grid.appendChild(card);
       this.grid.lastChild.id = `card-${i}`;
