@@ -18,6 +18,7 @@ const DIFFICULTY_BUTTONS = EnumFromString(_DIFFICULTIES, '.')
 const PLAYER = EnumFromString(_PLAYER);
 const THEMES = _THEMES.trim().split(/ +/);
 
+const RECORDS_TABLE_SIZE = 10;
 const DB_KEY = 'matchmatch';
 const DEFAULT_DB = {
     lastPlayerId: null,
@@ -43,14 +44,15 @@ const LEVELS = {
 }
 
 export {
-    VIEWS,
-    CONTROLS,
     CARD_STATE,
-    THEMES,
-    DIFFICULTIES,
-    DIFFICULTY_BUTTONS,
-    PLAYER,
+    CONTROLS,
     DB_KEY,
     DEFAULT_DB,
-    LEVELS
+    DIFFICULTIES,
+    DIFFICULTY_BUTTONS,
+    LEVELS,
+    PLAYER,
+    RECORDS_TABLE_SIZE,
+    THEMES,
+    VIEWS,
 };
