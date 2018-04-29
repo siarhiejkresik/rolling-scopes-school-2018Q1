@@ -16,10 +16,10 @@ export function EnumFromString(str, prefix = '') {
     // validation
     // obj properties
     if (key in obj) {
-      throw `'${key}' is a not valid value`;
+      throw new Error(`'${key}' is a not valid value`);
       // duplicated words in an input string
     } else if (seen_keys.includes(key)) {
-      throw `'${key}' is not unique word in input string`;
+      throw new Error(`'${key}' is not unique word in input string`);
     } else {
       seen_keys.push(key);
     }

@@ -10,7 +10,7 @@ export default class CardDeck {
 
   initCards(numberOfCards, numberOfTypes, sequenceSize, view) {
     if (numberOfCards % 2) {
-      throw 'The number of cards must be even';
+      throw new Error('The number of cards must be even');
     }
 
     if (numberOfCards < numberOfTypes * sequenceSize) {
@@ -41,7 +41,7 @@ export default class CardDeck {
         return card;
       }
     }
-    throw `there is no card with id: ${cardId} in the deck`;
+    throw new Error(`there is no card with id: ${cardId} in the deck`);
   }
 
   shuffle() {
