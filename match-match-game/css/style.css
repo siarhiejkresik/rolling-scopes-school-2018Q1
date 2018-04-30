@@ -20,6 +20,12 @@ input {
     font-family: Lato, sans;
 }
 
+h2,
+h3 {
+    font-family: "Roboto Slab";
+    font-weight: 700;
+}
+
 main {
     height: 100%;
     width: 100%;
@@ -97,12 +103,6 @@ main>section {
     align-items: center;
 }
 
-h2,
-h3 {
-    font-family: "Roboto Slab";
-    font-weight: 700;
-}
-
 .time {
     background: violet;
     font-size: 26px;
@@ -130,10 +130,6 @@ blockquote cite a {
     color: inherit;
     text-decoration: inherit; 
 
-}
-
-.about li {
-    -webkit-margin-start: 2em;
 }
 
 form {
