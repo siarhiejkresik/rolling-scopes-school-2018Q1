@@ -12,6 +12,7 @@ export default class AppModel {
   }
 
   setUp() {
+    // set the last player to the current player
     this.resetToDefault();
     const player = this.db.getLastPlayer();
     if (!player) {
@@ -61,7 +62,7 @@ export default class AppModel {
     this.difficulty = difficulty;
   }
 
-  setBack(cardBackIndex) {
+  setCardTheme(cardBackIndex) {
     if (!this.isAnonimousPlayer(this.player)) {
       this.player.back = cardBackIndex;
       this.db.saveToStorage();

@@ -11,16 +11,12 @@ export default class AppController {
   }
 
   setUp() {
-    this.view.startButtons.forEach(btn =>
-      btn.addEventListener('click', this.onPlay.bind(this))
-    );
+    // add listeners
+    this.view.startButtons.forEach(btn => btn.addEventListener('click', this.onPlay.bind(this)));
     this.view.difficultyButtons.forEach(btn =>
       btn.addEventListener('click', this.onDifficultySet.bind(this))
     );
-    this.view.carousel.addEventListener(
-      'click',
-      this.onCardThemeSet.bind(this)
-    );
+    this.view.carousel.addEventListener('click', this.onCardThemeSet.bind(this));
     this.view.loginForm.addEventListener('submit', this.onLogIn.bind(this));
     this.view.logoutButton.addEventListener('click', this.onLogOut.bind(this));
   }
@@ -96,7 +92,7 @@ export default class AppController {
     }
     const cards = e.currentTarget.querySelectorAll('.card');
     const cardBackIndex = [...cards].indexOf(card);
-    this.model.setBack(cardBackIndex);
+    this.model.setCardTheme(cardBackIndex);
     this.view.toggleCardTheme(cardBackIndex);
   }
 }
