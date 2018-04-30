@@ -61,12 +61,12 @@ export default class AppModel {
     this.difficulty = difficulty;
   }
 
-  setCardTheme(cardBackIndex) {
+  setCardTheme(cardThemeIndex) {
     if (!this.isAnonimousPlayer(this.player)) {
-      this.player.back = cardBackIndex;
+      this.player.back = cardThemeIndex;
       this.db.saveToStorage();
     }
-    this.cardTheme = cardBackIndex;
+    this.cardTheme = cardThemeIndex;
   }
 
   checkForRecord(gameResult) {

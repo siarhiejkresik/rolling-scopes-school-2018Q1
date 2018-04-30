@@ -91,8 +91,8 @@ export default class AppController {
       return;
     }
     const cards = e.currentTarget.querySelectorAll('.card');
-    const cardBackIndex = [...cards].indexOf(card);
-    this.model.setCardTheme(cardBackIndex);
-    this.view.toggleCardTheme(cardBackIndex);
+    const cardThemeIndex = [...cards].indexOf(card);
+    this.model.setCardTheme(cardThemeIndex);
+    this.view.toggleCardTheme(cardThemeIndex);
   }
 }

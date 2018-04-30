@@ -76,10 +76,10 @@ export default class AppView {
     });
   }
 
-  toggleCardTheme(cardBackindex) {
+  toggleCardTheme(cardThemeIndex) {
     const cards = this.carousel.querySelectorAll('.card');
     cards.forEach((card, i) => {
-      if (i === cardBackindex) {
+      if (i === cardThemeIndex) {
         card.classList.add('selected');
       } else {
         card.classList.remove('selected');

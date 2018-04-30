@@ -2,16 +2,16 @@ import { CARD_STATE, CARD_THEMES } from './constants.js';
 import { timeMSToMMSS } from './utils.js';
 
 export default class GameView {
-  constructor(size, cardBack = 0) {
+  constructor(size, cardTheme = 0) {
     this.time = document.querySelector('.time');
     this.grid = document.querySelector('.grid');
-    this.renderGrid(size, cardBack);
+    this.renderGrid(size, cardTheme);
   }
 
-  renderGrid(size, cardBack) {
+  renderGrid(size, cardTheme) {
     // add cards to grid
     for (let i = 0; i < size; i++) {
-      let card = cardTemplate(CARD_THEMES[cardBack]);
+      let card = cardTemplate(CARD_THEMES[cardTheme]);
       card = document.createRange().createContextualFragment(card);
       this.grid.appendChild(card);
       this.grid.lastChild.id = `card-${i}`;
@@ -60,11 +60,11 @@ export default class GameView {
   }
 }
 
-const cardTemplate = cardBack => {
+const cardTemplate = cardTheme => {
   return `
 <div class="card">
     <div class="content">
-        <div class="face back ${cardBack}"></div>
+        <div class="face back ${cardTheme}"></div>
         <div class="face front"></div>
     </div>
 </div>`;
