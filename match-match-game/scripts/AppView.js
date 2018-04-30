@@ -5,9 +5,7 @@ import { timeMSToMMSS } from './utils.js';
 export default class AppView {
   constructor() {
     // buttons
-    this.difficultyButtons = document.querySelectorAll(
-      Object.values(DIFFICULTY_BUTTONS)
-    );
+    this.difficultyButtons = document.querySelectorAll(Object.values(DIFFICULTY_BUTTONS));
     this.logoutButton = document.querySelector('.logout');
     this.nextButton = document.querySelector('.next');
     this.startButtons = document.querySelectorAll('.play');
@@ -26,9 +24,12 @@ export default class AppView {
   }
 
   setUp() {
-    // set card themes
-    this.carousel.querySelectorAll('.card').forEach((card, i) => {
-      card.classList.add(CARD_THEMES[i]);
+    // render card theme carousel
+    CARD_THEMES.forEach(cardTheme => {
+      let card = document.createElement('div');
+      card.classList.add('card');
+      card.classList.add(cardTheme);
+      this.carousel.appendChild(card);
     });
   }
 
