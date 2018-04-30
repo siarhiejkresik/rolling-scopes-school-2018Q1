@@ -27,3 +27,11 @@
     font-style: italic;
     font-weight: normal;
 }
+
+@font-face {
+    font-family: "EBGaramondNumbers";
+    src: url('../fonts/ebgaramond-regular-webfont.woff2') format('woff2'),
+         url('../fonts/ebgaramond-regular-webfont.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
