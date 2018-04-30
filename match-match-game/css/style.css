@@ -1,6 +1,15 @@
+@import url("fonts.css");
 @import url("card-back-patterns.css");
+@import url("buttons.css");
+@import url("cards.css");
 * {
     box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: repeating-linear-gradient(45deg, #dedede 2px, #dadada 3px, #dadada 4px, #dedede 7px);
 }
 
 body,
@@ -9,43 +18,89 @@ input {
     font-family: Lato, sans;
 }
 
-body {
-    background: repeating-linear-gradient(45deg, #dedede 2px, #dadada 3px, #dadada 4px, #dedede 7px);
+main {
+    height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px;
 }
 
-header {
-    background: yellowgreen;
-    vertical-align: center;
-    text-align: center;
+main:before {
+    content: 'Match-match';
+    font-family: 'Luckiest Guy', serif;
+    font-size: 60px;
+    text-transform: capitalize;
+    margin: 20px;
 }
 
-h1,
-h2,
-h3 {
-    text-align: center;
-    font-family: "Roboto Slab";
+main,
+main>section,
+.preferences {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-button {
-    outline: none;
-    border: 0;
-    display: block;
-    text-transform: uppercase;
-    margin: 30px auto;
-    font-family: inherit;
-    font-weight: 700;
-    cursor: pointer;
-    text-transform: uppercase;
-    width: 10em;
-    height: 3em;
-    border-radius: 4px;
-    box-shadow: 0 2px 2px 2px rgba(19, 35, 47, 0.3);
-    user-select: none;
+main>section {
+    /* background: inherit !important; */
+    width: 800px;
+    border-radius: 2px;
+    padding: 30px;
+    margin: 0 auto;
+    box-shadow: 0 0px 4px 2px rgba(19, 35, 47, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.flex-row {
+.welcome {
+    background: chocolate;
+}
+
+.login {
+    background: lightgreen;
+}
+
+.menu {
+    background: turquoise;
+}
+
+.game,
+.result,
+.menu {
+    width: unset;
+}
+
+.preferences {
+    background: cornflowerblue;
+    border-radius: 3px;
+    /* box-shadow: inset 0px 0px 8px 1px rgba(0, 0, 0, .3); */
+}
+
+.difficulty {
+    background: cadetblue;
+}
+
+.col-centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.row-centered {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+h2,
+h3 {
+    font-family: "Roboto Slab";
+    font-weight: 700;
 }
 
 .time {
@@ -53,50 +108,8 @@ button {
     font-size: 26px;
 }
 
-.row-3 {
-    position: relative;
-}
-
-button.selected {
-    background: yellowgreen;
-}
-
-.row-3:after {
-    content: 'three in a row!';
-    position: absolute;
-    left: 2em;
-    top: -2em;
-    font-size: .8em;
-    color: crimson;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #ff00de, 0 0 70px #ff00de;
-}
-
-main {
-    /* max-width: 800px; */
-    /* min-width: 480px; */
-    width: 800px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
-main>section {
-    /* background: inherit !important; */
-    border-radius: 10px;
-    padding: 30px;
-    margin: 0 auto;
-    box-shadow: 0 2px 2px 2px rgba(19, 35, 47, 0.3);
-}
-
 .hidden {
     display: none !important;
-}
-
-/* about */
-
-.welcome {
-    background: chocolate;
 }
 
 blockquote {
@@ -113,13 +126,6 @@ blockquote cite {
 
 .about li {
     -webkit-margin-start: 2em;
-}
-
-/* login */
-
-.login {
-    width: 100%;
-    background: lightgreen;
 }
 
 form {
@@ -146,10 +152,6 @@ input {
     color: white;
 }
 
-label {
-    display: block;
-}
-
 .player-name {
     font-size: 20px;
 }
@@ -164,38 +166,6 @@ label {
     background: inherit;
 }
 
-.menu {
-    width: 100%;
-    background: turquoise;
-}
-
-/* theme */
-
-.preferences {
-    background: cornflowerblue;
-    border-radius: 3px;
-    /* box-shadow: inset 0px 0px 8px 1px rgba(0, 0, 0, .3); */
-}
-
-/* difficulty */
-
-.difficulty {
-    background: cadetblue;
-}
-
-/* play button */
-
-.play {
-    color: white;
-    background-color: rgba(220, 20, 60, .8);
-    font-size: 28px;
-}
-
-.play:hover {
-    background-color: rgba(220, 20, 60, 1);
-    cursor: pointer;
-}
-
 /* game section */
 
 .grid {
@@ -208,71 +178,10 @@ label {
     border-radius: 4px;
 }
 
-.card {
-    position: relative;
-    width: 110px;
-    height: 150px;
-    border-radius: 5px;
-    margin: 6px;
-    perspective: 800px;
-}
-
-.opened .content {
-    transform: rotateY(-180deg);
-}
-
-/* .card:not(.opened) .content:hover,
-    {
-    transform: rotateY(-25deg);
-} */
-
-.card.disabled {
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity .5s linear;
-}
-
-.card .content {
-    /* background: red; */
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-    box-shadow: 0 0 4px 2px rgba(0, 0, 0, .3);
-    transform-style: preserve-3d;
-    transition: 1s;
-}
-
-.card .face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-    font-family: Georgia;
-    font-size: 64px;
-    text-align: center;
-    line-height: 150px;
-    backface-visibility: hidden;
-    cursor: pointer;
-    user-select: none;
-    -moz-user-select: none;
-}
-
-.card .back.default {
-    background: #212F3D;
-}
-
-.card .front {
-    transform: rotateY(180deg);
-    background: white;
-    color: black;
-}
-
 .carousel {
     padding: 20px 20px;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-around;
 }
 

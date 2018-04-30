@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Luckiest Guy';
+    src: url('../fonts/luckiestguy-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto Slab';
+    src: url('../fonts/RobotoSlab-Bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
