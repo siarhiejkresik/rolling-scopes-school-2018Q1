@@ -5,7 +5,7 @@ const _CONTROLS = 'play next login logout return';
 const _CARD_STATE = 'opened closed disabled';
 const _DIFFICULTIES = 'easy normal hard';
 const _PLAYER = 'firstname lastname email cardtheme difficulty';
-const _CARD_THEMES = 'circle microbial-mat corners fancy underwater';
+const _CARD_THEMES = 'hearts microbial-mat frosty-spiral carbon-fibre underwater fancy seigaiha';
 
 const VIEWS = EnumFromString(_VIEWS, '.');
 const CONTROLS = EnumFromString(_CONTROLS, '.');
