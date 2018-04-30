@@ -1,5 +1,5 @@
 import AppData from './AppData.js';
-import { DIFFICULTIES, RECORDS_TABLE_SIZE } from './constants.js';
+import { DIFFICULTIES, RECORDS_TABLE_SIZE, CARD_THEMES } from './constants.js';
 
 export default class AppModel {
   constructor() {
@@ -23,7 +23,10 @@ export default class AppModel {
   resetToDefault() {
     this.player = null;
     this.difficulty = DIFFICULTIES.EASY;
-    this.cardTheme = 0;
+    this.cardTheme =
+      CARD_THEMES && CARD_THEMES.length && CARD_THEMES.length % 2
+        ? parseInt(CARD_THEMES.length / 2, 10)
+        : 0;
   }
 
   setPlayer(player_info) {
