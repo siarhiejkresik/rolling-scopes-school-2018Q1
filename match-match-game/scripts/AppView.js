@@ -1,4 +1,12 @@
-import { VIEWS, DIFFICULTY_BUTTONS, CARD_THEMES } from './constants.js';
+import {
+  CARD_THEMES,
+  CONTROLS,
+  DIFFICULTY_BUTTONS,
+  ELEMENTS,
+  LOGIN_FORM,
+  STATES,
+  VIEWS
+} from './constants.js';
 
 import { timeMSToMMSS } from './utils.js';
 
@@ -6,14 +14,14 @@ export default class AppView {
   constructor() {
     // buttons
     this.difficultyButtons = document.querySelectorAll(Object.values(DIFFICULTY_BUTTONS));
-    this.logoutButton = document.querySelector('.logout');
-    this.nextButton = document.querySelector('.next');
-    this.startButtons = document.querySelectorAll('.play');
-    this.toMenuButton = document.querySelector('.return');
+    this.startButtons = document.querySelectorAll(CONTROLS.PLAY);
+    this.logoutButton = document.querySelector(CONTROLS.LOGOUT);
+    this.nextButton = document.querySelector(CONTROLS.NEXT);
+    this.toMenuButton = document.querySelector(CONTROLS.RETURN);
     // area for card theme selection
-    this.carousel = document.querySelector('.carousel');
+    this.carousel = document.querySelector(ELEMENTS.CAROUSEL);
     // login form
-    this.loginForm = document.querySelector('#login');
+    this.loginForm = document.querySelector(LOGIN_FORM);
 
     // TODO move to AppController?
     // listeners
@@ -57,39 +65,39 @@ export default class AppView {
     this._hideAllViews();
     this._showView(VIEWS.RESULT);
     const view = document.querySelector(VIEWS.RESULT);
-    view.querySelector('.time').innerHTML = timeMSToMMSS(gameResult);
+    view.querySelector(ELEMENTS.TIME).innerHTML = timeMSToMMSS(gameResult);
     if (place) {
-      view.querySelector('.place').innerHTML = place;
-      view.querySelector('.record').classList.remove('hidden');
+      view.querySelector(ELEMENTS.PLACE).innerHTML = place;
+      view.querySelector(ELEMENTS.RECORD).classList.remove(STATES.HIDDEN);
     } else {
-      view.querySelector('.record').classList.add('hidden');
+      view.querySelector(ELEMENTS.RECORD).classList.add(STATES.HIDDEN);
     }
   }
 
   toggleDifficulty(difficulty) {
     this.difficultyButtons.forEach(button => {
       if (button.classList.contains(difficulty)) {
-        button.classList.add('selected');
+        button.classList.add(STATES.SELECTED);
       } else {
-        button.classList.remove('selected');
+        button.classList.remove(STATES.SELECTED);
       }
     });
   }
 
   toggleCardTheme(cardThemeIndex) {
-    const cards = this.carousel.querySelectorAll('.card');
+    const cards = this.carousel.querySelectorAll(ELEMENTS.CARD);
     cards.forEach((card, i) => {
       if (i === cardThemeIndex) {
-        card.classList.add('selected');
+        card.classList.add(STATES.SELECTED);
       } else {
-        card.classList.remove('selected');
+        card.classList.remove(STATES.SELECTED);
       }
     });
   }
 
   setPlayerNames(player) {
-    const firstnames = document.querySelectorAll('.first-name');
-    const lastnames = document.querySelectorAll('.last-name');
+    const firstnames = document.querySelectorAll(ELEMENTS.FIRSTNAME);
+    const lastnames = document.querySelectorAll(ELEMENTS.LASTNAME);
     firstnames.forEach(node => (node.innerHTML = player.firstname));
     lastnames.forEach(node => (node.innerHTML = player.lastname));
   }
@@ -103,11 +111,11 @@ export default class AppView {
 
   _hideAllViews() {
     for (let view of Object.values(VIEWS)) {
-      document.querySelector(view).classList.add('hidden');
+      document.querySelector(view).classList.add(STATES.HIDDEN);
     }
   }
 
   _showView(view) {
-    document.querySelector(view).classList.remove('hidden');
+    document.querySelector(view).classList.remove(STATES.HIDDEN);
   }
 }

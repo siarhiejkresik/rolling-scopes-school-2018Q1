@@ -1,7 +1,7 @@
 import AppView from './AppView.js';
 import AppModel from './AppModel.js';
 import GameController from './GameController.js';
-import { DIFFICULTIES, LEVELS } from './constants.js';
+import { DIFFICULTIES, LEVELS, PLAYER, ELEMENTS } from './constants.js';
 
 export default class AppController {
   constructor() {
@@ -35,9 +35,9 @@ export default class AppController {
   onLogIn(e) {
     e.preventDefault(); // prevent form action
     const player_info = [
-      document.getElementById('firstname').value,
-      document.getElementById('lastname').value,
-      document.getElementById('email').value
+      document.getElementById(PLAYER.FIRSTNAME).value,
+      document.getElementById(PLAYER.LASTNAME).value,
+      document.getElementById(PLAYER.EMAIL).value
     ];
     this.model.setPlayer(player_info);
     this.view.setPlayerNames(this.model.player); // TODO observer
@@ -65,6 +65,7 @@ export default class AppController {
       level: LEVELS[this.model.difficulty],
       theme: this.model.cardTheme
     };
+    // TODO make this.game = new ...
     new GameController(settings, this.onGameEnd.bind(this));
   }
 
@@ -86,11 +87,11 @@ export default class AppController {
   }
 
   onCardThemeSet(e) {
-    const card = e.target.closest('.card');
+    const card = e.target.closest(ELEMENTS.CARD);
     if (!card) {
       return;
     }
-    const cards = e.currentTarget.querySelectorAll('.card');
+    const cards = e.currentTarget.querySelectorAll(ELEMENTS.CARD);
     const cardThemeIndex = [...cards].indexOf(card);
     this.model.setCardTheme(cardThemeIndex);
     this.view.toggleCardTheme(cardThemeIndex);
