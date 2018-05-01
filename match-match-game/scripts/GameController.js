@@ -24,6 +24,7 @@ export default class GameController {
   }
 
   cleanUp() {
+    this.timer.stop();
     this.view.cleanUp();
   }
 
@@ -41,7 +42,6 @@ export default class GameController {
   }
 
   onEndGame() {
-    this.timer.stop();
     this.cleanUp();
     this.exitGameCallback(this.timer.delta);
   }
