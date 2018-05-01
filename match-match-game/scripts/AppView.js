@@ -75,6 +75,7 @@ export default class AppView {
   }
 
   toggleDifficulty(difficulty) {
+    // toggle buttons
     this.difficultyButtons.forEach(button => {
       if (button.classList.contains(difficulty)) {
         button.classList.add(STATES.SELECTED);
@@ -82,6 +83,11 @@ export default class AppView {
         button.classList.remove(STATES.SELECTED);
       }
     });
+
+    // set difficulty value
+    document
+      .querySelectorAll(ELEMENTS.DIFFICULTY)
+      .forEach(element => (element.innerHTML = difficulty));
   }
 
   toggleCardTheme(cardThemeIndex) {
