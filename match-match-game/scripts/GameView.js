@@ -3,7 +3,7 @@ import { timeMSToMMSS } from './utils.js';
 
 export default class GameView {
   constructor(size, cardTheme = 0) {
-    this.time = document.querySelector('.time');
+    this.timer = document.querySelector('.timer');
     this.grid = document.querySelector('.grid');
     this.renderGrid(size, cardTheme);
   }
@@ -39,7 +39,7 @@ export default class GameView {
   }
 
   updateTime(time) {
-    this.time.innerHTML = timeMSToMMSS(time);
+    this.timer.innerHTML = timeMSToMMSS(time);
   }
 
   openCard(card) {
