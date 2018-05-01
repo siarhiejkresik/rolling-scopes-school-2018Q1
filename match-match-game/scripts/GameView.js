@@ -1,10 +1,10 @@
-import { CARD_STATE, CARD_THEMES } from './constants.js';
+import { CARD_STATE, CARD_THEMES, ELEMENTS } from './constants.js';
 import { timeMSToMMSS } from './utils.js';
 
 export default class GameView {
   constructor(size, cardTheme = 0) {
-    this.timer = document.querySelector('.timer');
-    this.grid = document.querySelector('.grid');
+    this.timer = document.querySelector(ELEMENTS.TIMER);
+    this.grid = document.querySelector(ELEMENTS.GRID);
     this.renderGrid(size, cardTheme);
   }
 
