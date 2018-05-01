@@ -3,7 +3,7 @@ import { EnumFromString } from './utils.js';
 const _VIEWS = 'welcome login menu game result';
 const _CONTROLS = 'next logout play exit return';
 const _LOGIN_FORM = 'login';
-const _ELEMENTS = 'card carousel firstname lastname timer difficulty time place record';
+const _ELEMENTS = 'card carousel difficulty grid firstname lastname place record timer time';
 const _STATES = 'hidden selected';
 
 const _CARD_STATE = 'opened closed disabled';
@@ -14,7 +14,7 @@ const _CARD_THEMES = 'carbon-fibre frosty-spiral microbial-mat hearts underwater
 
 const VIEWS = EnumFromString(_VIEWS, '.');
 const CONTROLS = EnumFromString(_CONTROLS, '.');
-const LOGIN_FORM = `#${_LOGIN_FORM}`;
+const LOGIN_FORM = _LOGIN_FORM;
 const ELEMENTS = EnumFromString(_ELEMENTS, '.');
 const DIFFICULTY_BUTTONS = EnumFromString(_DIFFICULTIES, '.');
 const STATES = EnumFromString(_STATES);
@@ -34,7 +34,7 @@ const DEFAULT_DB = {
 
 const LEVELS = {
   easy: {
-    cards: 4,
+    cards: 2,
     types: 1,
     sequence: 2
   },

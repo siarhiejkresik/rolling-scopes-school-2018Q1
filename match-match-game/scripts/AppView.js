@@ -22,7 +22,7 @@ export default class AppView {
     // area for card theme selection
     this.carousel = document.querySelector(ELEMENTS.CAROUSEL);
     // login form
-    this.loginForm = document.querySelector(LOGIN_FORM);
+    this.loginForm = document.getElementById(LOGIN_FORM);
 
     // TODO move to AppController?
     // listeners
