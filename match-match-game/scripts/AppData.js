@@ -1,5 +1,7 @@
 import { DB_KEY, DEFAULT_DB } from './constants.js';
 
+// TODO connections to db from multiple places
+
 export default class AppData {
   constructor() {
     this._storage = new LocalStorage();
