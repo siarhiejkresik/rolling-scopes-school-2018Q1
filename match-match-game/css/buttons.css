@@ -24,36 +24,21 @@ button.selected {
     background: yellowgreen;
 }
 
+button.flat {
+    padding: 0.5em;
+    background: #ffffff4d;
+    border: 1px solid #0000001a;
+    border-radius: 4px;
+    box-shadow: 0 0px 0px 0px rgba(19, 35, 47, 0.3);
+}
+
 button.play {
-    color: white;
     background-color: rgba(220, 20, 60, .8);
     font-size: 2rem;
+    color: white;
 }
 
 button.play:hover {
     background-color: rgba(220, 20, 60, 1);
     cursor: pointer;
-}
-
-.row-3 {
-    position: relative;
-}
-
-.row-3:before {
-    content: 'three in a row!';
-    position: absolute;
-    left: 2.1em;
-    top: -1.6em;
-    font-size: .9em;
-    text-transform: lowercase;
-    color: crimson;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #ff00de, 0 0 70px #ff00de;
-}
-
-button.flat {
-    box-shadow: 0 0px 0px 0px rgba(19, 35, 47, 0.3);
-    border: 1px solid #0000001a;
-    border-radius: 4px;
-    padding: 0.5em;
-    background: #ffffff4d;
 }
