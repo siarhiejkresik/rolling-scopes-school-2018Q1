@@ -19,13 +19,15 @@ export default class GameController {
     this.model.deck.addCardStateObserver(this.view.updateCardView.bind(this.view));
     this.model.endGameSubscibers.subscribe(this.onEndGame.bind(this));
     this.timer.timeSubscribers.subscribe(this.view.updateTime.bind(this.view));
-    // start timer
-    this.timer.start();
   }
 
   cleanUp() {
     this.timer.stop();
     this.view.cleanUp();
+  }
+
+  onStartGame() {
+    this.timer.start();
   }
 
   onViewEvent(e) {

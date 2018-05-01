@@ -69,6 +69,7 @@ export default class AppController {
     };
     this.game = new GameController(settings, this.onGameEnd.bind(this));
     this.view.showGame();
+    this.game.onStartGame();
   }
 
   onExitToMenu() {
