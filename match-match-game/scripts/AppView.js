@@ -18,6 +18,7 @@ export default class AppView {
     this.logoutButton = document.querySelector(CONTROLS.LOGOUT);
     this.nextButton = document.querySelector(CONTROLS.NEXT);
     this.toMenuButton = document.querySelector(CONTROLS.RETURN);
+    this.exitToMenuButton = document.querySelector(CONTROLS.EXIT);
     // area for card theme selection
     this.carousel = document.querySelector(ELEMENTS.CAROUSEL);
     // login form

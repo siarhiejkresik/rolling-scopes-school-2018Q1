@@ -17,6 +17,7 @@ export default class AppController {
     this.view.difficultyButtons.forEach(btn =>
       btn.addEventListener('click', this.onDifficultySet.bind(this))
     );
+    this.view.exitToMenuButton.addEventListener('click', this.onExitToMenu.bind(this));
     this.view.carousel.addEventListener('click', this.onCardThemeSet.bind(this));
     this.view.loginForm.addEventListener('submit', this.onLogIn.bind(this));
     this.view.logoutButton.addEventListener('click', this.onLogOut.bind(this));
@@ -70,6 +71,10 @@ export default class AppController {
     this.view.showGame();
   }
 
+  onExitToMenu() {
+    this.game.cleanUp();
+    this.game = null;
+    this.view.showMenu();
   }
 
   onDifficultySet(e) {
