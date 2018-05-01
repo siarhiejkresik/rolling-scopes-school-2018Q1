@@ -43,28 +43,22 @@ export default class AppView {
   }
 
   showWelcome() {
-    this._hideAllViews();
-    this._showView(VIEWS.WELCOME);
+    this._switchToView(VIEWS.WELCOME);
   }
 
   showLogIn() {
-    this._hideAllViews();
-    this._showView(VIEWS.LOGIN);
+    this._switchToView(VIEWS.LOGIN);
   }
 
   showMenu() {
-    this._hideAllViews();
-    this._showView(VIEWS.MENU);
+    this._switchToView(VIEWS.MENU);
   }
 
   showGame() {
-    this._hideAllViews();
-    this._showView(VIEWS.GAME);
+    this._switchToView(VIEWS.GAME);
   }
 
   showGameEnd(gameResult, place) {
-    this._hideAllViews();
-    this._showView(VIEWS.RESULT);
     const view = document.querySelector(VIEWS.RESULT);
     view.querySelector(ELEMENTS.TIME).innerHTML = timeMSToMMSS(gameResult);
     if (place) {
@@ -73,6 +67,8 @@ export default class AppView {
     } else {
       view.querySelector(ELEMENTS.RECORD).classList.add(STATES.HIDDEN);
     }
+
+    this._switchToView(VIEWS.RESULT);
   }
 
   toggleDifficulty(difficulty) {
@@ -114,6 +110,11 @@ export default class AppView {
       firstname: '',
       lastname: ''
     });
+  }
+
+  _switchToView(view) {
+    this._hideAllViews();
+    this._showView(view);
   }
 
   _hideAllViews() {
