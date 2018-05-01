@@ -1,9 +1,7 @@
 import {
   CARD_THEMES,
-  CONTROLS,
   DIFFICULTY_BUTTONS,
   ELEMENTS,
-  LOGIN_FORM,
   STATES,
   VIEWS
 } from './constants.js';
@@ -12,23 +10,8 @@ import { timeMSToMMSS } from './utils.js';
 
 export default class AppView {
   constructor() {
-    // buttons
     this.difficultyButtons = document.querySelectorAll(Object.values(DIFFICULTY_BUTTONS));
-    this.startButtons = document.querySelectorAll(CONTROLS.PLAY);
-    this.logoutButton = document.querySelector(CONTROLS.LOGOUT);
-    this.nextButton = document.querySelector(CONTROLS.NEXT);
-    this.toMenuButton = document.querySelector(CONTROLS.RETURN);
-    this.exitToMenuButton = document.querySelector(CONTROLS.EXIT);
-    // area for card theme selection
     this.carousel = document.querySelector(ELEMENTS.CAROUSEL);
-    // login form
-    this.loginForm = document.getElementById(LOGIN_FORM);
-
-    // TODO move to AppController?
-    // listeners
-    this.nextButton.addEventListener('click', this.showLogIn.bind(this));
-    this.toMenuButton.addEventListener('click', this.showMenu.bind(this));
-
     this.setUp();
   }
 

@@ -1,7 +1,14 @@
 import AppView from './AppView.js';
 import AppModel from './AppModel.js';
 import GameController from './GameController.js';
-import { DIFFICULTIES, LEVELS, PLAYER, ELEMENTS } from './constants.js';
+import {
+  CONTROLS,
+  DIFFICULTIES,
+  LEVELS,
+  LOGIN_FORM,
+  PLAYER,
+  ELEMENTS
+} from './constants.js';
 
 export default class AppController {
   constructor() {
@@ -13,14 +20,30 @@ export default class AppController {
 
   setUp() {
     // add listeners
-    this.view.startButtons.forEach(btn => btn.addEventListener('click', this.onPlay.bind(this)));
+    // card theme carousel
+    this.view.carousel.addEventListener('click', this.onCardThemeSet.bind(this));
+    // buttons
     this.view.difficultyButtons.forEach(btn =>
       btn.addEventListener('click', this.onDifficultySet.bind(this))
     );
-    this.view.exitToMenuButton.addEventListener('click', this.onExitToMenu.bind(this));
-    this.view.carousel.addEventListener('click', this.onCardThemeSet.bind(this));
-    this.view.loginForm.addEventListener('submit', this.onLogIn.bind(this));
-    this.view.logoutButton.addEventListener('click', this.onLogOut.bind(this));
+
+    const startButtons = document.querySelectorAll(CONTROLS.PLAY);
+    startButtons.forEach(btn => btn.addEventListener('click', this.onPlay.bind(this)));
+
+    const nextButton = document.querySelector(CONTROLS.NEXT);
+    nextButton.addEventListener('click', this.view.showLogIn.bind(this.view));
+
+    const logoutButton = document.querySelector(CONTROLS.LOGOUT);
+    logoutButton.addEventListener('click', this.onLogOut.bind(this));
+    // buttons binded to view
+    const toMenuButton = document.querySelector(CONTROLS.RETURN);
+    toMenuButton.addEventListener('click', this.view.showMenu.bind(this.view));
+
+    const exitToMenuButton = document.querySelector(CONTROLS.EXIT);
+    exitToMenuButton.addEventListener('click', this.onExitToMenu.bind(this));
+    // login form
+    const loginForm = document.getElementById(LOGIN_FORM);
+    loginForm.addEventListener('submit', this.onLogIn.bind(this));
   }
 
   run() {
