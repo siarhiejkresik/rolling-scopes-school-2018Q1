@@ -7,6 +7,7 @@ export default class AppController {
   constructor() {
     this.view = new AppView();
     this.model = new AppModel();
+    this.game = null;
     this.setUp();
   }
 
@@ -55,18 +56,20 @@ export default class AppController {
   }
 
   onGameEnd(gameResult) {
+    this.game = null;
     const place = this.model.checkForRecord(gameResult);
     this.view.showGameEnd(gameResult, place);
   }
 
   onPlay() {
-    this.view.showGame();
     const settings = {
       level: LEVELS[this.model.difficulty],
       theme: this.model.cardTheme
     };
-    // TODO make this.game = new ...
-    new GameController(settings, this.onGameEnd.bind(this));
+    this.game = new GameController(settings, this.onGameEnd.bind(this));
+    this.view.showGame();
+  }
+
   }
 
   onDifficultySet(e) {
