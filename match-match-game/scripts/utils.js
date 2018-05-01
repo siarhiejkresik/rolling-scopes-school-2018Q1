@@ -1,5 +1,5 @@
 /**
- * Create enum from string.
+ * Create pseudo enum type from string.
  *
  *  input: 'aa bb cc', prefix = '.'
  *
@@ -14,12 +14,12 @@ export function EnumFromString(str, prefix = '') {
   const seen_keys = [];
   for (let key of str.trim().split(/ +/)) {
     // validation
-    // obj properties
     if (key in obj) {
+      // obj properties
       throw new Error(`'${key}' is a not valid value`);
-      // duplicated words in an input string
     } else if (seen_keys.includes(key)) {
-      throw new Error(`'${key}' is not unique word in input string`);
+      // duplicated words in an input string
+      throw new Error(`'${key}' is not an unique word in input string`);
     } else {
       seen_keys.push(key);
     }
@@ -41,7 +41,7 @@ export function shuffleArray(array) {
 }
 
 /**
- * Convert time in milliseconds to MM:SS format
+ * Convert time in milliseconds to MM:SS format. Max time is 59:59
  * @example
  * // returns 00:01
  * timeMSToMMSS(1000)
