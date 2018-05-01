@@ -85,16 +85,13 @@ main>section {
 }
 
 .game {
-    background: hsla(40, 25%, 60%, 0.20)
-}
-
-.difficulty {
-    text-transform: capitalize;
+    background: hsla(40, 25%, 60%, 0.2)
 }
 
 .preferences {
-    background: hsla(200, 100%, 100%, 0.2);
+    padding-bottom: 10px;
     border-radius: 3px;
+    background: hsla(200, 100%, 100%, 0.2);
     box-shadow: inset 0px 0px 8px 0px rgba(0, 0, 0, .3);
 }
 
@@ -128,6 +125,7 @@ main>section {
     text-transform: capitalize;
     line-height: 1em;
     margin: 20px;
+    margin-bottom: 0;
 }
 
 .timer {
@@ -141,6 +139,10 @@ main>section {
     box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, .3);
 }
 
+.difficulty {
+    text-transform: capitalize;
+}
+
 .record {
     padding: .5em;
     font-size: 1.3em;
@@ -149,6 +151,10 @@ main>section {
 .place {
     font-size: 1.3em;
     font-weight: 700;
+}
+
+.result {
+    padding-bottom: 30px;
 }
 
 .time {
