@@ -21,7 +21,7 @@ export default class Timer {
 
   stop() {
     if (this._timer === null) {
-      throw new Error('you must start first before trying to stop');
+      throw new Error('you must start timer first before trying to stop');
     }
     clearInterval(this._timer);
     return this.delta;
