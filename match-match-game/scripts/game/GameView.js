@@ -1,5 +1,7 @@
 import { timeMSToMMSS } from '../utils.js';
-import { CARD_STATE, CARD_THEMES, ELEMENTS } from '../constants.js';
+import { CARD_STATE, CARD_THEMES, CARD_TEMPLATE, ELEMENTS } from '../constants.js';
+
+// TODO get rid of string literals (card-, front)
 
 export default class GameView {
   constructor(size, cardTheme = 0) {
@@ -11,7 +13,7 @@ export default class GameView {
   renderGrid(size, cardTheme) {
     // add cards to grid
     for (let i = 0; i < size; i++) {
-      let card = cardTemplate(CARD_THEMES[cardTheme]);
+      let card = CARD_TEMPLATE(CARD_THEMES[cardTheme]);
       card = document.createRange().createContextualFragment(card);
       this.grid.appendChild(card);
       this.grid.lastChild.id = `card-${i}`;
@@ -59,13 +61,3 @@ export default class GameView {
     this.grid.outerHTML = this.grid.outerHTML; // removes all listeners
   }
 }
-
-const cardTemplate = cardTheme => {
-  return `
-<div class="card">
-    <div class="content">
-        <div class="face back ${cardTheme}"></div>
-        <div class="face front"></div>
-    </div>
-</div>`;
-};

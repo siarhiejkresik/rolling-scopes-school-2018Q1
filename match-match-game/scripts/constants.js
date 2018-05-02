@@ -25,6 +25,16 @@ const DIFFICULTIES = EnumFromString(_DIFFICULTIES);
 const PLAYER = EnumFromString(_PLAYER);
 const CARD_THEMES = _CARD_THEMES.trim().split(/ +/);
 
+const CARD_TEMPLATE = cardTheme => {
+  return `
+<div class="card">
+    <div class="content">
+        <div class="face back ${cardTheme}"></div>
+        <div class="face front"></div>
+    </div>
+</div>`;
+};
+
 const RECORDS_TABLE_SIZE = 10;
 const DB_KEY = 'matchmatch';
 const DEFAULT_DB = {
@@ -56,6 +66,7 @@ export {
   ANIMATION_SPEED,
   CARD_STATE,
   CARD_THEMES,
+  CARD_TEMPLATE,
   CONTROLS,
   DB_KEY,
   DEFAULT_DB,
