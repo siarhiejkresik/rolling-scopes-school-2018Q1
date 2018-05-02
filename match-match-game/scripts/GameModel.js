@@ -13,7 +13,7 @@ export default class GameModel {
     this.endGameSubscibers = new Observable();
   }
 
-  onCardSelect(cardId) {
+  onSelectCard(cardId) {
     const card = this.deck.getCardById(cardId);
 
     if (!this.isSelectableCard(card)) {

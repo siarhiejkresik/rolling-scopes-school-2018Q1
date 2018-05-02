@@ -26,11 +26,11 @@ export default class AppModel {
     this.cardTheme = 0;
   }
 
-  setPlayer(player_info) {
+  setPlayer(playerInfo) {
     // get a player from database or create a new one
-    let player = this.db.getPlayerByName(...player_info);
+    let player = this.db.getPlayerByName(...playerInfo);
     if (!player) {
-      player = this.db.addNewPlayer(...player_info);
+      player = this.db.addNewPlayer(...playerInfo);
     }
 
     // remember a player if that is not an anonimous

@@ -59,12 +59,12 @@ export default class AppController {
 
   onLogIn(e) {
     e.preventDefault(); // prevent form action
-    const player_info = [
+    const playerInfo = [
       document.getElementById(PLAYER.FIRSTNAME).value,
       document.getElementById(PLAYER.LASTNAME).value,
       document.getElementById(PLAYER.EMAIL).value
     ];
-    this.model.setPlayer(player_info);
+    this.model.setPlayer(playerInfo);
     this.view.setPlayerNames(this.model.player); // TODO observer
     this.view.toggleDifficulty(this.model.difficulty);
     this.view.toggleCardTheme(this.model.cardTheme);
