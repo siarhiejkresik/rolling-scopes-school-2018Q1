@@ -1,5 +1,5 @@
 import AppData from './AppData.js';
-import { DIFFICULTIES, RECORDS_TABLE_SIZE } from './constants.js';
+import { DIFFICULTIES, RECORDS_TABLE_SIZE } from '../constants.js';
 
 export default class AppModel {
   constructor() {

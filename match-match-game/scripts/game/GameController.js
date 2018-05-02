@@ -1,7 +1,7 @@
-import { ELEMENTS } from './constants.js';
 import GameView from './GameView.js';
 import GameModel from './GameModel.js';
-import Timer from './Timer.js';
+import Timer from '../Timer.js';
+import { ELEMENTS } from '../constants.js';
 
 export default class GameController {
   constructor(settings, exitGameCallback) {

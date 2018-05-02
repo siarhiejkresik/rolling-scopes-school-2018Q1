@@ -4,9 +4,9 @@ import {
   ELEMENTS,
   STATES,
   VIEWS
-} from './constants.js';
+} from '../constants.js';
 
-import { timeMSToMMSS } from './utils.js';
+import { timeMSToMMSS } from '../utils.js';
 
 export default class AppView {
   constructor() {

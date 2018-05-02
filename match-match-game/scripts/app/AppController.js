@@ -1,6 +1,6 @@
 import AppView from './AppView.js';
 import AppModel from './AppModel.js';
-import GameController from './GameController.js';
+import GameController from '../game/GameController.js';
 import {
   CONTROLS,
   DIFFICULTIES,
@@ -8,7 +8,7 @@ import {
   LOGIN_FORM,
   PLAYER,
   ELEMENTS
-} from './constants.js';
+} from '../constants.js';
 
 export default class AppController {
   constructor() {

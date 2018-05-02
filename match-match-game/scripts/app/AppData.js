@@ -1,4 +1,4 @@
-import { DB_KEY, DEFAULT_DB } from './constants.js';
+import { DB_KEY, DEFAULT_DB } from '../constants.js';
 
 // TODO connections to db from multiple places
 

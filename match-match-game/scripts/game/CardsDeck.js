@@ -1,5 +1,5 @@
 import Card from './Card.js';
-import { shuffleArray } from './utils.js';
+import { shuffleArray } from '../utils.js';
 
 export default class CardDeck {
   constructor(cards, types, sequence, view) {

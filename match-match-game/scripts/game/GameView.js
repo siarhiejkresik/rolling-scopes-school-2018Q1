@@ -1,5 +1,5 @@
-import { CARD_STATE, CARD_THEMES, ELEMENTS } from './constants.js';
-import { timeMSToMMSS } from './utils.js';
+import { timeMSToMMSS } from '../utils.js';
+import { CARD_STATE, CARD_THEMES, ELEMENTS } from '../constants.js';
 
 export default class GameView {
   constructor(size, cardTheme = 0) {

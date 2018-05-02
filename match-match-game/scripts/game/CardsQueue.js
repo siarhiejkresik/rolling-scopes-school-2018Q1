@@ -1,4 +1,4 @@
-import { ANIMATION_SPEED } from './constants.js';
+import { ANIMATION_SPEED } from '../constants.js';
 
 export default class OpenedCardsQueue {
   constructor(size) {
