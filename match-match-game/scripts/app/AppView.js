@@ -1,10 +1,4 @@
-import {
-  CARD_THEMES,
-  DIFFICULTY_BUTTONS,
-  ELEMENTS,
-  STATES,
-  VIEWS
-} from '../constants.js';
+import { CARD_THEMES, DIFFICULTY_BUTTONS, ELEMENTS, STATES, VIEWS } from '../constants.js';
 
 import { timeMSToMMSS } from '../utils.js';
 
