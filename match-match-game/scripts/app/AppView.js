@@ -101,9 +101,7 @@ export default class AppView {
   }
 
   _hideAllViews() {
-    for (let view of Object.values(VIEWS)) {
-      document.querySelector(view).classList.add(STATES.HIDDEN);
-    }
+    Object.values(VIEWS).forEach(view => document.querySelector(view).classList.add(STATES.HIDDEN));
   }
 
   _showView(view) {
