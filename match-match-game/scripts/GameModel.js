@@ -1,8 +1,7 @@
 import OpenedCardsQueue from './CardsQueue.js';
 import CardsDeck from './CardsDeck.js';
 import Observable from './Observable.js';
-
-const ANIMATION_SPEED = 1000; // TODO
+import { ANIMATION_SPEED } from './constants.js';
 
 export default class GameModel {
   constructor(level) {

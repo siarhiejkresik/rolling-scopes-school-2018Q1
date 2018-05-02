@@ -32,10 +32,12 @@ const DEFAULT_DB = {
   players: []
 };
 
+const ANIMATION_SPEED = 1000;
+
 const LEVELS = {
   easy: {
-    cards: 2,
-    types: 1,
+    cards: 16,
+    types: 8,
     sequence: 2
   },
   normal: {
@@ -51,6 +53,7 @@ const LEVELS = {
 };
 
 export {
+  ANIMATION_SPEED,
   CARD_STATE,
   CARD_THEMES,
   CONTROLS,
