@@ -2,13 +2,13 @@ import Card from './Card.js';
 import { shuffleArray } from '../utils.js';
 
 export default class CardDeck {
-  constructor(cards, types, sequence, view) {
+  constructor(cards, types, sequence) {
     this.cards = [];
-    this.initCards(cards, types, sequence, view);
+    this.initCards(cards, types, sequence);
     this.shuffle();
   }
 
-  initCards(numberOfCards, numberOfTypes, sequenceSize, view) {
+  initCards(numberOfCards, numberOfTypes, sequenceSize) {
     if (numberOfCards % 2) {
       throw new Error('The number of cards must be even');
     }
@@ -29,7 +29,7 @@ export default class CardDeck {
     let id = 0;
     for (let type = 0; type < numberOfTypes; type++) {
       for (let n = 0; n < numberOfCardsOfEachType; n++) {
-        this.cards.push(new Card(id, type, view));
+        this.cards.push(new Card(id, type));
         id += 1;
       }
     }

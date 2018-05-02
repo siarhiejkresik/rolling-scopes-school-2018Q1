@@ -1,5 +1,6 @@
 import Observable from '../Observable.js';
 import { CARD_STATE } from '../constants.js';
+
 export default class Card {
   constructor(id, type) {
     this.id = id;
