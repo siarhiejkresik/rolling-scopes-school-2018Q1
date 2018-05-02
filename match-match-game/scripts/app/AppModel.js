@@ -85,7 +85,7 @@ export default class AppModel {
 
     const i = records.findIndex(record => result.time < record.time);
     if (i === -1) {
-      // result time is bigger than all the times in records
+      // result time is bigger than all times in records
 
       if (records.length < RECORDS_TABLE_SIZE) {
         // record table is not full
