@@ -62,5 +62,6 @@ export function timeMSToMMSS(milliseconds) {
     seconds = formatting(parseInt((milliseconds / 1000) % 60));
     minutes = formatting(parseInt((milliseconds / (1000 * 60)) % 60));
   }
+
   return `${minutes}:${seconds}`;
 }
