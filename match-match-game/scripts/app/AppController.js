@@ -65,7 +65,7 @@ export default class AppController {
       document.getElementById(PLAYER.EMAIL).value
     ];
     this.model.setPlayer(playerInfo);
-    this.view.setPlayerNames(this.model.player); // TODO observer
+    this.view.setPlayerNames(this.model.player);
     this.view.toggleDifficulty(this.model.difficulty);
     this.view.toggleCardTheme(this.model.cardTheme);
     this.view.showMenu();
