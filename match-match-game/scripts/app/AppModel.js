@@ -71,6 +71,7 @@ export default class AppModel {
     this.cardTheme = cardThemeIndex;
   }
 
+  // TODO implement RecordsTable class
   checkForRecord(gameResult) {
     const result = {
       id: this.player.id,
