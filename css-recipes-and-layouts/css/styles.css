@@ -1,0 +1,60 @@
+@import url('normalize.css');
+body {
+    outline: 1px black solid;
+    background: lightblue;
+    width: 100%;
+}
+
+header {
+    background: lightgreen;
+    grid-area: header;
+}
+
+nav {
+    background: lightseagreen;
+    grid-area: nav;
+}
+
+aside {
+    background: lightpink;
+    grid-area: aside;
+}
+
+main {
+    background: lightslategrey;
+    grid-area: main;
+}
+
+.spinner {
+    background: lightsalmon;
+}
+
+.grid {
+    display: grid;
+    grid-template-areas: ". header header. " "nav nav nav nav" ". main aside .";
+    grid-template-columns: auto minmax(max-content, 640px) 256px auto;
+    grid-column-gap: 26px;
+}
+
+@media (max-width: 768px) {
+    body {
+        background: blue;
+    }
+    .grid {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 320px) {
+    body {
+        background: darkblue;
+    }
+    .grid {
+        display: flex;
+        flex-direction: column;
+    }
+    aside {
+        display: none;
+    }
+}
