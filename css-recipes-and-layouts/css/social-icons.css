@@ -1,29 +1,19 @@
 .bg-facebook {
-    width: 24px;
-    height: 24px;
-    background: url('../images/social_sprites.png') -10px -10px;
+    background: #3c5a97 url("../images/social_sprites.png") -10px -10px no-repeat;
 }
 
 .bg-googleplus {
-    width: 24px;
-    height: 24px;
-    background: url("") -54px -10px;
+    background: #c25235 url("../images/social_sprites.png") -10px -54px no-repeat;
 }
 
 .bg-twitter {
-    width: 24px;
-    height: 24px;
-    background: url('css_sprites.png') -10px -54px;
+    background: #00acee url("../images/social_sprites.png") -10px -142px no-repeat;
 }
 
 .bg-vk {
-    width: 24px;
-    height: 24px;
-    background: url('css_sprites.png') -54px -54px;
+    background: #48729d url("../images/social_sprites.png") -10px -186px no-repeat;
 }
 
 .bg-yandex {
-    width: 24px;
-    height: 24px;
-    background: url('css_sprites.png') -98px -10px;
+    background: #d83933 url("../images/social_sprites.png") -10px -98px no-repeat;
 }
