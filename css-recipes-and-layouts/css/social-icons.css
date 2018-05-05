@@ -1,0 +1,29 @@
+.bg-facebook {
+    width: 24px;
+    height: 24px;
+    background: url('../images/social_sprites.png') -10px -10px;
+}
+
+.bg-googleplus {
+    width: 24px;
+    height: 24px;
+    background: url("") -54px -10px;
+}
+
+.bg-twitter {
+    width: 24px;
+    height: 24px;
+    background: url('css_sprites.png') -10px -54px;
+}
+
+.bg-vk {
+    width: 24px;
+    height: 24px;
+    background: url('css_sprites.png') -54px -54px;
+}
+
+.bg-yandex {
+    width: 24px;
+    height: 24px;
+    background: url('css_sprites.png') -98px -10px;
+}
