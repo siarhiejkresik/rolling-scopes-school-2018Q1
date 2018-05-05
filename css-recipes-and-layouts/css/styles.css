@@ -1,5 +1,4 @@
 @import url('normalize.css');
-
 @import url('fonts.css');
 @import url('page-navigation.css');
 @import url('tags.css');
@@ -63,6 +62,10 @@ p {
     text-align: justify;
 }
 
+main>article {
+    position: relative;
+}
+
 .spinner {
     background: url("../images/loading.png") top no-repeat;
     height: 100px;
@@ -73,7 +76,6 @@ p {
     height: auto;
 }
 
-
 .article-info h2 {
     padding: 0;
     font-family: Cantarell;
@@ -82,7 +84,6 @@ p {
     text-transform: uppercase;
     border-bottom: 5px solid;
     color: rgb(103, 148, 183);
-
 }
 
 .article-info h2::before {
@@ -110,19 +111,39 @@ p {
 }
 
 @media (max-width: 768px) {
-    body {
-        background: blue;
+    .page-navigation {
+        margin-bottom: 0;
     }
     .page-content {
         display: flex;
         flex-direction: column;
     }
-    .about,
-    .info {
+    main > article {
+        box-sizing: border-box;
+        padding: 0 62px;
+
+    }
+    .social {
+        position: absolute;
+        top:0;
+        right: -2px;
+        flex-direction: column;
+        align-items: flex-end;
+        opacity: 1;
+        filter: none;
+    }
+    .social a {
+        margin: 0 0 8px 3px;
+    }
+    .article-info {
         display: none;
     }
     .tags {
         padding: 30px 50px;
+        justify-content: center;
+    }
+    .tags a {
+        margin: 5px 20px 5px 0;
     }
 }
 
