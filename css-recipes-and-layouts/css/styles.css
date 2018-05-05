@@ -66,9 +66,24 @@ main>article {
     position: relative;
 }
 
+/* TODO */
+
 .spinner {
     background: url("../images/loading.png") top no-repeat;
-    height: 100px;
+    height: 48px;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotating {
+    animation: rotating 2s linear infinite;
 }
 
 .responsive {
