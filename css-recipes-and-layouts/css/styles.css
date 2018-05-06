@@ -83,6 +83,8 @@ main {
 .spinner {
     background: url("../images/loading.png") top no-repeat;
     height: 48px;
+    width: 48px;
+    margin: 48px auto;
 }
 
 /* media queries */
