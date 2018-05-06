@@ -1,5 +1,6 @@
 @import url('normalize.css');
 @import url('fonts.css');
+@import url('animation.css');
 @import url('page-navigation.css');
 @import url('tags.css');
 @import url('logo.css');
@@ -19,14 +20,23 @@ body {
     font-size: 13px;
 }
 
-body>header {
-    grid-area: header;
-    justify-self: center;
-    align-self: center;
+p {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    line-height: 1.5;
+    text-align: justify;
 }
 
-body>header a {
-    text-decoration: none;
+.responsive {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* page layout */
+
+body>header {
+    grid-area: header;
 }
 
 nav {
@@ -35,62 +45,58 @@ nav {
 
 aside {
     grid-area: aside;
-    display: grid;
-    grid-row-gap: 20px;
-    align-content: start;
 }
 
 main {
     grid-area: main;
-    width: 100%;
-    display: grid;
-    grid-row-gap: 20px;
-    align-content: start;
 }
 
 .page-content {
     display: grid;
     grid-template-areas: ". header header. " "nav nav nav nav" ". main aside .";
     grid-template-columns: auto 640px 256px auto;
-    /* grid-template-rows: 87px 107px; */
     grid-column-gap: 26px;
 }
 
-p {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    line-height: 1.5;
-    text-align: justify;
+/* page header */
+
+body>header {
+    justify-self: center;
+    align-self: center;
 }
 
-main>article {
+body>header a {
+    text-decoration: none;
+}
+
+/* page aside */
+
+aside {
+    display: grid;
+    grid-row-gap: 20px;
+    align-content: start;
+}
+
+/* page main */
+
+main {
+    width: 100%;
+    display: grid;
+    grid-row-gap: 20px;
+    align-content: start;
+}
+
+.main-article {
     position: relative;
 }
 
 /* TODO */
 
+/* spinner */
+
 .spinner {
     background: url("../images/loading.png") top no-repeat;
     height: 48px;
-}
-
-@keyframes rotating {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.rotating {
-    animation: rotating 2s linear infinite;
-}
-
-.responsive {
-    display: block;
-    width: 100%;
-    height: auto;
 }
 
 .info-article h2 {
@@ -120,6 +126,8 @@ main>article {
 .mark-exclamation::before {
     content: '!';
 }
+
+/* media queries */
 
 @media (max-width: 1920) {
     .page-navigation {
