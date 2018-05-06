@@ -14,7 +14,6 @@
 }
 
 body {
-    outline: 1px black crimson;
     width: 100%;
     color: #69747c;
     font-family: Arial, sans;
@@ -70,7 +69,6 @@ aside {
 /* page main */
 
 main {
-    width: 100%;
     display: grid;
     grid-row-gap: 20px;
     align-content: start;

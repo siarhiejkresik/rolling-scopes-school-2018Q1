@@ -2,7 +2,6 @@
     padding: 10px 0;
     font-family: ArialNarrow, sans;
     font-size: 18px;
-    vertical-align: middle;
     color: #69747c;
 }
 
@@ -37,10 +36,8 @@
     margin-left: auto;
     display: flex;
     flex-flow: row;
-    /* TODO */
-    filter: saturate(0%) grayscale(10%);
-    fill: #ff0000;
-    opacity: .5;
+    filter: saturate(0%);
+    opacity: .3;
 }
 
 .social a {
