@@ -1,10 +1,11 @@
 @import url('normalize.css');
 @import url('fonts.css');
 @import url('animation.css');
+@import url('header.css');
 @import url('page-navigation.css');
-@import url('tags.css');
-@import url('logo.css');
 @import url('main-article.css');
+@import url('info-article.css');
+@import url('tags.css');
 @import url('social-icons.css');
 * {
     margin: 0;
