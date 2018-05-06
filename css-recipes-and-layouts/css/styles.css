@@ -8,6 +8,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -118,12 +119,6 @@ main>article {
 
 .mark-exclamation::before {
     content: '!';
-}
-
-@media (max-width: 974px) {
-    .page-content {
-        grid-template-columns: auto 2.5fr 1fr auto;
-    }
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
