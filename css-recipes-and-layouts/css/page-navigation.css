@@ -21,15 +21,20 @@
 }
 
 .page-navigation a {
-    display: flex;
     padding: 0px 35px;
     height: 100%;
     color: #fff;
     text-decoration: none;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-.page-navigation li :hover::before {
+.page-navigation a:hover {
+    color: #c6defa;
+}
+
+.page-navigation li:hover::before {
     position: absolute;
     content: '';
     bottom: -12px;
@@ -66,6 +71,10 @@
     align-items: center;
     cursor: pointer;
 }
+
+.page-navigation .nav-item:hover {
+    background: #c6defa;
+} 
 
 .page-navigation ul.opened {
     display: flex;
