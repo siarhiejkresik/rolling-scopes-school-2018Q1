@@ -102,18 +102,14 @@ main {
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
-    .page-navigation {
-        margin-bottom: 0;
-    }
+    /* page content */
     .page-content {
         display: flex;
         flex-direction: column;
     }
-    .main-article {
-        box-sizing: border-box;
-        padding: 0 62px;
-    }
+    /* page navigation */
     .page-navigation {
+        margin-bottom: 0;
         display: grid;
         grid-column-gap: 3px;
         grid-template-columns: 44px auto 44px;
@@ -130,10 +126,16 @@ main {
     }
     .page-navigation .nav-menu,
     .page-navigation .nav-tags {
-        display: none
+        display: none;
     }
     .page-navigation .nav-about {
         order: -1;
+    }
+    /* page main */
+    /* main article */
+    .main-article {
+        box-sizing: border-box;
+        padding: 0 62px;
     }
     .social {
         position: absolute;
@@ -149,6 +151,8 @@ main {
         border-bottom-right-radius: 0;
         margin: 0 0 8px 3px;
     }
+    /* page aside */
+    /* info artice */
     .info-article {
         display: none;
     }
@@ -162,10 +166,12 @@ main {
 }
 
 @media (max-width: 768px) {
+    /* page content */
     .page-content {
         display: flex;
         flex-direction: column;
     }
+    /* page header */
     main>header {
         height: 53px;
     }
@@ -177,9 +183,7 @@ main {
         width: 35px;
         height: 34px;
     }
-    main {
-        padding: 16px;
-    }
+    /* page navigation */
     .page-navigation {
         margin-bottom: 0;
         border-bottom: 0;
@@ -202,9 +206,18 @@ main {
     .page-navigation .nav-menu {
         grid-column: 5 / 6;
     }
+    /* page main */
+    main {
+        padding: 16px;
+    }
+    .main-article h2 {
+        text-align: center;
+        background: rgba(226, 229, 232, 0.38);
+    }
     .byline {
         justify-content: space-around;
     }
+    /* page aside */
     aside,
     .about,
     .info {
@@ -219,9 +232,5 @@ main {
         align-items: center;
         opacity: 1;
         filter: none;
-    }
-    .main-article h2 {
-        text-align: center;
-        background: rgba(226, 229, 232, 0.38);
     }
 }
