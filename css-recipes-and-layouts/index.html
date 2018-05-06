@@ -24,7 +24,7 @@
     </header>
 
     <nav class="page-navigation">
-        <ul>
+        <ul id="nav">
             <li>
                 <a href="">Javascript</a>
             </li>
@@ -46,6 +46,7 @@
         <div class="nav-item nav-tags">
             <img src="./images/tag.png" alt="tags">
         </div>
+        <div id="nav-button" class="nav-item nav-menu">&#9776;</div>
     </nav>
 
     <aside>
@@ -124,6 +125,11 @@
         </article>
         <div class="spinner *rotating"></div>
     </main>
+    <script>
+        document.getElementById("nav-button").addEventListener('click', (e) => {
+            document.getElementById("nav").classList.toggle("opened");
+        });
+    </script>
 </body>
 
 </html>
