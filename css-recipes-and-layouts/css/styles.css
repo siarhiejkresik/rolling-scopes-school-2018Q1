@@ -58,16 +58,7 @@ main {
     grid-column-gap: 26px;
 }
 
-/* page header */
 
-body>header {
-    justify-self: center;
-    align-self: center;
-}
-
-body>header a {
-    text-decoration: none;
-}
 
 /* page aside */
 

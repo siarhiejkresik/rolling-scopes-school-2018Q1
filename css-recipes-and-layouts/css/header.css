@@ -1,3 +1,14 @@
+/* page header */
+
+body>header {
+    justify-self: center;
+    align-self: center;
+}
+
+body>header a {
+    text-decoration: none;
+}
+
 .logo {
     margin: 0;
     padding: 15px;
