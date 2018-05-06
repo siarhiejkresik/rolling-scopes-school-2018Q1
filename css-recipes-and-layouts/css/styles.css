@@ -59,8 +59,6 @@ main {
     grid-column-gap: 26px;
 }
 
-
-
 /* page aside */
 
 aside {
@@ -78,8 +76,6 @@ main {
     align-content: start;
 }
 
-
-
 /* TODO */
 
 /* spinner */
@@ -88,8 +84,6 @@ main {
     background: url("../images/loading.png") top no-repeat;
     height: 48px;
 }
-
-
 
 /* media queries */
 
