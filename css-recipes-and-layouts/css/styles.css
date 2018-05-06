@@ -76,8 +76,6 @@ main {
     align-content: start;
 }
 
-/* TODO */
-
 /* spinner */
 
 .spinner {
@@ -88,20 +86,6 @@ main {
 }
 
 /* media queries */
-
-@media (max-width: 1920) {
-    .page-navigation {
-        margin-bottom: 49px;
-        border-bottom: 4px solid #c6defa;
-        background: #6b9ad0;
-        font-family: "ArialNarrow", sans;
-        font-size: 18px;
-        text-transform: uppercase;
-        text-shadow: 0px 1px 1px rgba(193, 219, 255, 0.67);
-        display: grid;
-        grid-template-rows: 56px;
-    }
-}
 
 @media (max-width: 1024px) and (min-width: 769px) {
     /* page content */
@@ -121,7 +105,6 @@ main {
         grid-column: 2 / 3;
         display: flex;
         flex-direction: row;
-        align-items: center;
     }
     .page-navigation .nav-item {
         display: flex;
