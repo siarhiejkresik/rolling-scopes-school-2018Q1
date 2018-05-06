@@ -143,7 +143,7 @@ main>article {
         display: flex;
         flex-direction: column;
     }
-    main>article {
+    .main-article {
         box-sizing: border-box;
         padding: 0 62px;
     }
@@ -254,7 +254,7 @@ main>article {
         opacity: 1;
         filter: none;
     }
-    main article h2 {
+    .main-article h2 {
         text-align: center;
         background: rgba(226, 229, 232, 0.38);
     }
