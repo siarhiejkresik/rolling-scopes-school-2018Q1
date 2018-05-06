@@ -93,7 +93,7 @@ main>article {
     height: auto;
 }
 
-.article-info h2 {
+.info-article h2 {
     padding: 0;
     font-family: Cantarell;
     font-size: 17px;
@@ -103,7 +103,7 @@ main>article {
     color: rgb(103, 148, 183);
 }
 
-.article-info h2::before {
+.info-article h2::before {
     margin-right: 6px;
     width: 30px;
     background: rgb(103, 148, 183);
@@ -183,7 +183,7 @@ main>article {
         border-bottom-right-radius: 0;
         margin: 0 0 8px 3px;
     }
-    .article-info {
+    .info-article {
         display: none;
     }
     .tags {
