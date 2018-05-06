@@ -6,6 +6,10 @@
     color: #69747c;
 }
 
+.main-article {
+    position: relative;
+}
+
 .byline {
     height: 40px;
     border-top: 1px solid #e2e5e8;
