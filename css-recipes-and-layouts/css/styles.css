@@ -202,6 +202,13 @@ main {
     .byline {
         justify-content: space-around;
     }
+    .social {
+        position: absolute;
+        bottom: 10px;
+        align-items: center;
+        opacity: 1;
+        filter: none;
+    }
     /* page aside */
     aside,
     .about,
@@ -210,12 +217,5 @@ main {
     }
     .tags {
         padding: 0 49px;
-    }
-    .social {
-        position: absolute;
-        bottom: 0;
-        align-items: center;
-        opacity: 1;
-        filter: none;
     }
 }
