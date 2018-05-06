@@ -126,7 +126,7 @@ main>article {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) and (min-width: 769px) {
     .page-navigation {
         margin-bottom: 0;
     }
@@ -134,21 +134,40 @@ main>article {
         display: flex;
         flex-direction: column;
     }
-    main > article {
+    main>article {
         box-sizing: border-box;
         padding: 0 62px;
-
+    }
+    .page-navigation {
+        /* justify-self: none; */
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .page-navigation .nav-item {
+        display: flex;
+        height: 50px;
+        width: 44px;
+    }
+    .page-navigation .nav-menu,
+    .page-navigation .nav-tags {
+        display: none
+    }
+    .page-navigation .nav-about {
+        order: -1;
     }
     .social {
         position: absolute;
-        top:0;
-        right: -2px;
+        top: 0;
+        right: 0;
         flex-direction: column;
         align-items: flex-end;
         opacity: 1;
         filter: none;
     }
     .social a {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
         margin: 0 0 8px 3px;
     }
     .article-info {
@@ -163,15 +182,46 @@ main>article {
     }
 }
 
-@media (max-width: 320px) {
-    body {
-        background: darkblue;
-    }
+@media (max-width: 768px) {
     .page-content {
         display: flex;
         flex-direction: column;
     }
-    nav,
+    main>header {
+        height: 53px;
+    }
+    .logo {
+        font-size: 24px;
+        padding: 9px;
+    }
+    .logo img {
+        width: 35px;
+        height: 34px;
+    }
+    main {
+        padding: 16px;
+    }
+    .page-navigation {
+        border-bottom: none;
+        margin-bottom: 3px;
+        display: flex;
+        flex-direction: row;
+    }
+    .page-navigation ul {
+        display: none;
+    }
+    .page-navigation .nav-item {
+        display: flex;
+        height: 50px;
+        width: 44px;
+    }
+    .page-navigation .nav-menu {
+        margin-left: auto;
+        background: inherit;
+    }
+    .byline {
+        justify-content: space-around;
+    }
     aside,
     .about,
     .info {
@@ -179,5 +229,18 @@ main>article {
     }
     .tags {
         padding: 0 49px;
+    }
+    .social {
+        position: absolute;
+        bottom: 0;
+        /* left: 0; */
+        /* flex-direction: column; */
+        align-items: center;
+        opacity: 1;
+        filter: none;
+    }
+    main article h2 {
+        text-align: center;
+        background: rgba(226, 229, 232, 0.38);
     }
 }
