@@ -40,7 +40,7 @@ export default class GameController {
     let cardId = e.target.closest(ELEMENTS.CARD).id;
     cardId = cardId.split('-').slice(-1)[0];
     cardId = parseInt(cardId, 10);
-    this.model.onSelectCard(cardId);
+    this.model.selectCard(cardId);
   }
 
   onEndGame() {
