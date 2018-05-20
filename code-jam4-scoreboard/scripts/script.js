@@ -109,7 +109,7 @@ const renderTable = session => {
       if (row.querySelector('input').checked) {
         checked += 1;
         datasets.push({
-          label: 'Time, sec',
+          label: row.children[0].textContent,
           data: [...row.children].slice(1, 11).map(td => Number(td.textContent))
         });
       }
