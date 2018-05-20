@@ -1,5 +1,5 @@
-import * as sessions from '../data/sessions.js';
-import { users } from '../data/users.js';
+import * as SESSIONS from '../data/sessions.js';
+import { USERS } from '../data/users.js';
 
 const MAX_TIME = 150;
 const MAX_CHART_LINES = 10;
@@ -63,7 +63,7 @@ const createTable = session => {
 
   tag = 'TD';
   const body = table.createTBody();
-  for (let userData of getUsersData(users, session)) {
+  for (let userData of getUsersData(USERS, session)) {
     let bodyRow = body.insertRow();
     // name
     bodyRow.appendChild(createCell(tag, userData.name));
@@ -92,29 +92,60 @@ const createCell = (type, text = '') => {
   return cell;
 };
 
-const renderTable = sessions => {
+const renderTable = session => {
   const container = document.getElementById('table-container');
   container.innerHTML = null;
-  container.appendChild(createTable(sessions));
+  container.appendChild(createTable(session));
+  const chart = document.getElementById('myChart');
+  chart.getContext('2d').clearRect(0, 0, chart.width, chart.height);
 
-  const checkbox = container.getElementsByTagName('input');
+  const checkboxs = container.getElementsByTagName('input');
+
+  // show chart on checkboxes toggle
+  container.addEventListener('change', e => {
+    const datasets = [];
+    let checked = 0;
+    Array.from(container.querySelector('tbody').children).forEach(row => {
+      if (row.querySelector('input').checked) {
+        checked += 1;
+        datasets.push({
+          label: 'Time, sec',
+          data: [...row.children].slice(1, 11).map(td => Number(td.textContent))
+        });
+      }
+    });
+    showChart(session, datasets);
+
+    if (checked === MAX_CHART_LINES) {
+      [...container.querySelector('tbody').children].forEach(row => {
+        let checkbox = row.querySelector('input');
+        if (!checkbox.checked) {
+          checkbox.disabled = true;
+        }
+      });
+    } else if (checked === MAX_CHART_LINES - 1) {
+      [...container.querySelector('tbody').children].forEach(row => {
+        let checkbox = row.querySelector('input');
+        if (checkbox.disables) {
+          checkbox.disabled = true;
+        }
+      });
+    }
+  });
+};
+
+const showChart = (session, datasets) => {
+  let ctx = document.getElementById('myChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: puzzlesNames(session),
+      datasets: datasets
+    }
+  });
 };
 
 document.getElementById('session-selector').addEventListener('change', e => {
   const session = e.target.id;
-  renderTable(sessions[session]);
-});
-
-let ctx = document.getElementById('myChart').getContext('2d');
-let myChart = new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: puzzlesNames(sessions.rsschool),
-    datasets: [
-      {
-        label: 'Time, sec',
-        data: [12, 19, 3, 5, 2, 3]
-      }
-    ]
-  }
+  renderTable(SESSIONS[session]);
 });
