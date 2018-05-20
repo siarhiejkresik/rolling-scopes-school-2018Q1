@@ -1,4 +1,4 @@
-export const users = [
+export const USERS = [
   {
     _id: { $oid: '5af9c7625bb0a0002204e9e8' },
     provider: 'github',
