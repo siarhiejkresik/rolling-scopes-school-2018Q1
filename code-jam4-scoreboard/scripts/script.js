@@ -126,8 +126,8 @@ const renderTable = session => {
     } else if (checked === MAX_CHART_LINES - 1) {
       [...container.querySelector('tbody').children].forEach(row => {
         let checkbox = row.querySelector('input');
-        if (checkbox.disables) {
-          checkbox.disabled = true;
+        if (checkbox.disabled) {
+          checkbox.disabled = false;
         }
       });
     }
