@@ -5,11 +5,11 @@
 .carousel .card {
     box-shadow: 1px 1px 4px 4px #4e4e4e61;
     cursor: pointer;
-    transition: transform 0.25s;
+    transition: transform 0.1s;
 }
 
 .carousel .card:hover {
-    transform: scale(1.03);
+    transform: scale(1.04);
 }
 
 .carousel .selected {
