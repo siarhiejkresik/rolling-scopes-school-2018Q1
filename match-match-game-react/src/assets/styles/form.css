@@ -1,7 +1,7 @@
 form {
     background: rgba(19, 35, 47, 0.9);
     padding: 40px;
-    margin: 40px auto;
+    margin: 60px auto;
     border-radius: 4px;
     box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
     color: white;
@@ -15,7 +15,7 @@ input {
     display: block;
     height: 2em;
     width: 240px;
-    margin-top: 2px;
+    margin-top: 4px;
     margin-bottom: 1em;
     padding: 0 1em;
     outline: 0;
