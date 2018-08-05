@@ -1,29 +1,6 @@
 import { SET_CARD_STATE, CARD_STATES, GENERATE_CARD_DECK } from '../actions';
 import { PREFERENCES } from '../constants/preferences';
 
-const CARDS = [
-  {
-    id: 1,
-    type: 0,
-    state: CARD_STATES.CLOSED,
-  },
-  {
-    id: 2,
-    type: 0,
-    state: CARD_STATES.CLOSED,
-  },
-  {
-    id: 3,
-    type: 1,
-    state: CARD_STATES.CLOSED,
-  },
-  {
-    id: 4,
-    type: 1,
-    state: CARD_STATES.CLOSED,
-  },
-];
-
 const generateCardDeck = ({ cards, types }) => {
   const cardDeck = [];
   const initialState = CARD_STATES.CLOSED;
@@ -35,7 +12,6 @@ const generateCardDeck = ({ cards, types }) => {
       id += 1;
     }
   }
-  return CARDS;
   return cardDeck;
 };
 
@@ -44,7 +20,8 @@ const shuffleArray = arr => arr.sort(() => 0.5 - Math.random());
 export default (state = [], action) => {
   switch (action.type) {
     case GENERATE_CARD_DECK: {
-      const cardDeck = generateCardDeck(PREFERENCES[action.difficulty]);
+      const preferences = PREFERENCES[action.difficulty];
+      const cardDeck = generateCardDeck(preferences);
       shuffleArray(cardDeck);
       return cardDeck;
     }
