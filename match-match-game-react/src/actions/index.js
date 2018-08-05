@@ -17,6 +17,10 @@ export const SET_DIFFICULTY = 'SET_DIFFICULTY';
 export const SET_CARD_BACK = 'SET_CARD_BACK';
 export const GENERATE_CARD_DECK = 'GENERATE_CARD_DECK';
 
+export const SET_USER_NAME = 'SET_USER_NAME';
+export const SET_USER_EMAIL = 'SET_USER_EMAIL';
+export const SET_USER_SCORE = 'SET_USER_SCORE';
+
 export const setCardState = ({ id, state }) => ({
   type: SET_CARD_STATE,
   id,
@@ -57,4 +61,18 @@ export const setCardBack = cardBack => ({
 export const generateCardDeck = difficulty => ({
   type: GENERATE_CARD_DECK,
   difficulty,
+});
+export const setUserName = username => ({
+  type: SET_USER_NAME,
+  username,
+});
+
+export const setUserEmail = email => ({
+  type: SET_USER_EMAIL,
+  email,
+});
+
+export const setUserScore = score => ({
+  type: SET_USER_SCORE,
+  score,
 });

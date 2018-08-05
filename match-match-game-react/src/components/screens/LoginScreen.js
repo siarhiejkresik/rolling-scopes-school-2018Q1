@@ -1,40 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 
 import Heading from '../presentational/Heading';
+import LoginForm from '../containers/LoginForm';
 
 class LoginScreen extends React.Component {
-  onSubmit() {
-    alert(this);
+  constructor(props) {
+    super(props);
+    this.state = { isLogged: false };
+    this.onLogIn = this.onLogIn.bind(this);
+  }
+
+  onLogIn() {
+    this.setState({ isLogged: true });
   }
 
   render() {
+    const { isLogged } = this.state;
+    if (isLogged) {
+      return <Redirect to="/menu" />;
+    }
+
     return (
       <section className="login">
         <Heading title="Log in" level={2} />
-        <form id="login">
-          <label htmlFor="firstname">
-            {'First name'}
-            <input type="text" id="firstname" name="firstname" maxLength="20" autoFocus />
-          </label>
-
-          <label htmlFor="lastname">
-            {'Last name'}
-            <input type="text" id="lastname" name="lastname" maxLength="20" />
-          </label>
-
-          <label htmlFor="email">
-            {'Email'}
-            <input type="text" id="email" name="email" />
-          </label>
-        </form>
-        <Link to="/menu">
-          <button className="submit-login" type="submit" form="login">
-            {'Log in'}
-          </button>
-        </Link>
+        <LoginForm onLogIn={this.onLogIn} />
       </section>
     );
   }
