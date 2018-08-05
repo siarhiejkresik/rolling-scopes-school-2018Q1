@@ -88,6 +88,20 @@ main>section {
     background: hsla(40, 25%, 60%, 0.2)
 }
 
+table {
+    text-align: center;
+    font-size: 14px;
+    margin: 18px;
+}
+
+tbody tr:nth-of-type(2n+1) {
+    background-color: rgba(0,0,0,.05);
+}
+tbody td {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
 .preferences {
     padding-bottom: 10px;
     border-radius: 3px;
