@@ -6,12 +6,20 @@ import PropTypes from 'prop-types';
 import InfoPane from '../containers/InfoPane';
 import CardDeck from '../containers/CardDeck';
 
-import { generateCardDeck } from '../../actions';
+import {
+  generateCardDeck, startTimer, stopTimer,
+} from '../../actions';
 
 class GameScreen extends React.Component {
   componentWillMount() {
-    const { difficulty, generateCardDeck } = this.props;
+    const { difficulty, generateCardDeck, startTimer } = this.props;
     generateCardDeck(difficulty);
+    startTimer();
+  }
+
+  componentWillUnmount() {
+    const { stopTimer } = this.props;
+    stopTimer();
   }
 
   render() {
@@ -35,6 +43,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   generateCardDeck: difficulty => dispatch(generateCardDeck(difficulty)),
+  startTimer: () => dispatch(startTimer()),
+  stopTimer: () => dispatch(stopTimer()),
 });
 
 export default connect(

@@ -23,6 +23,10 @@ export const SET_USER_NAME = 'SET_USER_NAME';
 export const SET_USER_EMAIL = 'SET_USER_EMAIL';
 export const SET_USER_SCORE = 'SET_USER_SCORE';
 
+export const START_TIMER = 'START_TIMER';
+export const STOP_TIMER = 'STOP_TIMER';
+export const TICK_TIMER = 'TICK_TIMER';
+
 export const setCardState = ({ id, state }) => ({
   type: SET_CARD_STATE,
   id,
@@ -89,4 +93,16 @@ export const setUserEmail = email => ({
 export const setUserScore = score => ({
   type: SET_USER_SCORE,
   score,
+});
+
+export const tickTimer = () => ({
+  type: TICK_TIMER,
+});
+
+export const startTimer = () => ({
+  type: START_TIMER,
+});
+
+export const stopTimer = () => ({
+  type: STOP_TIMER,
 });

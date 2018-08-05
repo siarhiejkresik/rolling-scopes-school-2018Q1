@@ -1,16 +1,18 @@
 import { combineReducers } from 'redux';
 
 import cards from './cards';
-import queue from './queue';
 import preferences from './preferences';
-import user from './user';
+import queue from './queue';
 import scores from './scores';
+import timer from './timer';
+import user from './user';
 
 const rootReducer = combineReducers({
   cards,
-  queue,
   preferences,
+  queue,
   scores,
+  timer,
   user,
 });
 
