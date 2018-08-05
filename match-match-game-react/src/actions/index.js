@@ -17,6 +17,8 @@ export const SET_DIFFICULTY = 'SET_DIFFICULTY';
 export const SET_CARD_BACK = 'SET_CARD_BACK';
 export const GENERATE_CARD_DECK = 'GENERATE_CARD_DECK';
 
+export const RECEIVE_SCORES = 'RECEIVE_SCORES';
+
 export const SET_USER_NAME = 'SET_USER_NAME';
 export const SET_USER_EMAIL = 'SET_USER_EMAIL';
 export const SET_USER_SCORE = 'SET_USER_SCORE';
@@ -62,6 +64,18 @@ export const generateCardDeck = difficulty => ({
   type: GENERATE_CARD_DECK,
   difficulty,
 });
+
+export const receiveScores = scores => ({
+  type: RECEIVE_SCORES,
+  scores,
+});
+
+export const fetchScoreboard = () => (dispatch) => {
+  fetch('http://mmg-score.herokuapp.com ')
+    .then(response => response.json())
+    .then(json => dispatch(receiveScores(json.result)));
+};
+
 export const setUserName = username => ({
   type: SET_USER_NAME,
   username,

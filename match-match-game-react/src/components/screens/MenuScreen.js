@@ -10,9 +10,11 @@ const MenuScreen = () => (
     <Heading title="Menu" level={2} />
     <section className="player-info row-centered">
       <PlayerName />
-      <button type="button" className="logout flat">
-        {'Records'}
-      </button>
+      <Link to="/records">
+        <button type="button" className="logout flat">
+          {'Records'}
+        </button>
+      </Link>
     </section>
     <Preferences />
     <Link to="/game">
