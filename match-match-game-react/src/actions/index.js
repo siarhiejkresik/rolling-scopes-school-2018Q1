@@ -1,9 +1,3 @@
-export const CARD_STATES = {
-  OPENED: 'OPENED',
-  CLOSED: 'CLOSED',
-  DISABLED: 'DISABLED',
-};
-
 export const SET_CARD_STATE = 'SET_CARD_STATE';
 
 export const ADD_CARD_TO_QUEUE = 'ADD_CARD_TO_QUEUE';

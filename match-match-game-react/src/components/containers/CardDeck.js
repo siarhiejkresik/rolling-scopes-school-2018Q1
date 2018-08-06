@@ -6,15 +6,11 @@ import { Redirect } from 'react-router-dom';
 import Card from './Card';
 
 import {
-  CARD_STATES,
-  setCardState,
-  addCardToQueue,
-  clearQueue,
-  blockQueue,
-  unBlockQueue,
+  setCardState, addCardToQueue, clearQueue, blockQueue, unBlockQueue,
 } from '../../actions';
 import { isQueueFull, isQueueOfDifferentTypes, isAllCardsDisabled } from '../../selectors';
 
+import CARD_STATES from '../../constants/card-states';
 import { QUEUE_ANIMATION_DURATION } from '../../constants/animations';
 
 class CardDeck extends React.Component {

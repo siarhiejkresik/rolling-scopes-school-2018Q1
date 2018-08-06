@@ -1,4 +1,5 @@
-import { SET_CARD_STATE, CARD_STATES, GENERATE_CARD_DECK } from '../actions';
+import { SET_CARD_STATE, GENERATE_CARD_DECK } from '../actions';
+import CARD_STATES from '../constants/card-states';
 import { PREFERENCES } from '../constants/preferences';
 
 const generateCardDeck = ({ cards, types }) => {

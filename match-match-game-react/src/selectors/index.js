@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { CARD_STATES } from '../actions';
+import CARD_STATES from '../constants/card-states';
 
 const getCards = state => state.cards;
 const getQueue = state => state.queue;
