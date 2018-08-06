@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CardBack from './CardBack';
-import CardFront from './CardFront';
+import CardBack from '../presentational/CardBack';
+import CardFront from '../presentational/CardFront';
 
-import { CARD_STATES } from '../../actions';
+import CARD_STATES from '../../constants/card-states';
 
 const mapCardStateToHTMLClasses = (state) => {
   let classes = ['card'];

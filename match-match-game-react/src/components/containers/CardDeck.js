@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import Card from '../presentational/Card';
+import Card from './Card';
 
 import {
   CARD_STATES,
