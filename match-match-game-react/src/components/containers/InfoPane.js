@@ -7,7 +7,7 @@ import Timer from '../presentational/Timer';
 const InfoPane = () => (
   <div className="game-info">
     <PlayerName />
-    <Timer time="12:34" />
+    <Timer />
     <DifficultyName />
   </div>
 );

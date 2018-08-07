@@ -3,13 +3,11 @@ import {
   CLEAR_QUEUE,
   BLOCK_QUEUE,
   UNBLOCK_QUEUE,
-  SET_MAX_QUEUE_SIZE,
 } from '../actions';
 
 const initialState = {
   cardIds: [],
   isBlocked: false,
-  maxSize: 2,
 };
 
 export default (state = initialState, action) => {
@@ -27,8 +25,6 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, { isBlocked: true });
     case UNBLOCK_QUEUE:
       return Object.assign({}, state, { isBlocked: false });
-    case SET_MAX_QUEUE_SIZE:
-      return Object.assign({}, state, { maxSize: action.maxSize });
     default:
       return state;
   }
