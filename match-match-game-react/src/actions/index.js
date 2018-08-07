@@ -44,6 +44,11 @@ export const unBlockQueue = () => ({
   type: UNBLOCK_QUEUE,
 });
 
+export const changeQueueCardsState = cardState => (dispatch, getState) => {
+  const { cardIds } = getState().queue;
+  cardIds.map(id => dispatch(setCardState({ id, state: cardState })));
+};
+
 export const setMaxQueueSize = maxSize => ({ type: SET_MAX_QUEUE_SIZE, maxSize });
 
 export const closeCards = () => ({ type: CLOSE_CARDS });

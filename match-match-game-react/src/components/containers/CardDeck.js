@@ -6,7 +6,12 @@ import { Redirect } from 'react-router-dom';
 import Card from './Card';
 
 import {
-  setCardState, addCardToQueue, clearQueue, blockQueue, unBlockQueue,
+  setCardState,
+  addCardToQueue,
+  clearQueue,
+  blockQueue,
+  unBlockQueue,
+  changeQueueCardsState,
 } from '../../actions';
 import { isQueueFull, isQueueOfDifferentTypes, isAllCardsDisabled } from '../../selectors';
 
@@ -61,22 +66,19 @@ class CardDeck extends React.Component {
   }
 
   processQueue(prev, curr, cardState) {
-    const { clearQueue, blockQueue, unBlockQueue } = this.props;
+    const {
+      clearQueue, blockQueue, unBlockQueue, changeQueueCardsState,
+    } = this.props;
     if (prev !== curr && curr) {
       blockQueue();
       setTimeout(() => {
-        this.changeQueueCardsState(cardState);
+        changeQueueCardsState(cardState);
         clearQueue();
         unBlockQueue();
       }, QUEUE_ANIMATION_DURATION);
       return true;
     }
     return false;
-  }
-
-  changeQueueCardsState(state) {
-    const { queueCardIds, setCardState } = this.props;
-    queueCardIds.map(id => setCardState({ id, state }));
   }
 
   render() {
@@ -123,6 +125,7 @@ const mapDispatchToProps = dispatch => ({
   clearQueue: () => dispatch(clearQueue()),
   blockQueue: () => dispatch(blockQueue()),
   unBlockQueue: () => dispatch(unBlockQueue()),
+  changeQueueCardsState: cardState => dispatch(changeQueueCardsState(cardState)),
 });
 
 export default connect(
