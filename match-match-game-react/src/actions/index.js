@@ -1,3 +1,5 @@
+import { GET_LINK, POST_LINK } from '../constants/api-endpoints';
+
 export const SET_CARD_STATE = 'SET_CARD_STATE';
 
 export const ADD_CARD_TO_QUEUE = 'ADD_CARD_TO_QUEUE';

@@ -15,6 +15,8 @@ const GAME_RULES = [
   'The game is over when all the cards have been disappeared',
 ];
 
+const GAME_WIKI_LINK = 'https://en.wikipedia.org/wiki/Concentration_(game)';
+
 const AboutScreen = () => (
   <section className="welcome">
     <Heading title="Welcome!" level={2} />
@@ -23,7 +25,7 @@ const AboutScreen = () => (
       <blockquote>
         {GAME_DESCRIPTION}
         <cite>
-          <a href="https://en.wikipedia.org/wiki/Concentration_(game)">
+          <a href={GAME_WIKI_LINK}>
             {'wikipedia.org'}
           </a>
         </cite>
