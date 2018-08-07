@@ -4,7 +4,7 @@ import { DIFFICULTY } from '../constants/preferences';
 import CARD_BACKS from '../constants/card-backs';
 
 const initialState = {
-  difficulty: DIFFICULTY.EASY,
+  difficulty: DIFFICULTY.KIDS,
   cardBack: CARD_BACKS[0],
 };
 
