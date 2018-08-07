@@ -27,7 +27,7 @@ class GameScreen extends React.Component {
       <section className="game">
         <InfoPane />
         <CardDeck />
-        <Link to="/result">
+        <Link to="/menu">
           <button type="button" className="exit">
             {'Exit to menu'}
           </button>
