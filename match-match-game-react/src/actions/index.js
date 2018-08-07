@@ -12,6 +12,7 @@ export const SET_CARD_BACK = 'SET_CARD_BACK';
 export const GENERATE_CARD_DECK = 'GENERATE_CARD_DECK';
 
 export const RECEIVE_SCORES = 'RECEIVE_SCORES';
+export const POST_SCORE = 'POST_SCORE';
 
 export const SET_USER_NAME = 'SET_USER_NAME';
 export const SET_USER_EMAIL = 'SET_USER_EMAIL';
@@ -70,9 +71,31 @@ export const receiveScores = scores => ({
 });
 
 export const fetchScoreboard = () => (dispatch) => {
-  fetch('http://mmg-score.herokuapp.com ')
+  fetch(GET_LINK)
     .then(response => response.json())
+    .catch(error => console.error('Error in fetchScoreboard:', error))
     .then(json => dispatch(receiveScores(json.result)));
+};
+
+export const postScore = data => ({
+  type: POST_SCORE,
+  data,
+});
+
+export const sendScoreResult = data => (dispatch) => {
+  fetch(POST_LINK, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(response => response.json())
+    .catch(error => console.error('Error in sendScoreResult:', error))
+    .then((response) => {
+      console.log(response);
+      dispatch(postScore(response));
+    });
 };
 
 export const setUserName = username => ({
