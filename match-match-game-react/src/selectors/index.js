@@ -28,4 +28,10 @@ export const isQueueOfDifferentTypes = createSelector(
   },
 );
 
+export const postData = state => ({
+  username: state.user.username,
+  email: state.user.email,
+  score: state.timer.offset,
+});
+
 export const isAllCardsDisabled = createSelector([getCards], cards => cards.every(card => card.state === CARD_STATES.DISABLED));
