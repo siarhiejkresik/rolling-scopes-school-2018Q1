@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Records = ({ scores }) => (
+const isThisPlayer = (score, username, email) => score.username === username && score.email === email;
+const classes = (score, username, email) => (isThisPlayer(score, username, email) ? 'row-highlight' : '');
+
+const Records = ({ scores, username, email }) => (
   <table>
     <thead>
       <tr>
@@ -22,7 +25,7 @@ const Records = ({ scores }) => (
 
     <tbody>
       {scores.map((score, i) => (
-        <tr key={score._id}>
+        <tr key={score._id} className={classes(score, username, email)}>
           <td className="row-number">
             {i + 1}
           </td>
@@ -43,6 +46,8 @@ const Records = ({ scores }) => (
 
 Records.propTypes = {
   scores: PropTypes.arrayOf(PropTypes.object).isRequired,
+  username: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
 };
 
 export default Records;

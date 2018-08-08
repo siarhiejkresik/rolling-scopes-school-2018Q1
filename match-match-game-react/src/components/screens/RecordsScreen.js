@@ -14,11 +14,11 @@ class RecordsScreen extends React.Component {
   }
 
   render() {
-    const { scores } = this.props;
+    const { scores, username, email } = this.props;
     return (
       <section className="records">
         <Heading title="Records" level={2} />
-        <RecordsTable scores={scores} />
+        <RecordsTable scores={scores} username={username} email={email} />
         <Link to="/menu">
           <button type="button" className="return">
             {'Return to menu'}
@@ -31,6 +31,8 @@ class RecordsScreen extends React.Component {
 
 const mapStateToProps = state => ({
   scores: state.scores,
+  username: state.user.username,
+  email: state.user.email,
 });
 
 const mapDispatchToProps = dispatch => ({
