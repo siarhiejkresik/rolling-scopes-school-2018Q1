@@ -29,6 +29,18 @@ export const START_TIMER = 'START_TIMER';
 export const STOP_TIMER = 'STOP_TIMER';
 export const TICK_TIMER = 'TICK_TIMER';
 
+export const tickTimer = () => ({
+  type: TICK_TIMER,
+});
+
+export const startTimer = () => ({
+  type: START_TIMER,
+});
+
+export const stopTimer = () => ({
+  type: STOP_TIMER,
+});
+
 export const setCardState = ({ id, state }) => ({
   type: SET_CARD_STATE,
   id,
@@ -76,6 +88,7 @@ export const processQueue = id => async (dispatch, getState) => {
   if (isQueueFull(getState())) {
     await dispatch(finalizeQueue(CARD_STATE.DISABLED));
     if (isAllCardsDisabled(getState())) {
+      dispatch(stopTimer());
       await wait(QUEUE_ANIMATION_DURATION);
       history.push('/result');
     }
@@ -146,16 +159,4 @@ export const setUserEmail = email => ({
 export const setUserScore = score => ({
   type: SET_USER_SCORE,
   score,
-});
-
-export const tickTimer = () => ({
-  type: TICK_TIMER,
-});
-
-export const startTimer = () => ({
-  type: START_TIMER,
-});
-
-export const stopTimer = () => ({
-  type: STOP_TIMER,
 });
