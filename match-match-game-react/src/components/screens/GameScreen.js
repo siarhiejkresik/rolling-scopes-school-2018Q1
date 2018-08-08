@@ -6,9 +6,7 @@ import PropTypes from 'prop-types';
 import InfoPane from '../containers/InfoPane';
 import CardDeck from '../containers/CardDeck';
 
-import {
-  generateCardDeck, startTimer, stopTimer,
-} from '../../actions';
+import { generateCardDeck, startTimer, stopTimer } from '../../actions';
 
 class GameScreen extends React.Component {
   componentWillMount() {
