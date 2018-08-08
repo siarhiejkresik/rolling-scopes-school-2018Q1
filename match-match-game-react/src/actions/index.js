@@ -81,7 +81,6 @@ export const sendScoreResult = data => (dispatch) => {
     .then(response => response.json())
     .catch(error => console.error('Error in sendScoreResult:', error))
     .then((response) => {
-      console.log(response);
       dispatch(postScore(response));
     });
 };

@@ -25,13 +25,6 @@ class ResultScreen extends React.Component {
               {timeMSToMMSS(time)}
             </span>
           </div>
-          <div className="record">
-            {'You got the '}
-            <span className="place">
-              {'X'}
-            </span>
-            {' place!'}
-          </div>
         </section>
         <Link to="/game">
           <button type="button" className="play">
