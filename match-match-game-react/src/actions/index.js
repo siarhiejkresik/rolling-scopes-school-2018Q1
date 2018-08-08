@@ -2,7 +2,9 @@ import { GET_LINK, POST_LINK } from '../constants/api-endpoints';
 import CARD_STATE from '../constants/card-states';
 import { QUEUE_ANIMATION_DURATION } from '../constants/animations';
 
-import { isQueueFull, isQueueOfDifferentTypes, isAllCardsDisabled } from '../selectors';
+import {
+  isQueueFull, isQueueOfDifferentTypes, isAllCardsDisabled, postData,
+} from '../selectors';
 
 import history from '../history';
 import { wait } from '../scripts/utils';
@@ -18,12 +20,12 @@ export const SET_DIFFICULTY = 'SET_DIFFICULTY';
 export const SET_CARD_BACK = 'SET_CARD_BACK';
 export const GENERATE_CARD_DECK = 'GENERATE_CARD_DECK';
 
+export const CLEAR_SCORES = 'CLEAR_SCORES';
 export const RECEIVE_SCORES = 'RECEIVE_SCORES';
 export const POST_SCORE = 'POST_SCORE';
 
 export const SET_USER_NAME = 'SET_USER_NAME';
 export const SET_USER_EMAIL = 'SET_USER_EMAIL';
-export const SET_USER_SCORE = 'SET_USER_SCORE';
 
 export const START_TIMER = 'START_TIMER';
 export const STOP_TIMER = 'STOP_TIMER';
@@ -45,6 +47,53 @@ export const setCardState = ({ id, state }) => ({
   type: SET_CARD_STATE,
   id,
   state,
+});
+
+export const receiveScores = scores => ({
+  type: RECEIVE_SCORES,
+  scores,
+});
+
+export const clearScores = () => ({
+  type: CLEAR_SCORES,
+});
+
+export const fetchScoreboard = () => (dispatch) => {
+  fetch(GET_LINK)
+    .then(response => response.json())
+    .catch(error => console.error('Error in fetchScoreboard:', error))
+    .then(json => dispatch(receiveScores(json.result)));
+};
+
+export const postScore = data => ({
+  type: POST_SCORE,
+  data,
+});
+
+export const sendScoreResult = data => (dispatch) => {
+  fetch(POST_LINK, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(response => response.json())
+    .catch(error => console.error('Error in sendScoreResult:', error))
+    .then((response) => {
+      console.log(response);
+      dispatch(postScore(response));
+    });
+};
+
+export const setUserName = username => ({
+  type: SET_USER_NAME,
+  username,
+});
+
+export const setUserEmail = email => ({
+  type: SET_USER_EMAIL,
+  email,
 });
 
 export const addCardToQueue = ({ id }) => ({
@@ -90,6 +139,10 @@ export const processQueue = id => async (dispatch, getState) => {
     if (isAllCardsDisabled(getState())) {
       dispatch(stopTimer());
       await wait(QUEUE_ANIMATION_DURATION);
+      const data = postData(getState());
+      dispatch(sendScoreResult(data));
+      dispatch(clearScores());
+      dispatch(fetchScoreboard());
       history.push('/result');
     }
     return;
@@ -111,52 +164,4 @@ export const setCardBack = cardBack => ({
 export const generateCardDeck = difficulty => ({
   type: GENERATE_CARD_DECK,
   difficulty,
-});
-
-export const receiveScores = scores => ({
-  type: RECEIVE_SCORES,
-  scores,
-});
-
-export const fetchScoreboard = () => (dispatch) => {
-  fetch(GET_LINK)
-    .then(response => response.json())
-    .catch(error => console.error('Error in fetchScoreboard:', error))
-    .then(json => dispatch(receiveScores(json.result)));
-};
-
-export const postScore = data => ({
-  type: POST_SCORE,
-  data,
-});
-
-export const sendScoreResult = data => (dispatch) => {
-  fetch(POST_LINK, {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then(response => response.json())
-    .catch(error => console.error('Error in sendScoreResult:', error))
-    .then((response) => {
-      console.log(response);
-      dispatch(postScore(response));
-    });
-};
-
-export const setUserName = username => ({
-  type: SET_USER_NAME,
-  username,
-});
-
-export const setUserEmail = email => ({
-  type: SET_USER_EMAIL,
-  email,
-});
-
-export const setUserScore = score => ({
-  type: SET_USER_SCORE,
-  score,
 });
