@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 
 import store from './store/index';
+import history from './history';
 
 import AboutScreen from './components/screens/AboutScreen';
 import GameScreen from './components/screens/GameScreen';
@@ -16,7 +17,7 @@ import './assets/styles/styles.css';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
+    <Router history={history}>
       <Switch>
         <Route exact path="/" component={AboutScreen} />
         <Route path="/login" component={LoginScreen} />
