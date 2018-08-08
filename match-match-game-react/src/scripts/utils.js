@@ -14,8 +14,6 @@ export const timeMSToMMSS = (milliseconds) => {
   return `${minutes}:${seconds}`;
 };
 
-// const aspectRatio = (width, height) => width / height;
-
-// export const windowAspectRatio = () => aspectRatio(window.innerWidth, window.innerHeight);
-
-// const cardAspectRatio = aspectRatio(110, 150);
+export const wait = time => new Promise((resolve) => {
+  setTimeout(resolve, time);
+});
