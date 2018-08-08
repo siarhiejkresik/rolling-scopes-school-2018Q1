@@ -1,4 +1,11 @@
 import { GET_LINK, POST_LINK } from '../constants/api-endpoints';
+import CARD_STATE from '../constants/card-states';
+import { QUEUE_ANIMATION_DURATION } from '../constants/animations';
+
+import { isQueueFull, isQueueOfDifferentTypes, isAllCardsDisabled } from '../selectors';
+
+import history from '../history';
+import { wait } from '../scripts/utils';
 
 export const SET_CARD_STATE = 'SET_CARD_STATE';
 
@@ -48,6 +55,34 @@ export const unBlockQueue = () => ({
 export const changeQueueCardsState = cardState => (dispatch, getState) => {
   const { cardIds } = getState().queue;
   cardIds.map(id => dispatch(setCardState({ id, state: cardState })));
+};
+
+export const finalizeQueue = cardState => async (dispatch) => {
+  await wait(QUEUE_ANIMATION_DURATION);
+  dispatch(changeQueueCardsState(cardState));
+  dispatch(clearQueue());
+  dispatch(unBlockQueue());
+};
+
+export const processQueue = id => async (dispatch, getState) => {
+  dispatch(blockQueue());
+  dispatch(setCardState({ id, state: CARD_STATE.OPENED }));
+  dispatch(addCardToQueue({ id }));
+
+  if (isQueueOfDifferentTypes(getState())) {
+    await dispatch(finalizeQueue(CARD_STATE.CLOSED));
+    return;
+  }
+  if (isQueueFull(getState())) {
+    await dispatch(finalizeQueue(CARD_STATE.DISABLED));
+    if (isAllCardsDisabled(getState())) {
+      await wait(QUEUE_ANIMATION_DURATION);
+      history.push('/result');
+    }
+    return;
+  }
+
+  dispatch(unBlockQueue());
 };
 
 export const setDifficulty = difficulty => ({

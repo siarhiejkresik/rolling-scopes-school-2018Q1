@@ -1,22 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
 import Card from './Card';
 
-import {
-  setCardState,
-  addCardToQueue,
-  clearQueue,
-  blockQueue,
-  unBlockQueue,
-  changeQueueCardsState,
-} from '../../actions';
-import { isQueueFull, isQueueOfDifferentTypes, isAllCardsDisabled } from '../../selectors';
-
+import { processQueue } from '../../actions';
 import CARD_STATES from '../../constants/card-states';
-import { QUEUE_ANIMATION_DURATION } from '../../constants/animations';
 
 class CardDeck extends React.Component {
   constructor(props) {
@@ -24,71 +13,18 @@ class CardDeck extends React.Component {
     this.onCardSelect = this.onCardSelect.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
-    const { isAllCardsDisabled, isQueueBlocked } = this.props;
-    if (isAllCardsDisabled && !isQueueBlocked) {
-      console.log('end GAME!');
-    }
-
-    const props = [
-      {
-        propName: 'isQueueOfDifferentTypes',
-        cardState: CARD_STATES.CLOSED,
-      },
-      {
-        propName: 'isQueueFull',
-        cardState: CARD_STATES.DISABLED,
-      },
-    ];
-
-    for (const prop of props) {
-      const prev = prevProps[prop.propName];
-      const curr = this.props[prop.propName];
-      const isProcessed = this.processQueue(prev, curr, prop.cardState);
-      if (isProcessed) {
-        break;
-      }
-    }
-  }
-
   onCardSelect(event) {
-    const { isQueueBlocked } = this.props;
+    const { isQueueBlocked, processQueue } = this.props;
     if (isQueueBlocked) {
       return;
     }
-
-    const { setCardState, addCardToQueue } = this.props;
     const { id, state } = event;
     if (state === CARD_STATES.CLOSED) {
-      addCardToQueue({ id });
-      setCardState({ id, state: CARD_STATES.OPENED });
+      processQueue(id);
     }
-  }
-
-  processQueue(prev, curr, cardState) {
-    const {
-      clearQueue, blockQueue, unBlockQueue, changeQueueCardsState,
-    } = this.props;
-    if (prev !== curr && curr) {
-      blockQueue();
-      setTimeout(() => {
-        changeQueueCardsState(cardState);
-        clearQueue();
-        unBlockQueue();
-      }, QUEUE_ANIMATION_DURATION);
-      return true;
-    }
-    return false;
   }
 
   render() {
-    const { isAllCardsDisabled, isQueueBlocked } = this.props;
-
-    const isGameEnd = isAllCardsDisabled && !isQueueBlocked;
-    if (isGameEnd) {
-      return <Redirect to="/result" />;
-    }
-
     const { cards, cardBack } = this.props;
     return (
       <div className="grid">
@@ -101,31 +37,17 @@ class CardDeck extends React.Component {
 }
 
 CardDeck.propTypes = {
-  isQueueFull: PropTypes.bool.isRequired,
-  isQueueOfDifferentTypes: PropTypes.bool.isRequired,
   isQueueBlocked: PropTypes.bool.isRequired,
-  isAllCardsDisabled: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
   cards: state.cards,
   cardBack: state.preferences.cardBack,
-  queueCardIds: state.queue.cardIds,
   isQueueBlocked: state.queue.isBlocked,
-  isQueueFull: isQueueFull(state),
-  isQueueOfDifferentTypes: isQueueOfDifferentTypes(state),
-  isAllCardsDisabled: isAllCardsDisabled(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  setCardState: ({ id, state }) => {
-    dispatch(setCardState({ id, state }));
-  },
-  addCardToQueue: ({ id }) => dispatch(addCardToQueue({ id })),
-  clearQueue: () => dispatch(clearQueue()),
-  blockQueue: () => dispatch(blockQueue()),
-  unBlockQueue: () => dispatch(unBlockQueue()),
-  changeQueueCardsState: cardState => dispatch(changeQueueCardsState(cardState)),
+  processQueue: id => dispatch(processQueue(id)),
 });
 
 export default connect(
