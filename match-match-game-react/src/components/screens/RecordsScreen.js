@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Heading from '../presentational/Heading';
 import RecordsTable from '../presentational/RecordsTable';
@@ -28,6 +29,13 @@ class RecordsScreen extends React.Component {
     );
   }
 }
+
+RecordsScreen.propTypes = {
+  scores: PropTypes.arrayOf(PropTypes.object).isRequired,
+  username: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  fetchScoreboard: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   scores: state.scores,

@@ -37,6 +37,13 @@ class GameScreen extends React.Component {
   }
 }
 
+GameScreen.propTypes = {
+  difficulty: PropTypes.string.isRequired,
+  generateCardDeck: PropTypes.func.isRequired,
+  startTimer: PropTypes.func.isRequired,
+  stopTimer: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = state => ({
   difficulty: state.preferences.difficulty,
 });
