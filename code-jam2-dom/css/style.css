@@ -1,0 +1,131 @@
+@import url('./fontello.css');
+
+body {
+    font-family: serif;
+}
+
+#notification {
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: "Roboto", "Open Sans", sans;
+    width: 30em;
+    height: 20em;
+    padding: 1.5em;
+    margin: 10px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 2px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    color: dimgray;
+    overflow: hidden;
+}
+
+#close {
+    float: right;
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
+    text-align: center;
+    font-size: 1.25em;
+    font-family: fontello;
+}
+
+#close:hover {
+    cursor: pointer;
+}
+
+.control {
+    font-size: 1.5em;
+}
+
+.control:hover {
+    cursor: pointer;
+    color: red;
+}
+
+article {
+    width: 80%;
+    columns: 22em;
+    height: 12em;
+    padding: 1em;
+    margin-bottom: 1em;
+    border: 1px solid black;
+    overflow: hidden;
+    overflow-wrap: break-word;
+}
+
+article h2 {
+    font-size: 1em;
+    color: black;
+    margin-top: 0px;
+    margin-bottom: 1em;
+    padding: 0px;
+    line-height: 1em;
+    text-transform: uppercase;
+}
+
+.message {
+    display: none;
+}
+
+.message.active {
+    display: initial;
+}
+
+.bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.navbar {
+    display: flex;
+}
+
+input {
+    transform: scale(1.2);
+}
+
+.disable {
+    display: flex;
+    align-items: center;
+}
+
+label {
+    vertical-align: baseline;
+    padding-left: 0.4em;
+}
+
+#indicators {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: auto 0.5em;
+}
+
+.indicator {
+    box-sizing: border-box;
+    margin: auto 0.25em;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    background-color: #CACBCC;
+    cursor: pointer;
+}
+
+.indicator.active {
+    background-color: #388AFC;
+    color: #388AFC;
+    cursor: unset;
+}
+
+
+
+.hidden {
+    display: none;
+}
